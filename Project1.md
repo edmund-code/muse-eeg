@@ -1,5 +1,9 @@
+
 # Introduction
 This is the first in a series of project where you will learn everything from how to control a very simplistic Pong game by blinking your eyes, to more advanced controlling of software or external devices with the help of a consumer-based EEG-device.
+
+<img src="./Images/Blink_Pong.jpg" width="200">
+
 ## Prerequisites
 To be able to reproduce examples found in this tutorial, you'll need:
  - A Muse EEG-device, any model should work, although Muse-01 (from 2014) streams with 220 Hz instead of 256 Hz and might need a few code changes. They cost around 250 USD/EUR and are manufactured by the Canadian company [Interaxon Inc.](https://choosemuse.com/) 
@@ -7,7 +11,7 @@ To be able to reproduce examples found in this tutorial, you'll need:
  - [Mind Monitor app](https://mind-monitor.com/) for iPhone or Android, one-time price is ~15 USD/EUR
  - A computer able to run Python + WiFi
 	 - only PC/Win10 tested although Mac and Linux computers are expected to work
-	 - Muse communicates with your phone and Mind Monitor through Bluetooth, and Mind Monitor communicates through WiFi with your computer
+	 - Data flow: Muse -> Bluetooth -> phone/Mind Monitor -> WiFi -> computer
  - Python 3.x
 ## What is EEG?
 The human brain consists of billions of cells, roughly half of them are neurons, and the rest help and facilitate the activity of neurons. Neurons are densely interconnected via synapses, which act as activity gateways. Synaptic activity generates a tiny electrical impulse that can be measured on the surface of the head. 
@@ -16,3 +20,11 @@ Electroencephalography, or EEG, is the physiological method of choice to record 
 Professional or clinical EEG-devices are typically equipped with between 16 to 64 high-quality electrodes, and the cost is ~800 - 3000+ USD/EUR. They are mostly intended for research and clinical usage. Consumer-based devices on the other hand only have a few electrodes, but are much more affordable and are often also easier to use. Their main focus is on meditation and relaxation, but can with some limitations also be used for research (more about this in my [Master's thesis](https://urn.fi/URN:NBN:fi:amk-2022090219806)). 
 
 Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind the ears. In addition they also have an accelerometer/gyroscope, and newer models include a PPG-sensor which  measures blood flow, breathing rhytm, and heart rate. In this tutorial are however only signals from EEG-electrodes being used.
+## Preparations
+**Python**
+
+ - Install Python-OSC and Tkinter from a command prompt with 
+```pip install python-osc``` and `pip install tk`
+
+**Mind Monitor**
+ddd
