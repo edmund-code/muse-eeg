@@ -37,3 +37,9 @@ Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind t
 **Computer**
 
  - You might need to allow the computer's firewall to allow traffic through port 5000.
+
+## Blink Pong game
+**Installation**
+
+ - Download the Python [code](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20without%20ML.py)
+ - Run the game from your favourite IDE or from the command prompt with `python Blink Pong without ML.py`
