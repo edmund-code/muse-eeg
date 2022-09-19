@@ -49,6 +49,5 @@ Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind t
 
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
- - 
-
-<img src="./Images/MindMonitor_stream.jpg" width="300">
+ 
+<img src="./Images/MindMonitor_stream_cropped.jpg" width="300">
