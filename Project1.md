@@ -1,10 +1,9 @@
-
-
 # Introduction
 This is the first in a series of project where you will learn everything from how to control a very simplistic Pong game by blinking your eyes, to more advanced controlling of software or external devices with the help of a consumer-based EEG-device.
 
 ## Tutorial 1 - play Pong by blinking
 In this first tutorial you will learn how to control a Pong game just by blinking your eyes. As an exception this tutorial will not use machine learning as it is intended to be a gentle introduction to the concept of human and machine communication. Later tutorials will step up and include machine learning as well.
+A short video of the Pong game is available [here](nnnnnnn). **<-- TBD**
 
 <img src="./Images/Blink_Pong.jpg" width="300">
 
@@ -40,6 +39,10 @@ Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind t
  - You might need to allow the computer's firewall to allow traffic through port 5000.
 
 ## Blink Pong game
+**How does it work?**
+
+As mentioned earlier, this version is not using machine learning at all. Instead it is relying on built-in functionality in the Muse EEG-devices that can detect eye blinks and jaw clenches. These events produce distinct EEG-signals which can also be seen in the Mind Monitor graphs. The Pong game is then scanning for the events and reacting on them.
+
 **Installation**
 
  - Download the Python [code](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20without%20ML.py)
@@ -51,3 +54,11 @@ Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind t
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
  
 <img src="./Images/MindMonitor_stream_cropped.jpg" width="300">
+
+ - The objective of the game is to prevent the ball hitting the floor by moving the paddle.
+ - You control the paddle by blinking
+	 - Blink once to move the paddle in one direction
+	 - Next blink will stop the paddle
+	 - Next blink will move the paddle in the other direction
+ - The score increases when you manage to hit the ball and decreases when you fail.
+ - An intermittent message is shown whenever you blink or clench your jaw. Note that jaw clenches are not linked to any action in the game, that is left up to you do implement!
