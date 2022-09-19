@@ -1,11 +1,12 @@
 
+
 # Introduction
 This is the first in a series of project where you will learn everything from how to control a very simplistic Pong game by blinking your eyes, to more advanced controlling of software or external devices with the help of a consumer-based EEG-device.
 
 ## Tutorial 1 - play Pong by blinking
 In this first tutorial you will learn how to control a Pong game just by blinking your eyes. As an exception this tutorial will not use machine learning as it is intended to be a gentle introduction to the concept of human and machine communication. Later tutorials will step up and include machine learning as well.
 
-<img src="./Images/Blink_Pong.jpg" width="200">
+<img src="./Images/Blink_Pong.jpg" width="300">
 
 ## Prerequisites
 To be able to reproduce examples found in this tutorial, you'll need:
