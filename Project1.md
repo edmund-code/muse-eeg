@@ -44,3 +44,11 @@ Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind t
 
  - Download the Python [code](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20without%20ML.py)
  - Run the game from your favourite IDE or from the command prompt with `python Blink Pong without ML.py`
+
+**Usage**
+
+ - Connect the Muse EEG-device to your phone
+ - Start streaming from Mind Monitor by clicking on the button showed in the picture
+ - 
+
+<img src="./Images/MindMonitor_stream.jpg" width="300">
