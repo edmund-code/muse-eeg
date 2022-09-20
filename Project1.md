@@ -61,4 +61,4 @@ As mentioned earlier, this version is not using machine learning at all. Instead
 	 - Next blink will stop the paddle
 	 - Next blink will move the paddle in the other direction
  - The score increases when you manage to hit the ball and decreases when you fail.
- - An intermittent message is shown whenever you blink or clench your jaw. Note that jaw clenches are not linked to any action in the game, that is left up to you do implement!
+ - An intermittent message is shown whenever you blink or clench your jaw. Note that jaw clenches are not linked to any action in the game, that is left up to you to implement!
