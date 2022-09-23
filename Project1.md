@@ -1,6 +1,5 @@
 # Introduction
-In this tutorial you will learn how you can use a Muuse EEG-device to control a very simplistic Pong game by blinking your eyes. The first part shows how to use the blink-function 
-, to more advanced controlling of software or external devices with the help of a consumer-based EEG-device.
+In this tutorial you will learn how you can use a Muse EEG-device to control a very simplistic Pong game by blinking your eyes. The first part shows how to use Muse's built-in blink detection functionality and the second part shows how you can use Machine Learning (ML) using Edge Impulse (EI) to be able to expand the game. Once you understand the benefits and limitations of using EEG-data, you can step up and try to control external devices like robots by using eye-blinks or perhaps even by thinking!
 
 ## Tutorial 1 - play Pong by blinking
 In this first tutorial you will learn how to control a Pong game just by blinking your eyes. As an exception this tutorial will not use machine learning as it is intended to be a gentle introduction to the concept of human and machine communication. Later tutorials will step up and include machine learning as well.
