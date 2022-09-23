@@ -63,7 +63,8 @@ Here you will need to collect EEG-data from your Muse device and train a model i
 	- [Blink Pong with ML](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20with%20ML.py) which is the game itself
  - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong without ML.py"`
 
-**Usage**
+
+## Game play instructions, common for both Part 1 and Part 2
 
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
@@ -76,4 +77,4 @@ Here you will need to collect EEG-data from your Muse device and train a model i
 	 - Next blink will stop the paddle
 	 - Next blink will move the paddle in the other direction
  - The score increases when you manage to hit the ball and decreases when you fail.
- - An intermittent message is shown whenever you blink or clench your jaw. Note that jaw clenches are not linked to any action in the game, that is left up to you to implement!
+ - An intermittent message is shown whenever you blink or clench your jaw. Note that jaw clenches are  only available in Part 1, and they are not linked to any action in the game, that is left up to you to implement!
