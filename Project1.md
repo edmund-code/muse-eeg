@@ -1,4 +1,4 @@
-# Introduction
+# Introduction aaa
 In this tutorial you will learn how you can use a Muse EEG-device to control a simple Pong game by blinking your eyes. The first part shows how to use Muse's built-in blink detection functionality and the second part shows how you can use Machine Learning (ML) using Edge Impulse (EI) to be able to expand the game. Once you understand the benefits and limitations of using EEG-data, you can step up and try to control external devices like robots by using eye-blinks or perhaps even by thinking!
 
 ## Tutorial 1 - play Pong by blinking
