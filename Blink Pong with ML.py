@@ -33,11 +33,11 @@ all_waves = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
 all_samples = []
 
 sample_nr = 0
-expected_samples = 10                                           # there are 5 frequencies (alpa...gamma) and 4 sensors, if all 4 sensors are used
+expected_samples = 20                                           # there are 5 frequencies (alpa...gamma) and 4 sensors, if all 4 sensors are used
                                                                 # this should be 5 x 4 = 20, the frequency is 10 Hz. 2 seconds of data with all
                                                                 # 4 sensors = 2 * 5 * 4 * 10 = 400. 
 
-confidence_threshold = 0.7                                      # default in Edge Impulse is 0.6
+confidence_threshold = 0.6                                      # default in Edge Impulse is 0.6
 global isFailed
 blinks = 0                                                      # amount of blinks
 blinked = False                                                 # did you blink?
