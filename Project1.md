@@ -32,7 +32,7 @@ To be able to reproduce examples found in this tutorial, you'll need:
 **Computer**
 
  - You might need to allow the computer's firewall to allow traffic through port 5000.
- 
+
 ## Part 1 - play Pong by blinking, no ML involved
 In this first part you will learn how to control a Pong game just by blinking your eyes.
 A short video of the Pong game is available [here](nnnnnnn). **<-- TBD**
@@ -40,7 +40,7 @@ A short video of the Pong game is available [here](nnnnnnn). **<-- TBD**
 <img src="./Images/Blink_Pong.jpg" width="300">
 
 
-## Blink Pong game
+
 **How does it work?**
 
 As mentioned earlier, this version is not using machine learning at all. Instead it is relying on built-in functionality in the Muse EEG-devices that can detect eye blinks and jaw clenches. These events produce distinct EEG-signals which can also be seen in the Mind Monitor graphs. The Pong game is then scanning for the events and reacting on them.
@@ -48,7 +48,20 @@ As mentioned earlier, this version is not using machine learning at all. Instead
 **Installation**
 
  - Download the Python [code](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20without%20ML.py)
- - Run the game from your favourite IDE or from the command prompt with `python Blink Pong without ML.py`
+ - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong without ML.py"`
+
+## Part 2 - play Pong by blinking, using ML
+
+**How does it work?**
+
+Here you will need to collect EEG-data from your Muse device and train a model in Edge Impulse. The trained model will then be used in the Pong game.
+
+**Installation**
+
+ - Download the following Python programs
+	- [Collect OSC-data.py](https://github.com/baljo/Muse-EEG/blob/main/Collect%20OSC-data.py) which you will use for collecting data
+	- [Blink Pong with ML](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20with%20ML.py) which is the game itself
+ - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong without ML.py"`
 
 **Usage**
 
