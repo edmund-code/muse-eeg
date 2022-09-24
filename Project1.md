@@ -69,6 +69,9 @@ As mentioned earlier, this version is not using machine learning at all. Instead
 
 In short, you will here need to collect EEG-data from your Muse device and train a model in Edge Impulse. The trained model will then be used in the Pong game which otherwise functions as in Part 1.
 
+**Detailed process**
+While this is not as complex as brain surgery (pun intended :smirk:), it involves 
+
 **Installation**
 
  - Download the following Python programs
