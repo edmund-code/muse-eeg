@@ -80,8 +80,8 @@ In short, you will here need to collect EEG-data from your Muse device and train
 
 ## Process flow
 
-While this is not as complex as brain surgery (:smirk:), it is still a bit more involving than Part 1. The main steps are listed here and will later on be explained in detail.
-1. Collect EEG-data for the events you want to classify, e.g. eye blinks and background brain "noise"
+While this is not as complex as brain surgery (:smirk:), it is still a bit more involved than Part 1. The main steps are listed here and will later on be explained in detail.
+1. Collect EEG-data for the events you want to classify, one event being e.g. eye blinks and another background brain "noise"
 2. Upload the EEG-data to Edge Impulse
 3. Create, train, and test a ML-model in EI
 4. Download the trained Tensorflow ML-model to your computer
@@ -101,19 +101,24 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 
 **Connect Muse and start streaming**
 
+<img align=right src="MindMonitor_good_signal.jpg" width="250" style="padding-left:10px">
+
  - Connect the Muse EEG-device to your phone
+ - Wait until the horseshoe in MindMonitor has disappeared and the graph shows
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
 
  **1. Collect EEG-data**
  - Run `Collect OSC-data.py` from your favourite IDE or from the command prompt with `python "Collect OSC-data.py"`
-	- When you in MindMonitor click on #1 (see picture), event recording will start.
-	- Default events being recorded are "1" and "Noise", and for 2 seconds. You can change or add them in the code, look for this: `rec_dict = {
-	"1" : 2,
-	"Noise" : 2
-	}` 
-
-    
-  
+	- Default events being recorded are "1" and "Noise", and for 2 seconds. You can change or add them in the code, look for this:
+		```
+		rec_dict = {
+		"1" : 2,
+		"Noise" : 2
+		}
+		```
+- To start recording events, click on #1 in MindMonitor (see picture).
+- The program will record each event in a separate file. So if you've blinked 100 times and created brain noise 100 times, you'll end up with 200 files of 2 seconds each. 
+- It is necessarily not easy to concentrate for a long time, so you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording, and turn it off to save battery if you have a longer break. Next time you put it on your head
 
 # Game play instructions, common for both Part 1 and Part 2
 
