@@ -27,8 +27,12 @@ To be able to reproduce examples found in this tutorial, you'll need:
  - [Mind Monitor app](https://mind-monitor.com/) for iPhone or Android, one-time cost is ~15 USD/EUR
  - A computer able to run Python + WiFi
 	 - only PC/Win10 tested although Mac and Linux computers are expected to work
-	 - Data flow: Brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &rarr; Computer
  - Python 3.x
+
+**Data flow**
+
+Your brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &rarr; Computer
+
 
 ## Preparations
 **Python modules**
@@ -70,7 +74,14 @@ As mentioned earlier, this version is not using machine learning at all. Instead
 In short, you will here need to collect EEG-data from your Muse device and train a model in Edge Impulse. The trained model will then be used in the Pong game which otherwise functions as in Part 1.
 
 **Detailed process**
-While this is not as complex as brain surgery (pun intended :smirk:), it involves 
+
+While this is not as complex as brain surgery (:smirk:), it is however a bit more involving than Part 1. 
+1. Collect EEG-data for the events you want to classify, e.g. eye blinks and background brain "noise"
+2. Upload the EEG-data to Edge Impulse
+3. Create, train, and test a ML-model in EI
+4. Download the trained Tensorflow ML-model to your computer
+5. Plug the model into your game and test it
+6. Rinse and repeat from 1 as you'll probably need more data.
 
 **Installation**
 
