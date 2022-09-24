@@ -8,7 +8,7 @@ Once you understand the benefits and limitations of using EEG-data from a consum
 
 
 
-## What is EEG?
+# What is EEG?
 <img align=right src="https://live.staticflickr.com/5089/5335327140_028d4265c5_b.jpg" width="200" style="padding-left:10px">
 
 
@@ -19,8 +19,9 @@ Professional or clinical EEG-devices are typically equipped with between 16 to 6
 <img align=left src="https://randomseed.io/rna/eeg-is-chasing-foamy-waves-meditation-experiment/i/muse2-brainwaves_hu292f7332cf5c66ba5894bf5e52638bcd_435046_1200x654_fill_q85_box_center.jpg" width="200" style="padding-right:10px">
 
 Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind the ears. In addition they also have an accelerometer/gyroscope, and newer models include a PPG-sensor which  measures blood flow, breathing rhytm, and heart rate. In this tutorial however are  only signals from EEG-electrodes being used.
-
-## Prerequisites
+  
+  
+# Prerequisites
 To be able to reproduce examples found in this tutorial, you'll need:
  - A Muse EEG-device, any model should work, although Muse-01 (from 2014) streams with 220 Hz instead of 256 Hz and might require a few code changes if you are collecting raw data. They cost around 250 USD/EUR and are manufactured by the Canadian company [Interaxon Inc.](https://choosemuse.com/) 
  -  iPhone or Android phone
@@ -29,12 +30,13 @@ To be able to reproduce examples found in this tutorial, you'll need:
 	 - only PC/Win10 tested although Mac and Linux computers are expected to work
  - Python 3.x
 
-**Data flow**
+# Data flow
 
+The data flow for both Part 1 and Part 2 is:
 Your brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &rarr; Computer
 
 
-## Preparations
+# Preparations
 **Python modules**
 
  - Install Python-OSC and Tkinter from a command prompt with 
@@ -49,33 +51,33 @@ Your brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &r
 
  - You might need to allow the computer's firewall to allow traffic through port 5000.
 
-## Part 1 - play Pong by blinking, no ML involved
-<img align=right src="./Images/Blink_Pong.jpg" width="300" style="padding-left:10px">
+# Part 1 - play Pong by blinking, no ML involved
+<img align=right src="./Images/Blink_Pong.jpg" width="250" style="padding-left:10px">
 
 In this first part you will learn how to control a Pong game just by blinking your eyes.
 A short video of the Pong game is available [here](nnnnnnn). **<-- TBD**
 
-**How does it work?**
+## How does it work?
 
 As mentioned earlier, this version is not using machine learning at all. Instead it is relying on built-in functionality in the Muse EEG-devices that can detect eye blinks and jaw clenches. These events produce distinct EEG-signals which can also be seen in the Mind Monitor graphs. The Pong game is then scanning for the events and reacting on them.
 
-**Installation**
+## Installation
 
  - Download the Python [code](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20without%20ML.py)
  - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong without ML.py"`
 
- **Game play instructions**
+ ## Game play instructions
  - See [Game play instructions, common for both Part 1 and Part 2](https://github.com/baljo/Muse-EEG/blob/main/Project1.md#game-play-instructions-common-for-both-part-1-and-part-2)
 
-## Part 2 - play Pong by blinking, using ML
+# Part 2 - play Pong by blinking, using ML
 
-**How does it work?**
+## How does it work?
 
 In short, you will here need to collect EEG-data from your Muse device and train a model in Edge Impulse. The trained model will then be used in the Pong game which otherwise functions as in Part 1.
 
-**Detailed process**
+## Process flow
 
-While this is not as complex as brain surgery (:smirk:), it is however a bit more involving than Part 1. 
+While this is not as complex as brain surgery (:smirk:), it is still a bit more involving than Part 1. The main steps are listed below and will be explained in detail further below
 1. Collect EEG-data for the events you want to classify, e.g. eye blinks and background brain "noise"
 2. Upload the EEG-data to Edge Impulse
 3. Create, train, and test a ML-model in EI
@@ -83,19 +85,26 @@ While this is not as complex as brain surgery (:smirk:), it is however a bit mor
 5. Plug the model into your game and test it
 6. Rinse and repeat from 1 as you'll probably need more data.
 
-**Installation**
+## Installation
 
  - Download the following Python programs
 	- [Collect OSC-data.py](https://github.com/baljo/Muse-EEG/blob/main/Collect%20OSC-data.py) which you will use for collecting data
 	- [Blink Pong with ML](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20with%20ML.py) which is the game itself
- - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong without ML.py"`
+
+
+## Detailed instructions
+
+ <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
+
+ - Connect the Muse EEG-device to your phone
+ - Start streaming from Mind Monitor by clicking on the button showed in the picture
 
 
 ## Game play instructions, common for both Part 1 and Part 2
 
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
- <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="300" style="padding-left:10px">
+ <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
 
  - The objective of the game is to prevent the ball hitting the floor by moving the paddle.
  - You control the paddle by blinking
