@@ -66,7 +66,7 @@ Your brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &r
 <img align=right src="./Images/Blink_Pong.jpg" width="250" style="padding-left:10px">
 
 In this first part you will learn how to control a Pong game just by blinking your eyes.
-A short video of the Pong game is available [here](nnnnnnn). **<-- TBD**
+A short video of the Pong game is available [here](nnnnnnn).
 
 ## How does it work?
 
@@ -102,7 +102,7 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 
 ## Installation
 
- - Download the following Python programs and put them to a folder you'll remember
+ - Download the following Python programs into a folder you'll remember
 	- [Collect OSC-data.py](https://github.com/baljo/Muse-EEG/blob/main/Collect%20OSC-data.py) which you will use for collecting data
 	- [Blink Pong with ML](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20with%20ML.py) which is the game itself
 
@@ -132,9 +132,11 @@ In this chapter you will get detailed instructions from start to end how to coll
 		"Noise" : 2
 		}
 		```
-- To start recording events, click on #1 in MindMonitor (see picture).
+- To start recording events, click on #1 in MindMonitor (see picture above).
+- You will in the terminal window see number `1` for 2 seconds. During this time you should blink once.
+- Next time you'll see `Noise` for 2 seconds. During this time you should **not** blink, just relax. 
 - The program will record each event in a separate CSV-file. So if you've blinked 100 times and created brain noise 100 times, you'll end up with 200 files of 2 seconds each. 
-- It is necessarily not easy to concentrate for a long time, so you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording and, if you have a longer break, turn it off to save battery. Additionally, next time you use your device it will inevitable be in a slightly different place, and as a result you will probably get a more robust ML-model when recording data.  
+- It is necessarily not easy to concentrate for a long time, so you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording and, if you have a longer break, turn it off to save battery. Additionally, next time you use your device it will inevitable be in a slightly different place on your head, and as a result you will probably get a more robust ML-model when recording data.  
 <br/>
 
 **2. Create a project and upload EEG-data to Edge Impulse**
@@ -228,6 +230,9 @@ Here you will deploy your model and test it out in the wild real world!
 This can be the most rewarding - or most frustrating - phase in the whole process as you'll find out how well you can control the game with your blinks.
  - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong with ML.py"`  
  - To play, see [Game play instructions, common for both Part 1 and Part 2](https://github.com/baljo/Muse-EEG/blob/main/Project1.md#game-play-instructions-common-for-both-part-1-and-part-2)  
+ - Please note that the model explained in this tutorial is based on 2 second long samples. This also means that the Pong game will collect EEG-data for 2 seconds before trying to classify it. When playing the Pong game, the ball might have travelled too far before your blinks have moved the paddle to the desired place.
+	- The function `pong` towards the end of the program includes a variable `ball_speed = 5` where you can change the ball speed.
+	- By unchecking some of the axes in the `Create an impulse` step, you will also reduce the data needing processing and the time it takes. As earlier mentioned, and as also explained in the code itself, you then need to change the variable `expected_samples` from 20 to something else.
 
 <br/>
 <br/>  
@@ -250,6 +255,6 @@ This can be the most rewarding - or most frustrating - phase in the whole proces
 
 ---------------
 # FINAL COMMENTS
-That's it! Hopefully you were successful in training and recognising eye blinks with your EEG-device. Hopefully it also inspires you to try to improve the performance, e.g. by collecting more samples, by collecting more event types or by tweaking the different parameters and settings in Edge Impulse. 
+That's it! Hopefully you were successful in training and recognising eye blinks with your EEG-device. Hopefully it also inspires you to try to improve the performance, e.g. by collecting more samples, by collecting more event types or by tweaking the different parameters and settings in Edge Impulse. And finally, when you have understood the possibilities and limitations with a consumer-based EEG-device, perhaps you can challenge yourself with something more advanced than the Pong-game.
 
-<div style="text-align: right"> <em>All images are either the author's or from Wikimedia Commons </em> </div>
+<div style="text-align: right"> <em>All images are either the author's own or from Wikimedia Commons</em> </div>
