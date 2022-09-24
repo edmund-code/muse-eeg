@@ -82,7 +82,7 @@ In short, you will here need to collect EEG-data from your Muse device and train
 
 While this is not as complex as brain surgery (:smirk:), it is still a bit more involved than Part 1. The main steps are listed here and will later on be explained in detail.
 1. Collect EEG-data for the events you want to classify, one event being e.g. eye blinks and another background brain "noise"
-2. Upload the EEG-data to Edge Impulse
+2. Create a project in Edge Impulse and upload the EEG-data to it
 3. Create, train, and test a ML-model in EI
 4. Download the trained Tensorflow ML-model to your computer
 5. Plug the model into your game and test it
@@ -118,12 +118,22 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 - The program will record each event in a separate CSV-file. So if you've blinked 100 times and created brain noise 100 times, you'll end up with 200 files of 2 seconds each. 
 - It is necessarily not easy to concentrate for a long time, so you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording and, if you have a longer break, turn it off to save battery. Additionally, next time you use your device it will inevitable be in a slightly different place, and as a result you will probably get a more robust ML-model when recording data.
 
-**2. Upload EEG-data to Edge Impulse**
+**2. Create a project and upload EEG-data to Edge Impulse**
 - Head over to [Edge Impulse](https://www.edgeimpulse.com/). If you are new to EI, please take a look at their great [Getting started](https://docs.edgeimpulse.com/docs/) instructions.
 	- Create a project
 	- Select `Data acquisition` and click the icon labeled `Upload existing data`
 	- Use default settings
 	- Upload the files you've recorded in the previous step. 
+
+**3. Create a model, train and test it**
+
+- Click `Create an impulse` and fill in the `Time series data` as shown in the picture. While the length of the samples are in fact 2000 ms (= 2 seconds), I've found that using 20 ms (as in 20 lines for each sample) works at least as good.
+- Add the processing block `Raw data` and let all axes be checkmarked. You can later try to find which axes do not impact much or at all for your model and uncheck them, but then you also need to modify the line `expected_samples = 20` in `Blink Pong with ML.py` accordingly. This is explained more detailed in the code itself.
+
+ <img align=left src="./Images/EI_impulse_01.png" width="900">  
+ 
+
+
 
 # Game play instructions, common for both Part 1 and Part 2
 
