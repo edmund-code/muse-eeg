@@ -101,10 +101,8 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 
 **Connect Muse and start streaming**
 
-<img align=right src="MindMonitor_good_signal.jpg" width="250" style="padding-left:10px">
-
  - Connect the Muse EEG-device to your phone
- - Wait until the horseshoe in MindMonitor has disappeared and the graph shows
+ - Wait until the horseshoe in MindMonitor has disappeared and the graph lines for all sensors are quite even. You might need to wait a few minutes to acquire good signals, but you can speed up the process a bit by moisturing the sensors with water. 
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
 
  **1. Collect EEG-data**
