@@ -158,8 +158,10 @@ In this section you will first create a ML-model, then train it, and finally tes
 **Train the neural network**
 
 Here you will train the neural network and analyse its performance.
-- Click `NN Classifier` from the left hand menu
+
 <img align=right src="./Images/EI_train_performance_03.png" width="300" style="padding-left:10px">
+
+- Click `NN Classifier` from the left hand menu
 
 - Change the `Number of training cycles` to 200. This is another parameter to tweak, the higher this number is, the longer time the training will take, but also the better the network will perform, at least until it can't improve anymore.
 - Click on `Start training`
@@ -175,7 +177,7 @@ In this step you will see how well the model performs with data it has not seen 
 <img align=right src="./Images/EI_model_testing_04.png" width="300" style="padding-left:10px">
 
 
-- Click on `Model testing`in the menu
+- Click on `Model testing` in the menu
 - Click on `Classify all`
 	- This will run the test samples through the trained model
 - After just a short while, depending on the amount of test samples and model complexity, you will get a performance report. Unless you have lots of data or a perfect model, the performance is seldom 100 % like in the picture. Depending on your use case and what performance you require, you might need to go back a few steps by collecting more and different data, or by tweaking the parameters, to reach your minimum expectations.   
