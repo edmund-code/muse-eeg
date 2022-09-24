@@ -22,7 +22,7 @@ Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind t
 
 ## Prerequisites
 To be able to reproduce examples found in this tutorial, you'll need:
- - A Muse EEG-device, any model should work, although Muse-01 (from 2014) streams with 220 Hz instead of 256 Hz and might require a few code changes in later tutorials. They cost around 250 USD/EUR and are manufactured by the Canadian company [Interaxon Inc.](https://choosemuse.com/) 
+ - A Muse EEG-device, any model should work, although Muse-01 (from 2014) streams with 220 Hz instead of 256 Hz and might require a few code changes if you are collecting raw data. They cost around 250 USD/EUR and are manufactured by the Canadian company [Interaxon Inc.](https://choosemuse.com/) 
  -  iPhone or Android phone
  - [Mind Monitor app](https://mind-monitor.com/) for iPhone or Android, one-time cost is ~15 USD/EUR
  - A computer able to run Python + WiFi
@@ -46,12 +46,10 @@ To be able to reproduce examples found in this tutorial, you'll need:
  - You might need to allow the computer's firewall to allow traffic through port 5000.
 
 ## Part 1 - play Pong by blinking, no ML involved
+<img align=right src="./Images/Blink_Pong.jpg" width="300" style="padding-left:10px">
+
 In this first part you will learn how to control a Pong game just by blinking your eyes.
 A short video of the Pong game is available [here](nnnnnnn). **<-- TBD**
-
-<img src="./Images/Blink_Pong.jpg" width="300">
-
-
 
 **How does it work?**
 
