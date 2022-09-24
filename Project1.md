@@ -127,12 +127,23 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 
 **3. Create a model, train and test it**
 
+**Create a model**
 - Click `Create an impulse` and fill in the `Time series data` as shown in the picture. While the length of the samples are in fact 2000 ms (= 2 seconds), I've found that using 20 ms (as in 20 lines for each sample) works at least as good.
 - Add the processing block `Raw data` and let all axes be checkmarked. You can later try to find which axes do not impact much or at all for your model and uncheck them, but then you also need to modify the line `expected_samples = 20` in `Blink Pong with ML.py` accordingly. This is explained more detailed in the code itself.
-- Add the learning block `Classification (Keras)`, in this tutorial you will have only 2 output features: `1` and `Noise`, but if you want to create an event for double blinks, feel free to add e.g. `2` as well like in the picture.
+- Add the learning block `Classification (Keras)`, in this tutorial you will have only 2 output features: `1` and `Noise`, but if you want to create an event for double blinks, feel free to record events with e.g. `2` as well, like in the picture.  
 
  <img align=center src="./Images/EI_impulse_01.png" width="900">  
 <br/>
+<br/>
+- Click `Save impulse` and `Raw data` on the left hand menu
+	- You will see a graph of one of the samples as well as the raw features.
+	
+- In this case you don't need to change anything, so click `Save parameters` which will take you to the second tab.
+- Click `Generate features`
+	- This processes the samples
+	- After a while you will see a graph in the Feature explorer. This gives you a view of how well your data can be clustered into different groups. In an ideal situation all similar samples would be clustered into same group with a clear distinction between groups. If that's not the case, no worries at this point, the neural network algorithm will in many cases still be able to do a very good job! 
+
+	 <img align=right src="./Images/EI_feature_explorer_02.png" width="250" style="padding-left:10px">
 
 
 
