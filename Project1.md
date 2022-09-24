@@ -99,10 +99,10 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 
  <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
 
-**Connect Muse and start streaming**
+**0. Connect Muse and start streaming**
 
  - Connect the Muse EEG-device to your phone
- - Wait until the horseshoe in MindMonitor has disappeared and the graph lines for all sensors are quite even. You might need to wait a few minutes to acquire good signals, but it's possible to speed up the process a bit by moisturing the sensors with e.g. a wet finger. 
+ - Wait until the horseshoe in MindMonitor has disappeared and the graph lines for all sensors have calmed down like in the picture. You might need to wait a few minutes to acquire good signals, but it's possible to speed up the process a bit by moisturing the sensors with e.g. a wet finger. 
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
 
  **1. Collect EEG-data**
@@ -116,7 +116,7 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 		```
 - To start recording events, click on #1 in MindMonitor (see picture).
 - The program will record each event in a separate CSV-file. So if you've blinked 100 times and created brain noise 100 times, you'll end up with 200 files of 2 seconds each. 
-- It is necessarily not easy to concentrate for a long time, so you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording, and turn it off to save battery if you have a longer break. Next time you put it on your head to record, it will inevitable be in a slightly different place, and as a result you will probably get a more robust ML-model.
+- It is necessarily not easy to concentrate for a long time, so you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording and, if you have a longer break, turn it off to save battery. Additionally, next time you use your device it will inevitable be in a slightly different place, and as a result you will probably get a more robust ML-model when recording data.
 
 **2. Upload EEG-data to Edge Impulse**
 - Head over to [Edge Impulse](https://www.edgeimpulse.com/). If you are new to EI, please take a look at their great [Getting started](https://docs.edgeimpulse.com/docs/) instructions.
