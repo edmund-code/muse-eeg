@@ -27,7 +27,7 @@ To be able to reproduce examples found in this tutorial, you'll need:
  - [Mind Monitor app](https://mind-monitor.com/) for iPhone or Android, one-time cost is ~15 USD/EUR
  - A computer able to run Python + WiFi
 	 - only PC/Win10 tested although Mac and Linux computers are expected to work
-	 - Data flow: Muse -> Bluetooth -> phone/Mind Monitor -> WiFi -> computer
+	 - Data flow: Brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &rarr; Computer
  - Python 3.x
 
 ## Preparations
@@ -60,11 +60,14 @@ As mentioned earlier, this version is not using machine learning at all. Instead
  - Download the Python [code](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20without%20ML.py)
  - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong without ML.py"`
 
+ **Game play instructions**
+ - See [Game play instructions, common for both Part 1 and Part 2](https://github.com/baljo/Muse-EEG/blob/main/Project1.md#game-play-instructions-common-for-both-part-1-and-part-2)
+
 ## Part 2 - play Pong by blinking, using ML
 
 **How does it work?**
 
-Here you will need to collect EEG-data from your Muse device and train a model in Edge Impulse. The trained model will then be used in the Pong game.
+In short, you will here need to collect EEG-data from your Muse device and train a model in Edge Impulse. The trained model will then be used in the Pong game which otherwise functions as in Part 1.
 
 **Installation**
 
@@ -78,8 +81,7 @@ Here you will need to collect EEG-data from your Muse device and train a model i
 
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
- 
-<img src="./Images/MindMonitor_stream_cropped.jpg" width="300">
+ <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="300" style="padding-left:10px">
 
  - The objective of the game is to prevent the ball hitting the floor by moving the paddle.
  - You control the paddle by blinking
