@@ -173,7 +173,7 @@ Here you will train the neural network and analyse its performance.
 **Test the model in Edge Impulse**
 
 <img align=right src="./Images/EI_model_testing_04.png" width="300" style="padding-left:10px">
-
+dd
 
 In this step you will see how well the model performs with data it has not seen before. For this purpose Edge Impulse put away approx. 20 % of the training data when you uploaded it.
 
