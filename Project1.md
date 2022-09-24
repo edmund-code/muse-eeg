@@ -1,3 +1,5 @@
+# Play a Pong game by blinking your eyes!
+
 # Introduction
 <img align=right src="https://upload.wikimedia.org/wikipedia/commons/1/18/Human_Brain_-1.jpg?20160517061629" width="300" style="padding-left:10px">
 
@@ -102,6 +104,16 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
 
+ **1. Collect EEG-data**
+ - Run `Collect OSC-data.py` from your favourite IDE or from the command prompt with `python "Collect OSC-data.py"`
+	- When you in MindMonitor click on #1 (see picture), event recording will start.
+	- Default events being recorded are "1" and "Noise", and for 2 seconds. You can change or add them in the code, look for this: `rec_dict = {
+	"1" : 2,
+	"Noise" : 2
+	}` 
+
+    
+  
 
 # Game play instructions, common for both Part 1 and Part 2
 
