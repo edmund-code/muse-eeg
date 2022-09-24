@@ -18,9 +18,10 @@ Professional or clinical EEG-devices are typically equipped with between 16 to 6
 
 <img align=left src="https://randomseed.io/rna/eeg-is-chasing-foamy-waves-meditation-experiment/i/muse2-brainwaves_hu292f7332cf5c66ba5894bf5e52638bcd_435046_1200x654_fill_q85_box_center.jpg" width="200" style="padding-right:10px">
 
-Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind the ears. In addition they also have an accelerometer/gyroscope, and newer models include a PPG-sensor which  measures blood flow, breathing rhytm, and heart rate. In this tutorial however are  only signals from EEG-electrodes being used.
+Muse EEG-devices have four EEG-electrodes, two at the forehead, and two behind the ears. In addition they also have an accelerometer/gyroscope, and newer models include a PPG-sensor which  measures blood flow, breathing rhytm, and heart rate. In this tutorial however are  only signals from EEG-electrodes being used.  
+
   
-  
+
 # Prerequisites
 To be able to reproduce examples found in this tutorial, you'll need:
  - A Muse EEG-device, any model should work, although Muse-01 (from 2014) streams with 220 Hz instead of 256 Hz and might require a few code changes if you are collecting raw data. They cost around 250 USD/EUR and are manufactured by the Canadian company [Interaxon Inc.](https://choosemuse.com/) 
