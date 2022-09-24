@@ -118,4 +118,4 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
  - An intermittent message is shown whenever you blink or clench your jaw. Note that jaw clenches are  only available in Part 1, and they are not linked to any action in the game, that is left up to you to implement!
 
 
-<div style="text-align: right"> **All images are either the author's or from Wikimedia Commons** </div>
+<div style="text-align: right"> <em>All images are either the author's or from Wikimedia Commons </em> </div>
