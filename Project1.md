@@ -78,7 +78,7 @@ In short, you will here need to collect EEG-data from your Muse device and train
 
 ## Process flow
 
-While this is not as complex as brain surgery (:smirk:), it is still a bit more involving than Part 1. The main steps are listed below and will be explained in detail further below
+While this is not as complex as brain surgery (:smirk:), it is still a bit more involving than Part 1. The main steps are listed here and will later on be explained in detail.
 1. Collect EEG-data for the events you want to classify, e.g. eye blinks and background brain "noise"
 2. Upload the EEG-data to Edge Impulse
 3. Create, train, and test a ML-model in EI
@@ -96,12 +96,14 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 ## Detailed instructions
 
  <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
+ 
+**Connect Muse and start streaming**
 
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
 
 
-## Game play instructions, common for both Part 1 and Part 2
+# Game play instructions, common for both Part 1 and Part 2
 
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
