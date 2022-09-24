@@ -97,11 +97,13 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 
 ## Detailed instructions
 
- <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
+In this chapter you will get detailed instructions from start to end how to collect data, train a model, and test it in practice. While not every click and detail is listed, you should with normal computer proficiency be able to follow and replicate the steps.
 
 **0. Connect Muse and start streaming**
 
  - Connect the Muse EEG-device to your phone
+  <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
+
  - Wait until the horseshoe in MindMonitor has disappeared and the graph lines for all sensors have calmed down like in the picture. You might need to wait a few minutes to acquire good signals, but it's possible to speed up the process a bit by moisturing the sensors with e.g. a wet finger. 
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
 
@@ -125,25 +127,45 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 	- Use default settings
 	- Upload the files you've recorded in the previous step. 
 
-**3. Create a model, train and test it**
+**3. Create a model, train, and test it**
 
 **Create a model**
 - Click `Create an impulse` and fill in the `Time series data` as shown in the picture. While the length of the samples are in fact 2000 ms (= 2 seconds), I've found that using 20 ms (as in 20 lines for each sample) works at least as good.
 - Add the processing block `Raw data` and let all axes be checkmarked. You can later try to find which axes do not impact much or at all for your model and uncheck them, but then you also need to modify the line `expected_samples = 20` in `Blink Pong with ML.py` accordingly. This is explained more detailed in the code itself.
 - Add the learning block `Classification (Keras)`, in this tutorial you will have only 2 output features: `1` and `Noise`, but if you want to create an event for double blinks, feel free to record events with e.g. `2` as well, like in the picture.  
 
- <img align=center src="./Images/EI_impulse_01.png" width="900">  
+<img align=center src="./Images/EI_impulse_01.png" width="900">  
 <br/>
 <br/>
+
 - Click `Save impulse` and `Raw data` on the left hand menu
 	- You will see a graph of one of the samples as well as the raw features.
 	
 - In this case you don't need to change anything, so click `Save parameters` which will take you to the second tab.
+<img align=right src="./Images/EI_feature_explorer_02.png" width="150" style="padding-left:10px">
+
 - Click `Generate features`
 	- This processes the samples
 	- After a while you will see a graph in the Feature explorer. This gives you a view of how well your data can be clustered into different groups. In an ideal situation all similar samples would be clustered into same group with a clear distinction between groups. If that's not the case, no worries at this point, the neural network algorithm will in many cases still be able to do a very good job! 
 
-	 <img align=right src="./Images/EI_feature_explorer_02.png" width="250" style="padding-left:10px">
+**Train the neural network**
+
+Here you will train the neural network and analyse its performance.
+- Click `NN Classifier` from the left hand menu
+<img align=right src="./Images/EI_train_performance_03.png" width="300" style="padding-left:10px">
+
+- Change the `Number of training cycles` to 200. This is another parameter to tweak, the higher this number is, the longer time the training will take, but also the better the network will perform, at least until it can't improve anymore.
+- Click on `Start training`
+	- Within a few minutes, depending on the number of labels and data quantity you have, the training will finish.
+- The graph shows the training performance and accuracy. While 100 % looks like a perfect score, it isn't necessary so. The reason is that the network might perform poorly in real situations when confronted with sample data not seen before.  
+<br/>
+<br/>
+
+**Test the model in Edge Impulse**
+
+In this step you will see how well the model performs with data it has not seen before. For this purpose Edge Impulse put away approx. 20 % of the training data when you uploaded it.
+
+- 
 
 
 
