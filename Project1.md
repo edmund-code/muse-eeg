@@ -130,7 +130,7 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 - Click `Create an impulse` and fill in the `Time series data` as shown in the picture. While the length of the samples are in fact 2000 ms (= 2 seconds), I've found that using 20 ms (as in 20 lines for each sample) works at least as good.
 - Add the processing block `Raw data` and let all axes be checkmarked. You can later try to find which axes do not impact much or at all for your model and uncheck them, but then you also need to modify the line `expected_samples = 20` in `Blink Pong with ML.py` accordingly. This is explained more detailed in the code itself.
 
- <img align=left src="./Images/EI_impulse_01.png" width="900">  \\
+ <img align=left src="./Images/EI_impulse_01.png" width="900">\
 <br>
 <br>
 
