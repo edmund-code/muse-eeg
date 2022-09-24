@@ -153,7 +153,9 @@ In this section you will first create a ML-model, then train it, and finally tes
 
 - Click `Generate features`
 	- This processes the samples
-	- After a while you will see a graph in the Feature explorer. This gives you a view of how well your data can be clustered into different groups. In an ideal situation all similar samples would be clustered into same group with a clear distinction between groups. If that's not the case, no worries at this point, the neural network algorithm will in many cases still be able to do a very good job! 
+	- After a while you will see a graph in the Feature explorer. This gives you a view of how well your data can be clustered into different groups. In an ideal situation all similar samples would be clustered into same group with a clear distinction between groups. If that's not the case, no worries at this point, the neural network algorithm will in many cases still be able to do a very good job!  
+	<br/>
+<br/>  
 
 **Train the neural network**
 
@@ -174,13 +176,24 @@ Here you will train the neural network and analyse its performance.
 
 In this step you will see how well the model performs with data it has not seen before. For this purpose Edge Impulse put away approx. 20 % of the training data when you uploaded it.
 
-<img align=right src="./Images/EI_model_testing_04.png" width="300" style="padding-left:10px">
+<img align=right src="./Images/EI_model_testing_04.png" width="300" style="padding-left:10px">  
 
 
 - Click on `Model testing` in the menu
 - Click on `Classify all`
 	- This will run the test samples through the trained model
-- After just a short while, depending on the amount of test samples and model complexity, you will get a performance report. Unless you have lots of data or a perfect model, the performance is seldom 100 % like in the picture. Depending on your use case and what performance you require, you might need to go back a few steps by collecting more and different data, or by tweaking the parameters, to reach your minimum expectations.   
+- After just a short while, depending on the amount of test samples and model complexity, you will get a performance report. Unless you have lots of data or a perfect model, the performance is seldom 100 % like in the picture. Depending on your use case and what performance you require, you might need to go back a few steps by collecting more and different data, or by tweaking the parameters, to reach your minimum expectations.    
+<br/>
+<br/>  
+<br/>
+<br/>  
+
+**4. Download the trained Tensorflow ML-model to your computer**
+
+Here you will download the trained model to your computer.
+- Click `Dashboard` from the left hand menu
+- Scroll down to the section `Download block output` and click on the icon next to `NN Classifier model	TensorFlow Lite (float32)`
+- Save the file to a folder of your choice (and which you remember as you'll need it soon!)
 
 
 
