@@ -3,7 +3,7 @@
 # Introduction
 <img align=right src="https://upload.wikimedia.org/wikipedia/commons/1/18/Human_Brain_-1.jpg?20160517061629" width="300" style="padding-left:10px">
 
-In this tutorial you will learn how you can use a Muse EEG-device to control a simple Pong game by blinking your eyes. As a gentle introduction to the concept of humand and machine communication, the first part shows how to use Muse's *built-in* blink detection functionality and the second part shows how you can use Machine Learning (ML) using Edge Impulse (EI) to be able to expand the game. And while this is just playing a simple game by blinking, research in BCI-technology (Brain Computer Interface) has enabled earlier believed impossible tasks to become reality. One example of this is when patients suffering from ALS had a [brain implant inserted](https://www.bloomberg.com/news/articles/2022-07-18/brain-computer-interface-company-implants-new-type-of-device?leadSource=uverify%20wall) into a blood vessel in their brains, and after some training were able to communicate e.g. through WhatsApp messages. 
+In this tutorial you will learn how you, by using a Muse EEG-device, can control a simple Pong game just by blinking your eyes. As a gentle introduction to the concept of human and machine communication, the first part shows how to use Muse's *built-in* blink detection functionality and the second part shows how you can use Machine Learning (ML) using Edge Impulse (EI) to be able to expand the game. And while this is just playing a simple game by blinking, there is a lot happening in the area of connecting brain and machine. Research in BCI-technology (Brain Computer Interface) has enabled earlier believed impossible tasks to become reality. One example of this is when patients suffering from ALS had a [brain implant inserted](https://www.bloomberg.com/news/articles/2022-07-18/brain-computer-interface-company-implants-new-type-of-device?leadSource=uverify%20wall) into a blood vessel in their brains, and after some training were able to communicate e.g. through WhatsApp messages. 
 
 
 Once you understand the benefits and limitations of using EEG-data from a consumer-based device, you can yourself step up and try to control external devices like robots by using eye-blinks or perhaps even by thinking!
@@ -97,7 +97,7 @@ While this is not as complex as brain surgery (:smirk:), it is still a bit more 
 
 ## Detailed instructions
 
-In this chapter you will get detailed instructions from start to end how to collect data, train a model, and test it in practice. While not every click and detail is listed, you should with normal computer proficiency be able to follow and replicate the steps.
+In this chapter you will get detailed instructions from start to end how to collect data, train a model, and test it in practice. While not necessarily every click and detail is listed, you should with normal computer proficiency be able to follow and replicate the steps.
 
 **0. Connect Muse and start streaming**
 
@@ -108,6 +108,9 @@ In this chapter you will get detailed instructions from start to end how to coll
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
 
  **1. Collect EEG-data**
+
+ In this step you will, using a Python-program, collect data from your Muse EEG-device.
+
  - Run `Collect OSC-data.py` from your favourite IDE or from the command prompt with `python "Collect OSC-data.py"`
 	- Default events being recorded are "1" and "Noise", and for 2 seconds. Later you can change or add them in the code if you want, look for this:
 		```
@@ -121,13 +124,15 @@ In this chapter you will get detailed instructions from start to end how to coll
 - It is necessarily not easy to concentrate for a long time, so you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording and, if you have a longer break, turn it off to save battery. Additionally, next time you use your device it will inevitable be in a slightly different place, and as a result you will probably get a more robust ML-model when recording data.
 
 **2. Create a project and upload EEG-data to Edge Impulse**
-- Head over to [Edge Impulse](https://www.edgeimpulse.com/). If you are new to EI, please take a look at their great [Getting started](https://docs.edgeimpulse.com/docs/) instructions.
+- Head over to [Edge Impulse](https://www.edgeimpulse.com/). If you are new to EI, you are recommended to take a look at their great [Getting started](https://docs.edgeimpulse.com/docs/) instructions.
 	- Create a project
 	- Select `Data acquisition` and click the icon labeled `Upload existing data`
 	- Use default settings
 	- Upload the files you've recorded in the previous step. 
 
 **3. Create a model, train, and test it**
+
+In this section you will first create a ML-model, then train it, and finally test it. This can be most rewarding in case you get excellent performance the first time, but if not, then you need to find out how to improve the model.
 
 **Create a model**
 - Click `Create an impulse` and fill in the `Time series data` as shown in the picture. While the length of the samples are in fact 2000 ms (= 2 seconds), I've found that using 20 ms (as in 20 lines for each sample) works at least as good.
@@ -140,9 +145,11 @@ In this chapter you will get detailed instructions from start to end how to coll
 
 - Click `Save impulse` and `Raw data` on the left hand menu
 	- You will see a graph of one of the samples as well as the raw features.
-	
-- In this case you don't need to change anything, so click `Save parameters` which will take you to the second tab.
+
 <img align=right src="./Images/EI_feature_explorer_02.png" width="150" style="padding-left:10px">
+
+
+- In this case you don't need to change anything, so click `Save parameters` which will take you to the second tab.
 
 - Click `Generate features`
 	- This processes the samples
@@ -165,7 +172,13 @@ Here you will train the neural network and analyse its performance.
 
 In this step you will see how well the model performs with data it has not seen before. For this purpose Edge Impulse put away approx. 20 % of the training data when you uploaded it.
 
-- 
+<img align=right src="./Images/EI_model_testing_04.png" width="300" style="padding-left:10px">
+
+
+- Click on `Model testing`in the menu
+- Click on `Classify all`
+	- This will run the test samples through the trained model
+- After just a short while, depending on the amount of test samples and model complexity, you will get a performance report. Unless you have lots of data or a perfect model, the performance is seldom 100 % like in the picture. Depending on your use case and what performance you require, you might need to go back a few steps by collecting more and different data, or by tweaking the parameters, to reach your minimum expectations.   
 
 
 
