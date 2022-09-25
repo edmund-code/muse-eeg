@@ -236,7 +236,7 @@ This can be the most rewarding - or most frustrating - phase in the whole proces
  	- The model explained in this tutorial is based on 2 second long samples. This also means that the Pong game will collect EEG-data for 2 seconds before trying to classify it. When playing the Pong game, the ball might have travelled too far before your blinks have moved the paddle to the desired place.
 		- The function `pong` towards the end of the program includes a variable `ball_speed = 5` where you can change the ball speed.
 		- By unchecking some of the axes in the `Create an impulse` step, you will also reduce the data needing processing and the time it takes. As earlier mentioned, and as also explained in the code itself, you then need to change the variable `expected_samples` from 20 to something else. If you e.g. reduce the axes from 20 to 10, you would put 10 in this variable.
-	- In the [Github repo](https://github.com/baljo/Muse-EEG/tree/main/Models) you'll find a `.lite`-file trained by the author. You can try the game using this without the need to record own EEG-data, but don't be surprised if it doesn't give good results, brains tend to be different...
+	- In the [Github repo](https://github.com/baljo/Muse-EEG/tree/main/Models) you'll find a `.lite`-file trained by the author. You can try the game using this, without the need to record own EEG-data, but don't be surprised if it doesn't give good results, brains tend to be different...
 
 <br/>
 <br/>  
