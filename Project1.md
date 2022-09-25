@@ -31,6 +31,7 @@ Muse EEG-devices are focused on consumers and they have four EEG-electrodes, two
   
 ---------------
 # Prerequisites
+
 To be able to reproduce examples found in this tutorial, you'll need:
  - A Muse EEG-device, any model should work, although Muse-01 (from 2014) streams with 220 Hz instead of 256 Hz and might require a few code changes if you are collecting raw data. They cost around 250 USD/EUR and are manufactured by the Canadian company [Interaxon Inc.](https://choosemuse.com/) 
  -  iPhone or Android phone
@@ -44,7 +45,7 @@ To be able to reproduce examples found in this tutorial, you'll need:
 # Data flow
 
 The data flow for both Part 1 and Part 2 is:
-Your brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &rarr; Computer  
+Your :brain: &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &rarr; Computer  
 <br/>
 
 ---------------
