@@ -73,7 +73,7 @@ The data flow for both Part 1 and Part 2 is:
 <img align=right src="./Images/Blink_Pong.jpg" width="250" style="padding-left:10px">
 
 In this first part you will learn how to control a Pong game just by blinking your eyes.
-A short video of the Pong game is available [here](nnnnnnn).
+A short video of the Pong game is available [here](https://youtu.be/lKLFVqofdu8).
 
 ## How does it work?
 
