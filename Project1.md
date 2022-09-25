@@ -199,7 +199,7 @@ In this step you will see how well the model performs with data it has not seen 
 - Click on `Model testing` in the menu
 - Click on `Classify all`
 	- This will run the test samples through the trained model
-- After just a short while, depending on the amount of test samples and model complexity, you will get a performance report. Unless you have lots of data or a perfect model, the performance is seldom 100 % like in the picture. Depending on your use case and what performance you require, you might need to go back a few steps by collecting more and different data, or by tweaking the parameters, to reach your minimum expectations.    
+- After just a short while, depending on the amount of test samples and model complexity, you will get a performance report. Unless you have lots of data or a perfect model, the performance is seldom 100 %. Depending on your use case and what performance you require, you might need to go back a few steps by collecting more and different data, or by tweaking the parameters, to reach your minimum expectations.    
 <br/>
 <br/>  
 <br/>
