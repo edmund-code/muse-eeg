@@ -45,7 +45,7 @@ To be able to reproduce examples found in this tutorial, you'll need:
 # Data flow
 
 The data flow for both Part 1 and Part 2 is:
-Your :brain: &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &rarr; Computer  
+**Your brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &rarr; Computer**  
 <br/>
 
 ---------------
