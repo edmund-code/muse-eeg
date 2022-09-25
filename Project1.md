@@ -49,6 +49,7 @@ Your brain &rarr; Muse &rarr; Bluetooth &rarr; Phone/Mind Monitor &rarr; WiFi &r
 
  - Install Python-OSC and Tkinter from a command prompt with 
 ```pip install python-osc``` and `pip install tk`
+ - For Part 2 you'll also need Tensorflow, install it with `pip install tensorflow`
 
 **Mind Monitor settings**
 
