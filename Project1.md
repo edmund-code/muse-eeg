@@ -1,9 +1,13 @@
-# Play a Pong game by blinking your eyes!
+# **Using EEG-data and Machine Learning to control games**
+
+# Objective
+The objective of this  tutorial is to show how you, by using a Muse EEG-device, can control a simple Pong game just by blinking your eyes.  
 
 # Introduction
+
 <img align=right src="https://upload.wikimedia.org/wikipedia/commons/1/18/Human_Brain_-1.jpg?20160517061629" width="300" style="padding-left:10px">
 
-In this tutorial you will learn how you, by using a Muse EEG-device, can control a simple Pong game just by blinking your eyes. As a gentle introduction to the concept of human and machine communication, the first part shows how to use Muse's *built-in* blink detection functionality and the second part shows how you can use Machine Learning (ML) with Edge Impulse (EI) to be able to expand the game. And while this is just playing a simple game by blinking, there is a lot happening in the area of connecting brain and machine. Research in BCI-technology (Brain Computer Interface) has enabled tasks earlier believed impossible to become reality. One example of this is when patients suffering from ALS had a [brain implant inserted](https://www.bloomberg.com/news/articles/2022-07-18/brain-computer-interface-company-implants-new-type-of-device?leadSource=uverify%20wall) into a blood vessel in their brains, and after some training were able to communicate e.g. through WhatsApp messages. 
+As a gentle introduction to the concept of human and machine communication, the first part shows how to use Muse's *built-in* blink detection functionality and the second part shows how you can use Machine Learning (ML) with Edge Impulse (EI) to be able to expand the game. And while this is just playing a simple game by blinking, there is a lot happening in the area of connecting brain and machine. Research in BCI-technology (Brain Computer Interface) has enabled tasks earlier believed impossible to become reality. One example of this is when patients suffering from ALS had a [brain implant inserted](https://www.bloomberg.com/news/articles/2022-07-18/brain-computer-interface-company-implants-new-type-of-device?leadSource=uverify%20wall) into a blood vessel in their brains, and after some training were able to communicate e.g. through WhatsApp messages. 
 
 
 Once you understand the benefits and limitations of using EEG-data from a consumer-based device, you can yourself step up and try to control external devices like robots by using eye-blinks or perhaps even by thinking!  
