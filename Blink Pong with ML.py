@@ -56,8 +56,8 @@ def initiate_tf():
     global interpreter, input_details, output_details
 
     ####################### TF Lite path and file ######################
-    path = "models/"
-    lite_file = "ei-muse-blinks-separately-recorded-nn-classifier-tensorflow-lite-float32-model (6).lite"
+    path = "Models/"
+    lite_file = "ei-muse-blinks-separately-recorded-nn-classifier-tensorflow-lite-float32-model.lite"
 
     ####################### INITIALIZE TF Lite #########################
     # Load TFLite model and allocate tensors.
