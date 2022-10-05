@@ -8,6 +8,7 @@ Super simple example of pygame-menu usage, featuring a selector and a button.
 
 import pygame_menu
 from pygame_menu.examples import create_example_window
+import string
 
 from typing import Tuple, Any
 
@@ -37,8 +38,24 @@ menu = pygame_menu.Menu(
     width=400
 )
 
+#alphabet = [('A',1), ('B',2)]
+
+import string
+chars = list(string.ascii_lowercase)
+print(chars)
+
+
+def createList(r1, r2):
+    return list(range(r1, r2+1))
+
+numbers = createList(1,25)
+print(numbers)
+
+alphabet = list(zip(chars,numbers))
+print(alphabet)
+
 user_name = menu.add.text_input('Name: ', default='John Doe', maxchar=10)
-menu.add.selector('Difficulty: ', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
+menu.add.selector('Difficulty: ', alphabet, onchange=set_difficulty)
 menu.add.button('Play', start_the_game)
 menu.add.button('Quit', pygame_menu.events.EXIT)
 
