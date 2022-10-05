@@ -12,7 +12,7 @@ import string
 
 from typing import Tuple, Any
 
-surface = create_example_window('Example - Simple', (600, 400))
+surface = create_example_window('Example - Simple', (800, 600))
 
 
 def set_difficulty(selected: Tuple, value: Any) -> None:
@@ -32,23 +32,23 @@ def start_the_game() -> None:
 
 
 menu = pygame_menu.Menu(
-    height=300,
+    height=600,
     theme=pygame_menu.themes.THEME_BLUE,
     title='Welcome',
-    width=400
+    width=800
 )
 
-#alphabet = [('A',1), ('B',2)]
 
-import string
-chars = list(string.ascii_lowercase)
+chars = list(string.ascii_uppercase)
+chars.append(' ')
 print(chars)
 
 
 def createList(r1, r2):
     return list(range(r1, r2+1))
 
-numbers = createList(1,25)
+numbers = createList(65,90)
+numbers.append(32)
 print(numbers)
 
 alphabet = list(zip(chars,numbers))
