@@ -73,6 +73,25 @@ def initiate_tf():
 
 # ****************** EEG handlers START ******************
 
+
+# ********** Handling blinks **********
+def blink_handler(address, *args):
+    global blinks, blinked
+
+    blinks += 1
+    blinked = True
+    print("Blink detected ")
+
+# ******* Handling jaw clenches *******
+# (no functionality tied to them)
+def jaw_handler(address, *args):
+    global jaw_clenches, jaw_clenched
+
+    jaw_clenches += 1
+    jaw_clenched = True
+    print("Jaw Clench detected")
+
+
 # ***** ALPHA waves *****
 def alpha_handler(address: str,*args):
     global alpha, beta, delta, theta, gamma
@@ -165,6 +184,8 @@ def inference():
 # ******** Muse communication 1 ********
 def get_dispatcher():
     dispatcher = Dispatcher()
+    dispatcher.map("/muse/elements/blink", blink_handler)
+    dispatcher.map("/muse/elements/jaw_clench", jaw_handler)
     dispatcher.map("/muse/elements/delta_absolute", delta_handler,0)
     dispatcher.map("/muse/elements/theta_absolute", theta_handler,1)
     dispatcher.map("/muse/elements/alpha_absolute", alpha_handler,2)
