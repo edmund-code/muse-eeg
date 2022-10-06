@@ -24,7 +24,7 @@ from pygame_menu.examples import create_example_window
 import string
 
 from typing import Tuple, Any
-
+from pynput.keyboard import Key, Controller
 
 
 # *********************  G L O B A L S *********************
@@ -58,7 +58,7 @@ def initiate_tf():
 
     ####################### TF Lite path and file ######################
     path = "models/"
-    lite_file = "ei-muse-blinks-separately-recorded-nn-classifier-tensorflow-lite-float32-model (6).lite"
+    lite_file = "ei-muse-blinks-separately-recorded-nn-classifier-tensorflow-lite-float32-model.lite"
 
     ####################### INITIALIZE TF Lite #########################
     # Load TFLite model and allocate tensors.
@@ -86,7 +86,9 @@ def blink_handler(address, *args):
 
     blinks += 1
     blinked = True
-    print("Blink detected ")
+#    print("Blink detected ")
+    keyboard.release(Key.right)
+    keyboard.press(Key.right)
 
 # ******* Handling jaw clenches *******
 # (no functionality tied to them)
@@ -182,7 +184,7 @@ def inference():
     else:
         choice = "----"
 
-    print(f"Blink:{blink:.4f} - Background:{background:.4f}     {choice}          ")
+#    print(f"Blink:{blink:.4f} - Background:{background:.4f}     {choice}          ")
 
 
 # ====================== MUSE COMMUNICATION ==========================
@@ -252,8 +254,71 @@ def start_threads():
     thread.start()
 
 
+def init_menu():
+    global keyboard
+
+    keyboard = Controller()
+    
+    surface = create_example_window('Example - Simple', (800, 600))
+
+    menu = pygame_menu.Menu(
+        height=600,
+        theme=pygame_menu.themes.THEME_BLUE,
+        title='Welcome',
+        width=800
+    )
+
+    
+    chars = list(string.ascii_uppercase)
+    chars.append(' ')
+    print(chars)
+
+    def createList(r1, r2):
+        return list(range(r1, r2+1))
+
+    numbers = createList(65,90)
+    numbers.append(32)
+    print(numbers)
+
+    alphabet = list(zip(chars,numbers))
+    print(alphabet)
+
+#    user_name = menu.add.text_input('Name: ', default='John Doe', maxchar=10)
+    menu.add.selector('Difficulty: ', alphabet, onchange=set_difficulty)
+#    menu.add.button('Play', start_the_game)
+    menu.add.button('Quit', pygame_menu.events.EXIT)
+
+
+
+
+    menu.mainloop(surface)
+
+
+def set_difficulty(selected: Tuple, value: Any) -> None:
+    global blinked
+
+    """
+    Set the difficulty of the game.
+    """
+    # print(f'Set difficulty to {selected[0]} ({value})')
+    if blinked == True:
+        print(chr(value), end = "")
+        blinked = False
+
+
+def start_the_game() -> None:
+    """
+    Function that starts a game. This is raised by the menu button,
+    here menu can be disabled, etc.
+    """
+    global user_name
+    print(f'{user_name.get_value()}, Do the job here!')
+
+
 
 if __name__ == "__main__":
     initiate_tf()
     start_threads()
-    pong()                                                                          # Start Ponging!
+    init_menu()
+
+#    pong()                                                                          # Start Ponging!
