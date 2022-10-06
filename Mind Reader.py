@@ -25,6 +25,8 @@ import string
 
 from typing import Tuple, Any
 from pynput.keyboard import Key, Controller
+from timeit import default_timer as timer
+
 
 
 # *********************  G L O B A L S *********************
@@ -42,7 +44,11 @@ confidence_threshold = 0.5                                      # default in Edg
 global isFailed
 blinks = 0                                                      # amount of blinks
 blinked = False                                                 # did you blink?
-char = 0
+char = 0                                                        # character chosen
+state = 0
+
+start = timer()
+secs = 3
 
 IP = "0.0.0.0"                                                  # listening on all IP-addresses
 PORT = 5000                                                     # on this port
@@ -141,6 +147,7 @@ def theta_handler(address: str,*args):
 def gamma_handler(address: str,*args):
     global alpha, beta, delta, theta, gamma
     global sample_nr, expected_samples, all_samples, sample
+    global start, end
 
     if (len(args)==5):                                  # If OSC Stream Brainwaves = All Values
         for i in range(1,5):
@@ -156,12 +163,23 @@ def gamma_handler(address: str,*args):
             all_samples.clear()
             all_samples = []
 
+    end = timer()
+    if (end - start) >= secs:                           # if we've waited enough for the current event
+        start = timer()                                 # getting current time
+        if state == 1:
+            keyboard.release(Key.right)
+            keyboard.press(Key.right)
+        elif state == -1:
+            keyboard.release(Key.left)
+            keyboard.press(Key.left)
+
+
 # ****************** EEG handlers END ******************
 
 
 # ******** INFERENCE ******** 
 def inference():
-    global score, expected, choice, blinks, blinked
+    global score, expected, choice, blinks, blinked, state
 
     input_samples = np.array(all_samples, dtype=np.float32)
     input_samples = np.expand_dims(input_samples, axis=0)
@@ -183,12 +201,14 @@ def inference():
     # checking if over confidence threshold
     if left >= confidence_threshold:
         choice = "Left"
-        keyboard.release(Key.left)
-        keyboard.press(Key.left)
+        # keyboard.release(Key.left)
+        # keyboard.press(Key.left)
+        state = -1
     elif right >= confidence_threshold:
         choice = "Right"
-        keyboard.release(Key.right)
-        keyboard.press(Key.right)
+        # keyboard.release(Key.right)
+        # keyboard.press(Key.right)
+        state = 1
     else:
         choice = "----"
 
@@ -221,11 +241,6 @@ def dispatch():
 
     dispatcher = get_dispatcher()
     start_blocking_server(IP, PORT)
-
-
-# ========================== G A M E  ==============================
-
-
 
 
 # *************** INITIALISING ***************
@@ -271,9 +286,6 @@ def init_menu():
 #    menu.add.button('Play', start_the_game)
     menu.add.button('Quit', pygame_menu.events.EXIT)
 
-
-
-
     menu.mainloop(surface)
 
 
@@ -285,6 +297,7 @@ def set_difficulty(selected: Tuple, value: Any) -> None:
     """
 #    print(f'Set difficulty to {selected[0]} ({value})')
     char = value
+    state = 0
 
 
 
@@ -302,5 +315,3 @@ if __name__ == "__main__":
     initiate_tf()
     start_threads()
     init_menu()
-
-#    pong()                                                                          # Start Ponging!
