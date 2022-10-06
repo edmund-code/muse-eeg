@@ -34,14 +34,15 @@ all_waves = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
 all_samples = []
 
 sample_nr = 0
-expected_samples = 20                                           # there are 5 frequencies (alpa...gamma) and 4 sensors, if all 4 sensors are used
+expected_samples = 30                                           # there are 5 frequencies (alpa...gamma) and 4 sensors, if all 4 sensors are used
                                                                 # this should be 5 x 4 = 20, the frequency is 10 Hz. 2 seconds of data with all
                                                                 # 4 sensors = 2 * 5 * 4 * 10 = 400. 
 
-confidence_threshold = 0.6                                      # default in Edge Impulse is 0.6
+confidence_threshold = 0.5                                      # default in Edge Impulse is 0.6
 global isFailed
 blinks = 0                                                      # amount of blinks
 blinked = False                                                 # did you blink?
+char = 0
 
 IP = "0.0.0.0"                                                  # listening on all IP-addresses
 PORT = 5000                                                     # on this port
@@ -57,8 +58,8 @@ def initiate_tf():
     global interpreter, input_details, output_details
 
     ####################### TF Lite path and file ######################
-    path = "models/"
-    lite_file = "ei-muse-blinks-separately-recorded-nn-classifier-tensorflow-lite-float32-model.lite"
+    path = ""
+    lite_file = "C:/Users/thanh/Dropbox/Github/Muse-EEG/Muse-EEG/Models/ei-muse_separately_recorded_events-nn-classifier-tensorflow-lite-float32-model (7).lite"
 
     ####################### INITIALIZE TF Lite #########################
     # Load TFLite model and allocate tensors.
@@ -86,9 +87,13 @@ def blink_handler(address, *args):
 
     blinks += 1
     blinked = True
+
+    if blinked == True:
+        print(chr(char), end = "")
+        blinked = False
+
 #    print("Blink detected ")
-    keyboard.release(Key.right)
-    keyboard.press(Key.right)
+
 
 # ******* Handling jaw clenches *******
 # (no functionality tied to them)
@@ -171,20 +176,23 @@ def inference():
     output_data = interpreter.get_tensor(output_details[0]['index'])
 
     # finding output data
-    blink       = output_data[0][0]
-    background  = output_data[0][1]
+    background  = output_data[0][0]
+    left        = output_data[0][1]
+    right       = output_data[0][2]
 
     # checking if over confidence threshold
-    if blink >= confidence_threshold:
-        choice = "Blink"
-        blinks += 1
-        blinked = True
-    elif background >= confidence_threshold:
-        choice = "Background"
+    if left >= confidence_threshold:
+        choice = "Left"
+        keyboard.release(Key.left)
+        keyboard.press(Key.left)
+    elif right >= confidence_threshold:
+        choice = "Right"
+        keyboard.release(Key.right)
+        keyboard.press(Key.right)
     else:
         choice = "----"
 
-#    print(f"Blink:{blink:.4f} - Background:{background:.4f}     {choice}          ")
+#    print(f"Left:{left:.4f} - Background:{background:.4f}   Right:{right:.4f}    {choice}          ")
 
 
 # ====================== MUSE COMMUNICATION ==========================
@@ -216,31 +224,6 @@ def dispatch():
 
 
 # ========================== G A M E  ==============================
-
-
-# *********** Moving the ball ***********
-def move_ball(ball, sp, score):
-    global wait, blink_window_wait, blinked
-
-        
-    if blinked == True:                                         # Did you blink? Yes...
-        c.itemconfigure(blink_window, state='normal')           # ...showing a message that you did...
-        blinked = False
-
-    if blink_window_wait == 50:                                 # ...for a short while...
-        blink_window_wait = 0
-        c.itemconfigure(blink_window, state='hidden')           # ...until we hide it
-    else:
-        blink_window_wait += 1
-
-        
-    what = blinks % 4                                           # % = modulo, we have 4 states, 2 of them pausing:
-    if what == 1:                                               # -> STOP -> LEFT -> STOP -> RIGHT
-        movepaddleLR(paddle, 'l', 0-paddle_speed)               # moving left
-    elif what == 0 or what == 2:
-        movepaddleLR(paddle, 'stop', 0)                         # stopping
-    elif what == 3:
-        movepaddleLR(paddle, 'r', paddle_speed)                 # moving right
 
 
 
@@ -295,15 +278,14 @@ def init_menu():
 
 
 def set_difficulty(selected: Tuple, value: Any) -> None:
-    global blinked
+    global blinked, char
 
     """
     Set the difficulty of the game.
     """
-    # print(f'Set difficulty to {selected[0]} ({value})')
-    if blinked == True:
-        print(chr(value), end = "")
-        blinked = False
+#    print(f'Set difficulty to {selected[0]} ({value})')
+    char = value
+
 
 
 def start_the_game() -> None:
