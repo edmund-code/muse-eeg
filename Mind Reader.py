@@ -269,8 +269,11 @@ def show_picture():
 	# random_pic = random.randint(0, len(pictures) - 1)					# randomly selecting a picture
     image = pygame.image.load("images/computer01.png")	# concatenating the folder with pic name
 
-    IMAGE_SIZE = (200, 200)						# setting the size for the picture
-    image = pygame.transform.scale(image, IMAGE_SIZE)					# scaling the picture
+    img_width = image.get_width()
+    img_height = image.get_height()
+
+    IMAGE_SIZE = (200, 200 * img_height / img_width)						# setting the size for the picture
+    image = pygame.transform.smoothscale(image, IMAGE_SIZE)					# scaling the picture
     IMAGE_POSITION = (100, 100)								# placing the picture
 
     # Clock
@@ -289,7 +292,7 @@ def show_picture():
                 running = True
     
         # Background Color
-        screen.fill((0, 0, 0))
+        screen.fill((55, 55, 55))
     
         # Show the image
         screen.blit(image, IMAGE_POSITION)
@@ -348,13 +351,11 @@ def set_difficulty(selected: Tuple, value: Any) -> None:
     state = 0
 
 
-
 def start_the_game() -> None:
     pygame.init()
     pygame.font.init()
     clear_screen()
     show_picture()
-
 
 
 
