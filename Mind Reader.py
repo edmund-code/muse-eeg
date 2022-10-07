@@ -308,13 +308,13 @@ def init_menu():
 
     keyboard = Controller()
     
-    surface = create_example_window('Example - Simple', (800, 600))
+    surface = create_example_window('Mind Reader', (1024, 768))
 
     menu = pygame_menu.Menu(
-        height=600,
+        height=768,
         theme=pygame_menu.themes.THEME_BLUE,
-        title='Welcome',
-        width=800
+        title='Mind Reader',
+        width=1024
     )
 
     
@@ -360,7 +360,7 @@ def start_the_game() -> None:
 
 
 if __name__ == "__main__":
-    size = (800, 600)	
+    size = (1024, 768)	
     initiate_tf()
     start_threads()
     init_menu()
