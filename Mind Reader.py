@@ -19,6 +19,7 @@ import numpy as np
 import tensorflow as tf
 from nltk import flatten
 
+import pygame
 import pygame_menu
 from pygame_menu.examples import create_example_window
 import string
@@ -251,6 +252,53 @@ def start_threads():
     thread.daemon = True
     thread.start()
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Clears the screen ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def clear_screen():
+#	screen = pygame.display.set_mode(size, pygame.FULLSCREEN)			# clearing screen
+	screen = pygame.display.set_mode(size)			# clearing screen
+	pygame.display.update()												# update screen
+   	
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shows a random picture ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def show_picture():
+    global screen
+
+    screen = pygame.display.set_mode(size)			# clearing screen
+    pygame.display.update()												# update screen
+
+	# random_pic = random.randint(0, len(pictures) - 1)					# randomly selecting a picture
+    image = pygame.image.load("images/computer01.png")	# concatenating the folder with pic name
+
+    IMAGE_SIZE = (200, 200)						# setting the size for the picture
+    image = pygame.transform.scale(image, IMAGE_SIZE)					# scaling the picture
+    IMAGE_POSITION = (100, 100)								# placing the picture
+
+    # Clock
+    clock = pygame.time.Clock()
+
+
+    # Prepare loop condition
+    running = False
+    
+    # Event loop
+    while not running:
+    
+        # Close window event
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = True
+    
+        # Background Color
+        screen.fill((0, 0, 0))
+    
+        # Show the image
+        screen.blit(image, IMAGE_POSITION)
+    
+        # Part of event loop
+        pygame.display.flip()
+        clock.tick(30)
+
+
 
 def init_menu():
     global keyboard
@@ -283,7 +331,7 @@ def init_menu():
 
 #    user_name = menu.add.text_input('Name: ', default='John Doe', maxchar=10)
     menu.add.selector('Difficulty: ', alphabet, onchange=set_difficulty)
-#    menu.add.button('Play', start_the_game)
+    menu.add.button('Play', start_the_game)
     menu.add.button('Quit', pygame_menu.events.EXIT)
 
     menu.mainloop(surface)
@@ -302,16 +350,16 @@ def set_difficulty(selected: Tuple, value: Any) -> None:
 
 
 def start_the_game() -> None:
-    """
-    Function that starts a game. This is raised by the menu button,
-    here menu can be disabled, etc.
-    """
-    global user_name
-    print(f'{user_name.get_value()}, Do the job here!')
+    pygame.init()
+    pygame.font.init()
+    clear_screen()
+    show_picture()
+
 
 
 
 if __name__ == "__main__":
+    size = (800, 600)	
     initiate_tf()
     start_threads()
     init_menu()
