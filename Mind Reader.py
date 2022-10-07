@@ -10,8 +10,7 @@
 
 from pythonosc.dispatcher import Dispatcher
 from pythonosc.osc_server import BlockingOSCUDPServer
-from tkinter import *
-import tkinter as tk
+
 import time
 import random
 import threading
@@ -23,6 +22,7 @@ import pygame
 import pygame_menu
 from pygame_menu.examples import create_example_window
 import string
+import os
 
 from typing import Tuple, Any
 from pynput.keyboard import Key, Controller
@@ -266,16 +266,35 @@ def show_picture():
     screen = pygame.display.set_mode(size)			# clearing screen
     pygame.display.update()												# update screen
 
-	# random_pic = random.randint(0, len(pictures) - 1)					# randomly selecting a picture
-    image = pygame.image.load("images/computer01.png")	# concatenating the folder with pic name
+    images=[]
+    path = 'Images/'
+    
+    for image in os.listdir(path):
+        if len(image) == 7 and image.endswith('.png'):
+ #           pygame.image.load(path + image)        
+            images.append(image)
 
-    img_width = image.get_width()
-    img_height = image.get_height()
+    print(images)
 
-    IMAGE_SIZE = (200, 200 * img_height / img_width)						# setting the size for the picture
-    image = pygame.transform.smoothscale(image, IMAGE_SIZE)					# scaling the picture
-    IMAGE_POSITION = (100, 100)								# placing the picture
+    # Background Color
+    screen.fill((55, 55, 55))
 
+
+    img_nr = 0
+    for image in images:
+        image = pygame.image.load(path + image)	# concatenating the folder with pic name
+
+        img_width = image.get_width()
+        img_height = image.get_height()
+
+        IMAGE_SIZE = (200, 200 * img_height / img_width)						# setting the size for the picture
+        image = pygame.transform.scale(image, IMAGE_SIZE)					# scaling the picture
+        IMAGE_POSITION = ((img_nr * 220) + 100, 300)								# placing the picture
+        print (IMAGE_POSITION)
+        # Show the image
+        screen.blit(image, IMAGE_POSITION)
+        img_nr += 1
+    
     # Clock
     clock = pygame.time.Clock()
 
@@ -288,15 +307,31 @@ def show_picture():
     
         # Close window event
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = True
-    
-        # Background Color
-        screen.fill((55, 55, 55))
-    
-        # Show the image
-        screen.blit(image, IMAGE_POSITION)
-    
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        running = True
+
+
+        time.sleep(2)
+        img_nr = 0
+        loop = 0
+        print(images)
+        for image in images:
+            image = pygame.image.load(path + image)	# concatenating the folder with pic name
+
+            img_width = image.get_width()
+            img_height = image.get_height()
+
+            IMAGE_SIZE = (200, 200 * img_height / img_width)						# setting the size for the picture
+            image = pygame.transform.scale(image, IMAGE_SIZE)					# scaling the picture
+            IMAGE_POSITION = ((img_nr * 220) + 100, 300)								# placing the picture
+            print (IMAGE_POSITION)
+            # Show the image
+            screen.blit(image, IMAGE_POSITION)
+            img_nr += 1
+            loop += 1
+
+
         # Part of event loop
         pygame.display.flip()
         clock.tick(30)
@@ -308,13 +343,13 @@ def init_menu():
 
     keyboard = Controller()
     
-    surface = create_example_window('Mind Reader', (1024, 768))
+    surface = create_example_window('Mind Reader', size)
 
     menu = pygame_menu.Menu(
-        height=768,
+        height=size[1],
         theme=pygame_menu.themes.THEME_BLUE,
         title='Mind Reader',
-        width=1024
+        width=size[0]
     )
 
     
@@ -335,6 +370,7 @@ def init_menu():
 #    user_name = menu.add.text_input('Name: ', default='John Doe', maxchar=10)
     menu.add.selector('Difficulty: ', alphabet, onchange=set_difficulty)
     menu.add.button('Play', start_the_game)
+    menu.add.button('Init', initiate_tf)
     menu.add.button('Quit', pygame_menu.events.EXIT)
 
     menu.mainloop(surface)
@@ -360,7 +396,7 @@ def start_the_game() -> None:
 
 
 if __name__ == "__main__":
-    size = (1024, 768)	
-    initiate_tf()
+    size = (1500, 768)	
+    # initiate_tf()
     start_threads()
     init_menu()
