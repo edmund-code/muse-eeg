@@ -8,6 +8,7 @@
 
 # *******************  IMPORTING MODULES ********************
 
+from turtle import back
 from pythonosc.dispatcher import Dispatcher
 from pythonosc.osc_server import BlockingOSCUDPServer
 
@@ -43,6 +44,8 @@ expected_samples = 30                                           # there are 5 fr
 
 confidence_threshold = 0.5                                      # default in Edge Impulse is 0.6
 global isFailed
+left = right = background = 0
+
 blinks = 0                                                      # amount of blinks
 blinked = False                                                 # did you blink?
 char = 0                                                        # character chosen
@@ -65,8 +68,8 @@ def initiate_tf():
     global interpreter, input_details, output_details
 
     ####################### TF Lite path and file ######################
-    path = ""
-    lite_file = "C:/Users/thanh/Dropbox/Github/Muse-EEG/Muse-EEG/Models/ei-muse_separately_recorded_events-nn-classifier-tensorflow-lite-float32-model (7).lite"
+    path = "Models/"
+    lite_file = "ei-muse_separately_recorded_events-nn-classifier-tensorflow-lite-float32-model (7).lite"
 
     ####################### INITIALIZE TF Lite #########################
     # Load TFLite model and allocate tensors.
@@ -90,7 +93,7 @@ def initiate_tf():
 
 # ********** Handling blinks **********
 def blink_handler(address, *args):
-    global blinks, blinked
+    global blinks, blinked, state
 
     blinks += 1
     blinked = True
@@ -98,6 +101,7 @@ def blink_handler(address, *args):
     if blinked == True:
         print(chr(char), end = "")
         blinked = False
+        state = 0
 
 #    print("Blink detected ")
 
@@ -181,6 +185,7 @@ def gamma_handler(address: str,*args):
 # ******** INFERENCE ******** 
 def inference():
     global score, expected, choice, blinks, blinked, state
+    global background, left, right
 
     input_samples = np.array(all_samples, dtype=np.float32)
     input_samples = np.expand_dims(input_samples, axis=0)
@@ -263,6 +268,25 @@ def clear_screen():
 def show_image():
     global screen
 
+    scr_width  = size[0]                                # surface width
+    scr_height = size[1]                                # surface height
+    MAXHEALTH = 10
+    RED = (48, 141, 70)
+    WHITE = (200,200,200)
+
+    def drawHealthMeterLeft(currentHealth):
+        for i in range(currentHealth): # draw red health bars
+            pygame.draw.rect(screen, RED,   (5 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10))
+        for i in range(MAXHEALTH): # draw the white outlines
+            pygame.draw.rect(screen, WHITE, (5 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10), 1)
+
+    def drawHealthMeterRight(currentHealth):
+        for i in range(currentHealth): # draw red health bars
+            pygame.draw.rect(screen, RED,   (150 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10))
+        for i in range(MAXHEALTH): # draw the white outlines
+            pygame.draw.rect(screen, WHITE, (150 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10), 1)
+
+
     screen = pygame.display.set_mode(size)			    # clearing screen
     pygame.display.update()								# update screen
 
@@ -277,10 +301,7 @@ def show_image():
     screen.fill((55, 55, 55))                           # surface background color
     color = (48, 141, 70)                               # image selector color
 
-    scr_width  = size[0]                                # surface width
-    scr_height = size[1]                                # surface height
-
-    # Drawing Rectangle (x, y, width, height, border thickness, corner radius)
+    # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
     pygame.draw.rect(screen, color, pygame.Rect((scr_width/2)-(img_w_def/2)-15, (scr_height/2)-(img_w_def/2)-15, 
         img_w_def + 20, img_w_def/1.3),  5, 7)
 
@@ -299,7 +320,7 @@ def show_image():
 
 
         nr_images = len(images)                                             # how many images found?
-        images = np.roll(images, 1)                                         # yippii! rotating the list
+        images = np.roll(images, state*-1)                                  # yippii! rotating the image carousel
         
         for i in range(nr_images):
 
@@ -325,9 +346,13 @@ def show_image():
 
             screen.blit(large_image, IMAGE_POSITION)                        # show the image
 
+        print(left, right, background)
+        drawHealthMeterLeft(int(left * MAXHEALTH))
+        drawHealthMeterRight(int(right * MAXHEALTH))
 
         # Part of event loop
         pygame.display.flip()
+        time.sleep(0.1)
         clock.tick(1)
 
 
@@ -391,6 +416,6 @@ def start_the_game() -> None:
 
 if __name__ == "__main__":
     size = (1200, 768)	
-    # initiate_tf()
+    initiate_tf()
     start_threads()
     init_menu()
