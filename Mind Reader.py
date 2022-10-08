@@ -287,9 +287,9 @@ def show_picture():
         img_width = image.get_width()
         img_height = image.get_height()
 
-        IMAGE_SIZE = (200, 200 * img_height / img_width)						# setting the size for the picture
+        IMAGE_SIZE = (150, 150 * img_height / img_width)						# setting the size for the picture
         image = pygame.transform.scale(image, IMAGE_SIZE)					# scaling the picture
-        IMAGE_POSITION = ((img_nr * 220) + 100, 300)								# placing the picture
+        IMAGE_POSITION = ((img_nr * 170) + 100, 300)								# placing the picture
         print (IMAGE_POSITION)
         # Show the image
         screen.blit(image, IMAGE_POSITION)
@@ -322,9 +322,9 @@ def show_picture():
             img_width = image.get_width()
             img_height = image.get_height()
 
-            IMAGE_SIZE = (200, 200 * img_height / img_width)						# setting the size for the picture
+            IMAGE_SIZE = (150, 150 * img_height / img_width)						# setting the size for the picture
             image = pygame.transform.scale(image, IMAGE_SIZE)					# scaling the picture
-            IMAGE_POSITION = ((img_nr * 220) + 100, 300)								# placing the picture
+            IMAGE_POSITION = ((img_nr * 170) + 100, 300)								# placing the picture
             print (IMAGE_POSITION)
             # Show the image
             screen.blit(image, IMAGE_POSITION)
@@ -396,7 +396,7 @@ def start_the_game() -> None:
 
 
 if __name__ == "__main__":
-    size = (1500, 768)	
+    size = (1200, 768)	
     # initiate_tf()
     start_threads()
     init_menu()
