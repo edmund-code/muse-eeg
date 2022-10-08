@@ -273,18 +273,23 @@ def show_image():
     MAXHEALTH = 10
     RED = (48, 141, 70)
     WHITE = (200,200,200)
+    back_color = (55,55,55)
+    HB_X = (scr_width / 2) - 150
+
 
     def drawHealthMeterLeft(currentHealth):
+        pygame.draw.rect(screen, back_color, (  HB_X, scr_height / 2 + 50, 10 * MAXHEALTH, 10))
         for i in range(currentHealth): # draw red health bars
-            pygame.draw.rect(screen, RED,   (5 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10))
+            pygame.draw.rect(screen, RED,   (HB_X + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10))
         for i in range(MAXHEALTH): # draw the white outlines
-            pygame.draw.rect(screen, WHITE, (5 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10), 1)
+            pygame.draw.rect(screen, WHITE, (HB_X + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10), 1)
 
     def drawHealthMeterRight(currentHealth):
+        pygame.draw.rect(screen, back_color, (HB_X+150, scr_height / 2 + 50, 10 * MAXHEALTH, 10))
         for i in range(currentHealth): # draw red health bars
-            pygame.draw.rect(screen, RED,   (150 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10))
+            pygame.draw.rect(screen, RED,   (HB_X+150 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10))
         for i in range(MAXHEALTH): # draw the white outlines
-            pygame.draw.rect(screen, WHITE, (150 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10), 1)
+            pygame.draw.rect(screen, WHITE, (HB_X+150 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10), 1)
 
 
     screen = pygame.display.set_mode(size)			    # clearing screen
@@ -298,7 +303,8 @@ def show_image():
             images.append(image)
 
     img_w_def = 150                                     # default image width, changing this might lead to a cascade effect...
-    screen.fill((55, 55, 55))                           # surface background color
+
+    screen.fill(back_color)                           # surface background color
     color = (48, 141, 70)                               # image selector color
 
     # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
@@ -340,19 +346,21 @@ def show_image():
             img_width   = large_image.get_width()                           # finding image width...
             img_height  = large_image.get_height()                          # ...and height for scaling purposes
 
-            IMAGE_SIZE = (img_w_def*2.5, img_w_def*img_height/img_width*2.5)	    # setting the size for the image
+            IMAGE_SIZE = (img_w_def*2.5, img_w_def*img_height/img_width*2.5)	# setting the size for the image
             large_image = pygame.transform.smoothscale(large_image, IMAGE_SIZE)	# scaling the image
             IMAGE_POSITION = ((scr_width/2) - IMAGE_SIZE[0] / 2, 20)        # placing the image
 
             screen.blit(large_image, IMAGE_POSITION)                        # show the image
 
         print(left, right, background)
+
+#        pygame.display.flip()
         drawHealthMeterLeft(int(left * MAXHEALTH))
         drawHealthMeterRight(int(right * MAXHEALTH))
 
         # Part of event loop
         pygame.display.flip()
-        time.sleep(0.1)
+        time.sleep(0.5)
         clock.tick(1)
 
 
