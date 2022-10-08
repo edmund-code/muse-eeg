@@ -288,8 +288,8 @@ def show_picture():
         img_height = image.get_height()
 
         IMAGE_SIZE = (150, 150 * img_height / img_width)						# setting the size for the picture
-        image = pygame.transform.scale(image, IMAGE_SIZE)					# scaling the picture
-        IMAGE_POSITION = ((img_nr * 170) + 100, 300)								# placing the picture
+        image = pygame.transform.smoothscale(image, IMAGE_SIZE)					# scaling the picture
+        IMAGE_POSITION = ((img_nr * 170) + 10, 300)								# placing the picture
         print (IMAGE_POSITION)
         # Show the image
         screen.blit(image, IMAGE_POSITION)
@@ -312,7 +312,7 @@ def show_picture():
                         running = True
 
 
-        time.sleep(2)
+        time.sleep(1)
         img_nr = 0
         loop = 0
         print(images)
@@ -323,8 +323,8 @@ def show_picture():
             img_height = image.get_height()
 
             IMAGE_SIZE = (150, 150 * img_height / img_width)						# setting the size for the picture
-            image = pygame.transform.scale(image, IMAGE_SIZE)					# scaling the picture
-            IMAGE_POSITION = ((img_nr * 170) + 100, 300)								# placing the picture
+            image = pygame.transform.smoothscale(image, IMAGE_SIZE)					# scaling the picture
+            IMAGE_POSITION = ((img_nr * 170) + 10, 300)								# placing the picture
             print (IMAGE_POSITION)
             # Show the image
             screen.blit(image, IMAGE_POSITION)
