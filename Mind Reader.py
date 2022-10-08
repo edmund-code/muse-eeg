@@ -255,86 +255,80 @@ def start_threads():
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Clears the screen ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 def clear_screen():
 #	screen = pygame.display.set_mode(size, pygame.FULLSCREEN)			# clearing screen
-	screen = pygame.display.set_mode(size)			# clearing screen
+	screen = pygame.display.set_mode(size)			                    # clearing screen
 	pygame.display.update()												# update screen
    	
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shows a random picture ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-def show_picture():
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shows a random image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def show_image():
     global screen
 
-    screen = pygame.display.set_mode(size)			# clearing screen
-    pygame.display.update()												# update screen
+    screen = pygame.display.set_mode(size)			    # clearing screen
+    pygame.display.update()								# update screen
 
-    images=[]
-    path = 'Images/'
+    images=[]                                           # list used for images found...
+    path = 'Images/'                                    # ...in this subfolder of the current folder
     
-    for image in os.listdir(path):
-        if len(image) == 7 and image.endswith('.png'):
- #           pygame.image.load(path + image)        
+    for image in os.listdir(path):                      # populating the list...
+        if len(image) == 7 and image.endswith('.png'):  # ...only files with name [nnn].png (n=number)
             images.append(image)
 
-    print(images)
+    img_w_def = 150                                     # default image width, changing this might lead to a cascade effect...
+    screen.fill((55, 55, 55))                           # surface background color
+    color = (48, 141, 70)                               # image selector color
 
-    # Background Color
-    screen.fill((55, 55, 55))
+    scr_width  = size[0]                                # surface width
+    scr_height = size[1]                                # surface height
 
+    # Drawing Rectangle (x, y, width, height, border thickness, corner radius)
+    pygame.draw.rect(screen, color, pygame.Rect((scr_width/2)-(img_w_def/2)-15, (scr_height/2)-(img_w_def/2)-15, 
+        img_w_def + 20, img_w_def/1.3),  5, 7)
 
-    img_nr = 0
-    for image in images:
-        image = pygame.image.load(path + image)	# concatenating the folder with pic name
+    clock = pygame.time.Clock()                         # clock
 
-        img_width = image.get_width()
-        img_height = image.get_height()
-
-        IMAGE_SIZE = (150, 150 * img_height / img_width)						# setting the size for the picture
-        image = pygame.transform.smoothscale(image, IMAGE_SIZE)					# scaling the picture
-        IMAGE_POSITION = ((img_nr * 170) + 10, 300)								# placing the picture
-        print (IMAGE_POSITION)
-        # Show the image
-        screen.blit(image, IMAGE_POSITION)
-        img_nr += 1
-    
-    # Clock
-    clock = pygame.time.Clock()
-
-
-    # Prepare loop condition
-    running = False
+    running = True                                      # Prepare loop condition
     
     # Event loop
-    while not running:
+    while running:
     
         # Close window event
         for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        running = True
+                        running = False
 
 
-        time.sleep(1)
-        img_nr = 0
-        loop = 0
-        print(images)
-        for image in images:
-            image = pygame.image.load(path + image)	# concatenating the folder with pic name
+        nr_images = len(images)                                             # how many images found?
+        images = np.roll(images, 1)                                         # yippii! rotating the list
+        
+        for i in range(nr_images):
 
-            img_width = image.get_width()
-            img_height = image.get_height()
+            image = pygame.image.load(path + images[i])	                    # concatenating the folder with image name
 
-            IMAGE_SIZE = (150, 150 * img_height / img_width)						# setting the size for the picture
-            image = pygame.transform.smoothscale(image, IMAGE_SIZE)					# scaling the picture
-            IMAGE_POSITION = ((img_nr * 170) + 10, 300)								# placing the picture
-            print (IMAGE_POSITION)
-            # Show the image
-            screen.blit(image, IMAGE_POSITION)
-            img_nr += 1
-            loop += 1
+            img_width   = image.get_width()                                 # finding image width...
+            img_height  = image.get_height()                                # ...and height for scaling purposes
+
+            IMAGE_SIZE = (img_w_def, img_w_def * img_height / img_width)	# setting the size for the image
+            image = pygame.transform.smoothscale(image, IMAGE_SIZE)			# scaling the image
+            IMAGE_POSITION = ((i * (img_w_def + 20)) + 10, 300)				# placing the image
+
+            screen.blit(image, IMAGE_POSITION)                              # show the image
+
+            large_image = pygame.image.load(path + images[3])
+
+            img_width   = large_image.get_width()                           # finding image width...
+            img_height  = large_image.get_height()                          # ...and height for scaling purposes
+
+            IMAGE_SIZE = (img_w_def*2.5, img_w_def*img_height/img_width*2.5)	    # setting the size for the image
+            large_image = pygame.transform.smoothscale(large_image, IMAGE_SIZE)	# scaling the image
+            IMAGE_POSITION = ((scr_width/2) - IMAGE_SIZE[0] / 2, 20)        # placing the image
+
+            screen.blit(large_image, IMAGE_POSITION)                        # show the image
 
 
         # Part of event loop
         pygame.display.flip()
-        clock.tick(30)
+        clock.tick(1)
 
 
 
@@ -391,7 +385,7 @@ def start_the_game() -> None:
     pygame.init()
     pygame.font.init()
     clear_screen()
-    show_picture()
+    show_image()
 
 
 
