@@ -270,27 +270,32 @@ def show_image():
 
     scr_width  = size[0]                                # surface width
     scr_height = size[1]                                # surface height
-    MAXHEALTH = 10
-    RED = (48, 141, 70)
+    MAXHEALTH = 9
+    GREEN = (48, 141, 70)
     WHITE = (200,200,200)
     back_color = (55,55,55)
-    HB_X = (scr_width / 2) - 150
+    HB_X = (scr_width / 2) - 185
+    HB_HEIGHT = 11
 
 
     def drawHealthMeterLeft(currentHealth):
-        pygame.draw.rect(screen, back_color, (  HB_X, scr_height / 2 + 50, 10 * MAXHEALTH, 10))
+        pygame.draw.rect(screen, back_color, (  HB_X, scr_height / 2 + 50, 100 * MAXHEALTH, HB_HEIGHT))
         for i in range(currentHealth): # draw red health bars
-            pygame.draw.rect(screen, RED,   (HB_X + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10))
+            pygame.draw.rect(screen, GREEN,   (HB_X + (10 * MAXHEALTH) - (i * 10), scr_height / 2 + 50, 20, HB_HEIGHT))
         for i in range(MAXHEALTH): # draw the white outlines
-            pygame.draw.rect(screen, WHITE, (HB_X + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10), 1)
+            pygame.draw.rect(screen, WHITE, (HB_X + (10 * MAXHEALTH) - (i * 10), scr_height / 2 + 50, 20, HB_HEIGHT), 1)
+
+    def drawHealthMeterBackground(currentHealth):
+        for i in range(currentHealth): # draw red health bars
+            pygame.draw.rect(screen, GREEN,   (HB_X+120 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT))
+        for i in range(MAXHEALTH): # draw the white outlines
+            pygame.draw.rect(screen, WHITE, (HB_X+120 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT), 1)
 
     def drawHealthMeterRight(currentHealth):
-        pygame.draw.rect(screen, back_color, (HB_X+150, scr_height / 2 + 50, 10 * MAXHEALTH, 10))
         for i in range(currentHealth): # draw red health bars
-            pygame.draw.rect(screen, RED,   (HB_X+150 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10))
+            pygame.draw.rect(screen, GREEN,   (HB_X+240 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT))
         for i in range(MAXHEALTH): # draw the white outlines
-            pygame.draw.rect(screen, WHITE, (HB_X+150 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, 10), 1)
-
+            pygame.draw.rect(screen, WHITE, (HB_X+240 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT), 1)
 
     screen = pygame.display.set_mode(size)			    # clearing screen
     pygame.display.update()								# update screen
@@ -313,8 +318,11 @@ def show_image():
 
     clock = pygame.time.Clock()                         # clock
 
+    font = pygame.font.SysFont(None, 24)
+
     running = True                                      # Prepare loop condition
-    
+    x = old_x = 0
+
     # Event loop
     while running:
     
@@ -324,12 +332,22 @@ def show_image():
                     if event.key == pygame.K_ESCAPE:
                         running = False
 
+        x += 1
+        if x > 100:
+            x = 0
+
+        img = font.render(str(old_x), True, back_color)
+        screen.blit(img, (20, 20))
+
+        img = font.render(str(x), True, WHITE)
+        screen.blit(img, (20, 20))
+        old_x = x
+
 
         nr_images = len(images)                                             # how many images found?
         images = np.roll(images, state*-1)                                  # yippii! rotating the image carousel
         
         for i in range(nr_images):
-
             image = pygame.image.load(path + images[i])	                    # concatenating the folder with image name
 
             img_width   = image.get_width()                                 # finding image width...
@@ -352,10 +370,10 @@ def show_image():
 
             screen.blit(large_image, IMAGE_POSITION)                        # show the image
 
-        print(left, right, background)
+        print(left, background, right)
 
-#        pygame.display.flip()
         drawHealthMeterLeft(int(left * MAXHEALTH))
+        drawHealthMeterBackground(int(background * MAXHEALTH))
         drawHealthMeterRight(int(right * MAXHEALTH))
 
         # Part of event loop
