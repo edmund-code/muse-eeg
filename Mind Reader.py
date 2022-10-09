@@ -50,6 +50,7 @@ blinks = 0                                                      # amount of blin
 blinked = False                                                 # did you blink?
 char = 0                                                        # character chosen
 state = 0
+alphabet = []
 
 start = timer()
 secs = 3
@@ -99,8 +100,8 @@ def blink_handler(address, *args):
     blinked = True
 
     if blinked == True:
-        print(chr(char), end = "")
-        blinked = False
+        print(chr(67), end = "")
+#        blinked = False
         state = 0
 
 #    print("Blink detected ")
@@ -266,7 +267,7 @@ def clear_screen():
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shows a random image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 def show_image():
-    global screen
+    global screen, blinked, state, alphabet
 
     scr_width  = size[0]                                # surface width
     scr_height = size[1]                                # surface height
@@ -276,6 +277,8 @@ def show_image():
     back_color = (55,55,55)
     HB_X = (scr_width / 2) - 185
     HB_HEIGHT = 11
+
+    font = pygame.font.SysFont(None, 60)
 
 
     def drawHealthMeterLeft(currentHealth):
@@ -297,6 +300,19 @@ def show_image():
         for i in range(MAXHEALTH): # draw the white outlines
             pygame.draw.rect(screen, WHITE, (HB_X+240 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT), 1)
 
+    def write(txt, x,y, color):
+        img = font.render(txt, True, color)
+        screen.blit(img, (x, y))
+
+    def write_alphabet(list):
+        pygame.draw.rect(screen, back_color, (0, scr_height / 2 + 100, scr_width, 100))
+        i = 0
+        for c in list:
+            #print(c,c[0])
+            write(c[0], 50 + (i*40), scr_height/2 + 100, WHITE)
+            i+=1
+
+
     screen = pygame.display.set_mode(size)			    # clearing screen
     pygame.display.update()								# update screen
 
@@ -306,6 +322,8 @@ def show_image():
     for image in os.listdir(path):                      # populating the list...
         if len(image) == 7 and image.endswith('.png'):  # ...only files with name [nnn].png (n=number)
             images.append(image)
+
+    print(images)
 
     img_w_def = 150                                     # default image width, changing this might lead to a cascade effect...
 
@@ -318,13 +336,8 @@ def show_image():
 
     clock = pygame.time.Clock()                         # clock
 
-    font = pygame.font.SysFont(None, 24)
-
     running = True                                      # Prepare loop condition
-    x = old_x = 0
-
-    # Event loop
-    while running:
+    while running:                                      # Event loop
     
         # Close window event
         for event in pygame.event.get():
@@ -332,18 +345,7 @@ def show_image():
                     if event.key == pygame.K_ESCAPE:
                         running = False
 
-        x += 1
-        if x > 100:
-            x = 0
-
-        img = font.render(str(old_x), True, back_color)
-        screen.blit(img, (20, 20))
-
-        img = font.render(str(x), True, WHITE)
-        screen.blit(img, (20, 20))
-        old_x = x
-
-
+    
         nr_images = len(images)                                             # how many images found?
         images = np.roll(images, state*-1)                                  # yippii! rotating the image carousel
         
@@ -359,7 +361,7 @@ def show_image():
 
             screen.blit(image, IMAGE_POSITION)                              # show the image
 
-            large_image = pygame.image.load(path + images[3])
+            large_image = pygame.image.load(path + images[3])               # enlarging the center image which is #3
 
             img_width   = large_image.get_width()                           # finding image width...
             img_height  = large_image.get_height()                          # ...and height for scaling purposes
@@ -370,21 +372,36 @@ def show_image():
 
             screen.blit(large_image, IMAGE_POSITION)                        # show the image
 
+        
         print(left, background, right)
 
-        drawHealthMeterLeft(int(left * MAXHEALTH))
-        drawHealthMeterBackground(int(background * MAXHEALTH))
-        drawHealthMeterRight(int(right * MAXHEALTH))
+        drawHealthMeterLeft       (int(left * MAXHEALTH))
+        drawHealthMeterBackground (int(background * MAXHEALTH))
+        drawHealthMeterRight      (int(right * MAXHEALTH))
+
+        print(blinked, images[3])
+        if images[3] == '020.png' and blinked == True:
+            write_alphabet(alphabet)
+            alphabet = np.roll(alphabet, 1,0)
+
+            write("Chosen", 20, 20, WHITE)
+            print("Chosen")
+            state = 0
+        else:
+            write("Chosen", 20, 20, back_color)
+
+        blinked = False
+
 
         # Part of event loop
         pygame.display.flip()
-        time.sleep(0.5)
-        clock.tick(1)
+        time.sleep(.1)
+        clock.tick(60)
 
 
 
 def init_menu():
-    global keyboard
+    global keyboard, alphabet
 
     keyboard = Controller()
     
