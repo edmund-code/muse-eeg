@@ -21,6 +21,7 @@ from nltk import flatten
 
 import pygame
 import pygame_menu
+from pygame.locals import *
 from pygame_menu.examples import create_example_window
 import string
 import os
@@ -305,12 +306,53 @@ def show_image():
         screen.blit(img, (x, y))
 
     def write_alphabet(list):
-        pygame.draw.rect(screen, back_color, (0, scr_height / 2 + 100, scr_width, 100))
+        pygame.draw.rect(screen, back_color, (0, scr_height / 2 + 100, scr_width, 35))      # emptying the background
         i = 0
         for c in list:
             #print(c,c[0])
             write(c[0], 50 + (i*40), scr_height/2 + 100, WHITE)
             i+=1
+        # write(list[13][0], 400, 600, back_color) 
+        # write(list[13][0], 400, 600, WHITE) 
+
+    def text_editor():
+        global alphabet, text
+
+        # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
+        pygame.draw.rect(screen, GREEN, pygame.Rect((scr_width/2)-35, (scr_height/2) + 88, 
+            40, 60),  4, 6)
+        write_alphabet(alphabet)
+
+        # Text "editor"
+        pygame.draw.rect(screen, WHITE, pygame.Rect(20, (scr_height/2) + 180, scr_width-40, 170),  1, 6)
+
+        text = "This is a text"
+        img = font.render(text, True, WHITE)
+        rect = img.get_rect()
+        editing = True
+        while editing == True:
+            # Close window event
+            for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_ESCAPE:
+                            editing = False
+                        if event.key == K_BACKSPACE:
+                            if len(text)>0:
+                                text = text[:-1]
+                        else:
+                            text += event.unicode
+                        img = font.render(text, True, WHITE)
+                        rect.size=img.get_size()
+
+            rect = img.get_rect()
+            rect.topleft = (20, 50)
+
+            if time.time() % 2 > 1:
+                alphabet = np.roll(alphabet, 1,0)
+                #text = text + alphabet[13][0]
+    
+            screen.blit(img, rect)
+            pygame.display.update()
 
 
     screen = pygame.display.set_mode(size)			    # clearing screen
@@ -327,11 +369,10 @@ def show_image():
 
     img_w_def = 150                                     # default image width, changing this might lead to a cascade effect...
 
-    screen.fill(back_color)                           # surface background color
-    color = (48, 141, 70)                               # image selector color
+    screen.fill(back_color)                             # surface background color
 
     # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
-    pygame.draw.rect(screen, color, pygame.Rect((scr_width/2)-(img_w_def/2)-15, (scr_height/2)-(img_w_def/2)-15, 
+    pygame.draw.rect(screen, GREEN, pygame.Rect((scr_width/2)-(img_w_def/2)-15, (scr_height/2)-(img_w_def/2)-15, 
         img_w_def + 20, img_w_def/1.3),  5, 7)
 
     clock = pygame.time.Clock()                         # clock
@@ -379,11 +420,10 @@ def show_image():
         drawHealthMeterBackground (int(background * MAXHEALTH))
         drawHealthMeterRight      (int(right * MAXHEALTH))
 
+        blinked = True
         print(blinked, images[3])
-        if images[3] == '020.png' and blinked == True:
-            write_alphabet(alphabet)
-            alphabet = np.roll(alphabet, 1,0)
-
+        if images[3] == '005.png' and blinked == True:
+            text_editor()
             write("Chosen", 20, 20, WHITE)
             print("Chosen")
             state = 0
