@@ -49,6 +49,8 @@ left = right = background = 0
 
 blinks = 0                                                      # amount of blinks
 blinked = False                                                 # did you blink?
+jaw_clenches = 0
+jaw_clenched = False
 char = 0                                                        # character chosen
 state = 0
 alphabet = []
@@ -101,11 +103,11 @@ def blink_handler(address, *args):
     blinked = True
 
     if blinked == True:
-        print(chr(67), end = "")
+#        print(chr(67), end = "")
 #        blinked = False
         state = 0
-
-#    print("Blink detected ")
+    
+        print("Blinks detected: ", blinks)
 
 
 # ******* Handling jaw clenches *******
@@ -281,27 +283,32 @@ def show_image():
 
     font = pygame.font.SysFont(None, 60)
 
+    def clear_area():
+        pygame.draw.rect(screen, back_color, (  HB_X, scr_height / 2 + 50, 100 * MAXHEALTH, HB_HEIGHT))
 
     def drawHealthMeterLeft(currentHealth):
-        pygame.draw.rect(screen, back_color, (  HB_X, scr_height / 2 + 50, 100 * MAXHEALTH, HB_HEIGHT))
+        clear_area()
         for i in range(currentHealth): # draw red health bars
             pygame.draw.rect(screen, GREEN,   (HB_X + (10 * MAXHEALTH) - (i * 10), scr_height / 2 + 50, 20, HB_HEIGHT))
         for i in range(MAXHEALTH): # draw the white outlines
             pygame.draw.rect(screen, WHITE, (HB_X + (10 * MAXHEALTH) - (i * 10), scr_height / 2 + 50, 20, HB_HEIGHT), 1)
 
     def drawHealthMeterBackground(currentHealth):
-        for i in range(currentHealth): # draw red health bars
-            pygame.draw.rect(screen, GREEN,   (HB_X+120 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT))
+        cH = currentHealth
+        for i in range(cH): # draw red health bars
+            pygame.draw.rect(screen, GREEN, ((scr_width/2) - (5*cH) + (i*10)-10, scr_height / 2 + 50, 20, HB_HEIGHT))
         for i in range(MAXHEALTH): # draw the white outlines
             pygame.draw.rect(screen, WHITE, (HB_X+120 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT), 1)
 
     def drawHealthMeterRight(currentHealth):
         for i in range(currentHealth): # draw red health bars
-            pygame.draw.rect(screen, GREEN,   (HB_X+240 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT))
+            pygame.draw.rect(screen, GREEN, (HB_X+160 + (10 * MAXHEALTH) + i * 10, scr_height / 2 + 50, 20, HB_HEIGHT))
         for i in range(MAXHEALTH): # draw the white outlines
-            pygame.draw.rect(screen, WHITE, (HB_X+240 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT), 1)
+            pygame.draw.rect(screen, WHITE, (HB_X+160 + (10 * MAXHEALTH) + i * 10, scr_height / 2 + 50, 20, HB_HEIGHT), 1)
 
-    def write(txt, x,y, color):
+
+    def write(txt, x,y, color, size):
+        font = pygame.font.SysFont(None, size)
         img = font.render(txt, True, color)
         screen.blit(img, (x, y))
 
@@ -309,11 +316,9 @@ def show_image():
         pygame.draw.rect(screen, back_color, (0, scr_height / 2 + 100, scr_width, 35))      # emptying the background
         i = 0
         for c in list:
-            #print(c,c[0])
-            write(c[0], 50 + (i*40), scr_height/2 + 100, WHITE)
+            write(c[0], 50 + (i*40), scr_height/2 + 100, WHITE, 60)
             i+=1
-        # write(list[13][0], 400, 600, back_color) 
-        # write(list[13][0], 400, 600, WHITE) 
+
 
     def text_editor():
         global alphabet, text, blinked, state
@@ -323,36 +328,49 @@ def show_image():
             40, 60),  4, 6)
         write_alphabet(alphabet)
 
-        # Text "editor"
+        # Text "editor" frame
         pygame.draw.rect(screen, WHITE, pygame.Rect(20, (scr_height/2) + 180, scr_width-40, 170),  1, 6)
 
-        text = "c:\\"
+        text = ""
         img = font.render(text, True, WHITE)
         rect = img.get_rect()
+
+        start = timer()
+        end = start
+        blinked = False
         editing = True
+
         while editing == True:
             # Close window event
             for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_ESCAPE:
                             editing = False
-                        # if event.key == K_BACKSPACE:
-                        #     if len(text)>0:
-                        #         text = text[:-1]
-                        # else:
-                        #     text += event.unicode
-                        #alphabet = np.roll(alphabet, 1,0)
-                        blinked = True
-                        # text += alphabet[13][0]
-                        # img = font.render(text, True, WHITE)
-                        # rect.size=img.get_size()
+
+            drawHealthMeterLeft       (int(left * MAXHEALTH))
+            drawHealthMeterBackground (int(background * MAXHEALTH))
+            drawHealthMeterRight      (int(right * MAXHEALTH))
+
+            wait = 1
+            end = timer()
+
+            if (end - start) > wait:
+                start = timer()
+                if state == -1:
+                    alphabet = np.roll(alphabet, 1,0)
+                    write_alphabet(alphabet)
+                elif state == 1:
+                    alphabet = np.roll(alphabet, -1,0)
+                    write_alphabet(alphabet)
 
             if blinked == True:
+                print("BLINKED!!!")
                 state = 0
                 blinked = False
                 text += alphabet[13][0]
                 img = font.render(text, True, WHITE)
-                rect.size=img.get_size() 
+                rect.size=img.get_size()
+
 
             pygame.draw.rect(screen, back_color, (0, scr_height / 2 + 180, scr_width-40, 170))      # emptying the background
             pygame.draw.rect(screen, WHITE, pygame.Rect(20, (scr_height/2) + 180, scr_width-40, 170),  1, 6)
@@ -363,6 +381,7 @@ def show_image():
 # #                alphabet = np.roll(alphabet, 1,0)
 #                 text = alphabet[13][0]
     #        screen.fill(back_color)
+
             screen.blit(img, rect)
             pygame.display.update()
 
@@ -383,11 +402,21 @@ def show_image():
 
     screen.fill(back_color)                             # surface background color
 
+
+    def writeLabels():
+        write("Left",       HB_X +  40, scr_height/2+65, WHITE, 24)
+        write("Background", HB_X + 130, scr_height/2+65, WHITE, 24)
+        write("Right",      HB_X + 280, scr_height/2+65, WHITE, 24)
+
+    writeLabels() 
+
     # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
     pygame.draw.rect(screen, GREEN, pygame.Rect((scr_width/2)-(img_w_def/2)-15, (scr_height/2)-(img_w_def/2)-15, 
         img_w_def + 20, img_w_def/1.3),  5, 7)
 
     clock = pygame.time.Clock()                         # clock
+    start = timer()
+    end = start
 
     running = True                                      # Prepare loop condition
     while running:                                      # Event loop
@@ -424,32 +453,30 @@ def show_image():
             IMAGE_POSITION = ((scr_width/2) - IMAGE_SIZE[0] / 2, 20)        # placing the image
 
             screen.blit(large_image, IMAGE_POSITION)                        # show the image
-
         
+
+        print(blinked, images[3])
+        if blinked == True:
+            write("Chosen", 20, 20, WHITE, 60)
+            print("Chosen: " + images[3])
+            state = 0
+            if images[3] == '020.png':
+                print("EDITING")
+                text_editor()
+            blinked = False
+        else:
+            write("Chosen", 20, 20, back_color, 60)
+
         print(left, background, right)
 
         drawHealthMeterLeft       (int(left * MAXHEALTH))
         drawHealthMeterBackground (int(background * MAXHEALTH))
         drawHealthMeterRight      (int(right * MAXHEALTH))
 
-        blinked = True
-        print(blinked, images[3])
-        if images[3] == '005.png' and blinked == True:
-            blinked = False
-            text_editor()
-            write("Chosen", 20, 20, WHITE)
-            print("Chosen")
-            state = 0
-        else:
-            write("Chosen", 20, 20, back_color)
-
-        blinked = False
-
-
         # Part of event loop
         pygame.display.flip()
         time.sleep(.1)
-        clock.tick(60)
+        clock.tick(6)
 
 
 
