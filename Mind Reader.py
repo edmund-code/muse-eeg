@@ -316,7 +316,7 @@ def show_image():
         # write(list[13][0], 400, 600, WHITE) 
 
     def text_editor():
-        global alphabet, text
+        global alphabet, text, blinked, state
 
         # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
         pygame.draw.rect(screen, GREEN, pygame.Rect((scr_width/2)-35, (scr_height/2) + 88, 
@@ -326,7 +326,7 @@ def show_image():
         # Text "editor"
         pygame.draw.rect(screen, WHITE, pygame.Rect(20, (scr_height/2) + 180, scr_width-40, 170),  1, 6)
 
-        text = "This is a text"
+        text = "c:\\"
         img = font.render(text, True, WHITE)
         rect = img.get_rect()
         editing = True
@@ -336,21 +336,33 @@ def show_image():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_ESCAPE:
                             editing = False
-                        if event.key == K_BACKSPACE:
-                            if len(text)>0:
-                                text = text[:-1]
-                        else:
-                            text += event.unicode
-                        img = font.render(text, True, WHITE)
-                        rect.size=img.get_size()
+                        # if event.key == K_BACKSPACE:
+                        #     if len(text)>0:
+                        #         text = text[:-1]
+                        # else:
+                        #     text += event.unicode
+                        #alphabet = np.roll(alphabet, 1,0)
+                        blinked = True
+                        # text += alphabet[13][0]
+                        # img = font.render(text, True, WHITE)
+                        # rect.size=img.get_size()
 
+            if blinked == True:
+                state = 0
+                blinked = False
+                text += alphabet[13][0]
+                img = font.render(text, True, WHITE)
+                rect.size=img.get_size() 
+
+            pygame.draw.rect(screen, back_color, (0, scr_height / 2 + 180, scr_width-40, 170))      # emptying the background
+            pygame.draw.rect(screen, WHITE, pygame.Rect(20, (scr_height/2) + 180, scr_width-40, 170),  1, 6)
             rect = img.get_rect()
-            rect.topleft = (20, 50)
+            rect.topleft = (40, 580)
 
-            if time.time() % 2 > 1:
-                alphabet = np.roll(alphabet, 1,0)
-                #text = text + alphabet[13][0]
-    
+#             if time.time() % 3 < 1:
+# #                alphabet = np.roll(alphabet, 1,0)
+#                 text = alphabet[13][0]
+    #        screen.fill(back_color)
             screen.blit(img, rect)
             pygame.display.update()
 
@@ -423,6 +435,7 @@ def show_image():
         blinked = True
         print(blinked, images[3])
         if images[3] == '005.png' and blinked == True:
+            blinked = False
             text_editor()
             write("Chosen", 20, 20, WHITE)
             print("Chosen")
