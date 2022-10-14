@@ -515,15 +515,34 @@ def show_image():
 
 
 
+def mainmenu_background():
+    global surface
+    """
+    Background color of the main menu, on this function user can plot
+    images, play sounds, etc.
+    """
+    background_image = pygame.image.load("Images/eye.png")
+    # Load image
+   # background_image = pygame_menu.BaseImage(
+   #     image_path=pygame_menu.baseimage.IMAGE_EXAMPLE_WALLPAPER
+   # )
+
+    surface.blit(background_image, (0, 0)) #example, just place the image anywhere you want
+    pygame.display.flip()
+    #background_image.draw(surface)
+
+
 def init_menu():
-    global keyboard, alphabet
+    global keyboard, alphabet, surface
 
     keyboard = Controller()
     
     surface = create_example_window('Mind Reader', size)
+ 
 
     menu = pygame_menu.Menu(
         height=size[1],
+        onclose=pygame_menu.events.EXIT,  # User press ESC button
         theme=pygame_menu.themes.THEME_BLUE,
         title='Mind Reader',
         width=size[0]
@@ -550,7 +569,13 @@ def init_menu():
 #    menu.add.button('Init', initiate_tf)
     menu.add.button('Quit', pygame_menu.events.EXIT)
 
-    menu.mainloop(surface)
+    while True:
+        #if menu.is_enabled():
+        menu.mainloop(surface, mainmenu_background)
+
+        pygame.display.flip()
+
+    #menu.mainloop(surface)
 
 
 def set_difficulty(selected: Tuple, value: Any) -> None:
