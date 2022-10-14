@@ -105,35 +105,25 @@ def blink_handler(address, *args):
 
     blink_time.append(timer())
 
-    # blinked = True
     bl2 = False
 
     if blinks >= 2:
         now  = blink_time[blinks]
         then = blink_time[blinks-1]
-        print(then, now, now - then)
+#        print(then, now, now - then)
         if (now - then) < bl2_treshold:
             bl2 = True
-            print("Double blink")
+#            print("Double blink")
         else:
             bl2 = False
             blinked = True
-            print("Single blink")
+            state = 0
+#            print("Single blink")
 
     blinks += 1
-    # for i in range(len(blink_time)):
-    #     print(i, blink_time[i])
-
-#    print(blink_time)
-#    print(blinked,bl2)
-
-    if blinked == True:
-#        print(chr(67), end = "")
-#        blinked = False
-        state = 0
     
-        print("Blinks detected: ", blinks)
-        print()
+#        print("Blinks detected: ", blinks)
+#        print()
 
 
 # ******* Handling jaw clenches *******
@@ -307,6 +297,8 @@ def show_image():
     HB_X = (scr_width / 2) - 185
     HB_HEIGHT = 11
 
+
+
     font = pygame.font.SysFont(None, 60)
 
     def clear_area():
@@ -347,7 +339,7 @@ def show_image():
 
 
     def text_editor():
-        global alphabet, text, blinked, state
+        global alphabet, text, blinked, state, bl2
 
         # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
         pygame.draw.rect(screen, GREEN, pygame.Rect((scr_width/2)-35, (scr_height/2) + 88, 
@@ -403,11 +395,6 @@ def show_image():
             rect = img.get_rect()
             rect.topleft = (40, 580)
 
-#             if time.time() % 3 < 1:
-# #                alphabet = np.roll(alphabet, 1,0)
-#                 text = alphabet[13][0]
-    #        screen.fill(back_color)
-
             screen.blit(img, rect)
             pygame.display.update()
 
@@ -449,45 +436,23 @@ def show_image():
     clock = pygame.time.Clock()                         # clock
     start = timer()
     end = start
+    nr_images = len(images)                             # how many images found?
+    bl2 = False
 
     running = True                                      # Prepare loop condition
     while running:                                      # Event loop
-    
+        
+        if bl2 == True:
+            #bl2 = False
+            running = False
+
         # Close window event
         for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         running = False
 
-    
-        nr_images = len(images)                                             # how many images found?
-        images = np.roll(images, state*-1)                                  # yippii! rotating the image carousel
-        
-        for i in range(nr_images):
-            image = pygame.image.load(path + images[i])	                    # concatenating the folder with image name
-
-            img_width   = image.get_width()                                 # finding image width...
-            img_height  = image.get_height()                                # ...and height for scaling purposes
-
-            IMAGE_SIZE = (img_w_def, img_w_def * img_height / img_width)	# setting the size for the image
-            image = pygame.transform.scale(image, IMAGE_SIZE)			    # scaling the image
-            IMAGE_POSITION = ((i * (img_w_def + 20)) + 10, 300)				# placing the image
-
-            screen.blit(image, IMAGE_POSITION)                              # show the image
-
-            large_image = pygame.image.load(path + images[3])               # enlarging the center image which is #3
-
-            img_width   = large_image.get_width()                           # finding image width...
-            img_height  = large_image.get_height()                          # ...and height for scaling purposes
-
-            IMAGE_SIZE = (img_w_def*2.5, img_w_def*img_height/img_width*2.5)# setting the size for the image
-            large_image = pygame.transform.scale(large_image, IMAGE_SIZE)	# scaling the image
-            IMAGE_POSITION = ((scr_width/2) - IMAGE_SIZE[0] / 2, 20)        # placing the image
-
-            screen.blit(large_image, IMAGE_POSITION)                        # show the image
-        
-
-        print(blinked, images[3])
+        #print(blinked, images[3])
         if blinked == True:
             write("Chosen", 20, 20, WHITE, 60)
             print("Chosen: " + images[3])
@@ -499,7 +464,37 @@ def show_image():
         else:
             write("Chosen", 20, 20, back_color, 60)
 
-        print(left, background, right)
+
+        end = timer()
+        if (end - start) > 0.1:
+            start = timer()
+
+            images = np.roll(images, state*-1)                                  # yippii! rotating the image carousel
+            
+            for i in range(nr_images):
+                image = pygame.image.load(path + images[i])	                    # concatenating the folder with image name
+
+                img_width   = image.get_width()                                 # finding image width...
+                img_height  = image.get_height()                                # ...and height for scaling purposes
+
+                IMAGE_SIZE = (img_w_def, img_w_def * img_height / img_width)	# setting the size for the image
+                image = pygame.transform.scale(image, IMAGE_SIZE)			    # scaling the image
+                IMAGE_POSITION = ((i * (img_w_def + 20)) + 10, 300)				# placing the image
+
+                screen.blit(image, IMAGE_POSITION)                              # show the image
+
+                large_image = pygame.image.load(path + images[3])               # enlarging the center image which is #3
+
+                img_width   = large_image.get_width()                           # finding image width...
+                img_height  = large_image.get_height()                          # ...and height for scaling purposes
+
+                IMAGE_SIZE = (img_w_def*2.5, img_w_def*img_height/img_width*2.5)# setting the size for the image
+                large_image = pygame.transform.scale(large_image, IMAGE_SIZE)	# scaling the image
+                IMAGE_POSITION = ((scr_width/2) - IMAGE_SIZE[0] / 2, 20)        # placing the image
+
+                screen.blit(large_image, IMAGE_POSITION)                        # show the image
+        
+        #print(left, background, right)
 
         drawHealthMeterLeft       (int(left * MAXHEALTH))
         drawHealthMeterBackground (int(background * MAXHEALTH))
@@ -507,7 +502,8 @@ def show_image():
 
         # Part of event loop
         pygame.display.flip()
-        time.sleep(.8)
+
+        #time.sleep(.8)
         clock.tick(120)
 
 
@@ -529,22 +525,22 @@ def init_menu():
     
     chars = list(string.ascii_uppercase)
     chars.append(' ')
-    print(chars)
+    #print(chars)
 
     def createList(r1, r2):
         return list(range(r1, r2+1))
 
     numbers = createList(65,90)
     numbers.append(32)
-    print(numbers)
+    #print(numbers)
 
     alphabet = list(zip(chars,numbers))
-    print(alphabet)
+    #print(alphabet)
 
 #    user_name = menu.add.text_input('Name: ', default='John Doe', maxchar=10)
-    menu.add.selector('Difficulty: ', alphabet, onchange=set_difficulty)
+#    menu.add.selector('Difficulty: ', alphabet, onchange=set_difficulty)
     menu.add.button('Play', start_the_game)
-    menu.add.button('Init', initiate_tf)
+#    menu.add.button('Init', initiate_tf)
     menu.add.button('Quit', pygame_menu.events.EXIT)
 
     menu.mainloop(surface)
