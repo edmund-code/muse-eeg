@@ -49,11 +49,13 @@ left = right = background = 0
 
 blinks = 0                                                      # amount of blinks
 blinked = False                                                 # did you blink?
+bl2 = bl3 = False
 jaw_clenches = 0
 jaw_clenched = False
 char = 0                                                        # character chosen
 state = 0
 alphabet = []
+blink_time = []
 
 start = timer()
 secs = 3
@@ -97,10 +99,33 @@ def initiate_tf():
 
 # ********** Handling blinks **********
 def blink_handler(address, *args):
-    global blinks, blinked, state
+    global blinks, blinked, state, bl2
+
+    bl2_treshold = 0.7
+
+    blink_time.append(timer())
+
+    # blinked = True
+    bl2 = False
+
+    if blinks >= 2:
+        now  = blink_time[blinks]
+        then = blink_time[blinks-1]
+        print(then, now, now - then)
+        if (now - then) < bl2_treshold:
+            bl2 = True
+            print("Double blink")
+        else:
+            bl2 = False
+            blinked = True
+            print("Single blink")
 
     blinks += 1
-    blinked = True
+    # for i in range(len(blink_time)):
+    #     print(i, blink_time[i])
+
+#    print(blink_time)
+#    print(blinked,bl2)
 
     if blinked == True:
 #        print(chr(67), end = "")
@@ -108,6 +133,7 @@ def blink_handler(address, *args):
         state = 0
     
         print("Blinks detected: ", blinks)
+        print()
 
 
 # ******* Handling jaw clenches *******
@@ -385,6 +411,12 @@ def show_image():
             screen.blit(img, rect)
             pygame.display.update()
 
+            if bl2 == True:
+                # Text "editor" frame
+                pygame.draw.rect(screen, back_color, (0, (scr_height/2) + 88, scr_width, scr_height))
+                pygame.display.update()
+                editing = False
+
 
     screen = pygame.display.set_mode(size)			    # clearing screen
     pygame.display.update()								# update screen
@@ -438,7 +470,7 @@ def show_image():
             img_height  = image.get_height()                                # ...and height for scaling purposes
 
             IMAGE_SIZE = (img_w_def, img_w_def * img_height / img_width)	# setting the size for the image
-            image = pygame.transform.smoothscale(image, IMAGE_SIZE)			# scaling the image
+            image = pygame.transform.scale(image, IMAGE_SIZE)			    # scaling the image
             IMAGE_POSITION = ((i * (img_w_def + 20)) + 10, 300)				# placing the image
 
             screen.blit(image, IMAGE_POSITION)                              # show the image
@@ -448,8 +480,8 @@ def show_image():
             img_width   = large_image.get_width()                           # finding image width...
             img_height  = large_image.get_height()                          # ...and height for scaling purposes
 
-            IMAGE_SIZE = (img_w_def*2.5, img_w_def*img_height/img_width*2.5)	# setting the size for the image
-            large_image = pygame.transform.smoothscale(large_image, IMAGE_SIZE)	# scaling the image
+            IMAGE_SIZE = (img_w_def*2.5, img_w_def*img_height/img_width*2.5)# setting the size for the image
+            large_image = pygame.transform.scale(large_image, IMAGE_SIZE)	# scaling the image
             IMAGE_POSITION = ((scr_width/2) - IMAGE_SIZE[0] / 2, 20)        # placing the image
 
             screen.blit(large_image, IMAGE_POSITION)                        # show the image
@@ -475,8 +507,8 @@ def show_image():
 
         # Part of event loop
         pygame.display.flip()
-        time.sleep(.1)
-        clock.tick(6)
+        time.sleep(.8)
+        clock.tick(120)
 
 
 
