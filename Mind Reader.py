@@ -8,6 +8,7 @@
 
 # *******************  IMPORTING MODULES ********************
 
+from tkinter.tix import IMAGE
 from turtle import back
 from pythonosc.dispatcher import Dispatcher
 from pythonosc.osc_server import BlockingOSCUDPServer
@@ -412,7 +413,7 @@ def show_image():
     path = 'Images/'                                    # ...in this subfolder of the current folder
     
     for image in os.listdir(path):                      # populating the list...
-        if len(image) == 7 and image.endswith('.png'):  # ...only files with name [nnn].png (n=number)
+        if image.startswith('0') and image.endswith('.png'):  # ...only files with name [nnn].png (n=number)
             images.append(image)
 
     print(images)
@@ -430,7 +431,7 @@ def show_image():
     writeLabels() 
 
     # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
-    pygame.draw.rect(screen, GREEN, pygame.Rect((scr_width/2)-(img_w_def/2)-15, (scr_height/2)-(img_w_def/2)-15, 
+    pygame.draw.rect(screen, GREEN, pygame.Rect((scr_width/2)-(img_w_def/2)-15, (scr_height/2)-(img_w_def/2)-25, 
         img_w_def + 20, img_w_def/1.3),  5, 7)
 
     clock = pygame.time.Clock()                         # clock
@@ -457,7 +458,7 @@ def show_image():
             write("Chosen", 20, 20, WHITE, 60)
             print("Chosen: " + images[3])
             state = 0
-            if images[3] == '020.png':
+            if images[3][0:3] == '020':
                 print("EDITING")
                 text_editor()
             blinked = False
@@ -479,7 +480,13 @@ def show_image():
 
                 IMAGE_SIZE = (img_w_def, img_w_def * img_height / img_width)	# setting the size for the image
                 image = pygame.transform.scale(image, IMAGE_SIZE)			    # scaling the image
-                IMAGE_POSITION = ((i * (img_w_def + 20)) + 10, 300)				# placing the image
+                IMAGE_POSITION = ((i * (img_w_def + 20)) + 10, 290)				# placing the image
+
+                pygame.draw.rect(screen, back_color, (IMAGE_POSITION[0] + 20,
+                    IMAGE_POSITION[1]+112, scr_width, 24))
+
+                write(images[i][4:-4],IMAGE_POSITION[0] + 20, 
+                    IMAGE_POSITION[1]+112,WHITE,24)
 
                 screen.blit(image, IMAGE_POSITION)                              # show the image
 
