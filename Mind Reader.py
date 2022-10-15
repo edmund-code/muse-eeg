@@ -8,13 +8,9 @@
 
 # *******************  IMPORTING MODULES ********************
 
-from tkinter.tix import IMAGE
-from turtle import back
 from pythonosc.dispatcher import Dispatcher
 from pythonosc.osc_server import BlockingOSCUDPServer
 
-import time
-import random
 import threading
 import numpy as np
 import tensorflow as tf
@@ -27,7 +23,6 @@ from pygame_menu.examples import create_example_window
 import string
 import os
 
-from typing import Tuple, Any
 from pynput.keyboard import Key, Controller
 from timeit import default_timer as timer
 
@@ -45,7 +40,6 @@ expected_samples = 30                                           # there are 5 fr
                                                                 # 4 sensors = 2 * 5 * 4 * 10 = 400. 
 
 confidence_threshold = 0.5                                      # default in Edge Impulse is 0.6
-global isFailed
 left = right = background = 0
 
 blinks = 0                                                      # amount of blinks
@@ -53,7 +47,6 @@ blinked = False                                                 # did you blink?
 bl2 = bl3 = False
 jaw_clenches = 0
 jaw_clenched = False
-char = 0                                                        # character chosen
 state = 0
 alphabet = []
 blink_time = []
@@ -111,20 +104,16 @@ def blink_handler(address, *args):
     if blinks >= 2:
         now  = blink_time[blinks]
         then = blink_time[blinks-1]
-#        print(then, now, now - then)
-        if (now - then) < bl2_treshold:
+
+        if (now - then) < bl2_treshold:         # double blink
             bl2 = True
-#            print("Double blink")
-        else:
+        else:                                   # single blink
             bl2 = False
             blinked = True
             state = 0
-#            print("Single blink")
 
     blinks += 1
     
-#        print("Blinks detected: ", blinks)
-#        print()
 
 
 # ******* Handling jaw clenches *******
@@ -173,7 +162,6 @@ def theta_handler(address: str,*args):
 def gamma_handler(address: str,*args):
     global alpha, beta, delta, theta, gamma
     global sample_nr, expected_samples, all_samples, sample
-    global start, end
 
     if (len(args)==5):                                  # If OSC Stream Brainwaves = All Values
         for i in range(1,5):
@@ -189,15 +177,6 @@ def gamma_handler(address: str,*args):
             all_samples.clear()
             all_samples = []
 
-    end = timer()
-    if (end - start) >= secs:                           # if we've waited enough for the current event
-        start = timer()                                 # getting current time
-        if state == 1:
-            keyboard.release(Key.right)
-            keyboard.press(Key.right)
-        elif state == -1:
-            keyboard.release(Key.left)
-            keyboard.press(Key.left)
 
 
 # ****************** EEG handlers END ******************
@@ -228,18 +207,12 @@ def inference():
     # checking if over confidence threshold
     if left >= confidence_threshold:
         choice = "Left"
-        # keyboard.release(Key.left)
-        # keyboard.press(Key.left)
         state = -1
     elif right >= confidence_threshold:
         choice = "Right"
-        # keyboard.release(Key.right)
-        # keyboard.press(Key.right)
         state = 1
     else:
         choice = "----"
-
-#    print(f"Left:{left:.4f} - Background:{background:.4f}   Right:{right:.4f}    {choice}          ")
 
 
 # ====================== MUSE COMMUNICATION ==========================
@@ -280,7 +253,6 @@ def start_threads():
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Clears the screen ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 def clear_screen():
-#	screen = pygame.display.set_mode(size, pygame.FULLSCREEN)			# clearing screen
 	screen = pygame.display.set_mode(size)			                    # clearing screen
 	pygame.display.update()												# update screen
    	
@@ -291,16 +263,15 @@ def show_image():
 
     scr_width  = size[0]                                # surface width
     scr_height = size[1]                                # surface height
-    MAXHEALTH = 9
+    MAXHEALTH = 9                                       # 0..9 = 10 bars for the "health bars"
     GREEN = (48, 141, 70)
     WHITE = (200,200,200)
     back_color = (55,55,55)
-    HB_X = (scr_width / 2) - 185
-    HB_HEIGHT = 11
+    HB_X = (scr_width / 2) - 185                        # start position for Health Bars
+    HB_HEIGHT = 11                                      # height of health bars
 
 
-
-    font = pygame.font.SysFont(None, 60)
+    font = pygame.font.SysFont(None, 60)                # default font
 
     def clear_area():
         pygame.draw.rect(screen, back_color, (  HB_X, scr_height / 2 + 50, 100 * MAXHEALTH, HB_HEIGHT))
@@ -350,11 +321,11 @@ def show_image():
         # Text "editor" frame
         pygame.draw.rect(screen, WHITE, pygame.Rect(20, (scr_height/2) + 180, scr_width-40, 170),  1, 6)
 
-        text = ""
+        text = ""                                           # put any default text here if you dare :-)
         img = font.render(text, True, WHITE)
         rect = img.get_rect()
 
-        start = timer()
+        start = timer()                                     # this and below needed for not scrolling the alphabet too fast
         end = start
         blinked = False
         editing = True
@@ -370,23 +341,24 @@ def show_image():
             drawHealthMeterBackground (int(background * MAXHEALTH))
             drawHealthMeterRight      (int(right * MAXHEALTH))
 
-            wait = 1
+            wait = 1                                        # wait how many seconds
             end = timer()
 
             if (end - start) > wait:
                 start = timer()
                 if state == -1:
-                    alphabet = np.roll(alphabet, 1,0)
+                    alphabet = np.roll(alphabet, 1,0)       # scrolling one direction...
                     write_alphabet(alphabet)
-                elif state == 1:
+                elif state == 1:                            # ...or the other
                     alphabet = np.roll(alphabet, -1,0)
                     write_alphabet(alphabet)
 
             if blinked == True:
-                print("BLINKED!!!")
-                state = 0
+                state = 0                                   # stops the alphabet when blinking
                 blinked = False
-                text += alphabet[13][0]
+                text += alphabet[13][0]                     # choosing the selected character
+                if text == 'EDGE':                          # EASTER EGG :-D
+                    text += ' IMPULSE :-D'
                 img = font.render(text, True, WHITE)
                 rect.size=img.get_size()
 
@@ -399,11 +371,11 @@ def show_image():
             screen.blit(img, rect)
             pygame.display.update()
 
-            if bl2 == True:
-                # Text "editor" frame
-                pygame.draw.rect(screen, back_color, (0, (scr_height/2) + 88, scr_width, scr_height))
+            if bl2 == True:                             # did you double blink?...
+                pygame.draw.rect(screen, back_color, (0,    # then clear the editor area
+                    (scr_height/2) + 88, scr_width, scr_height))
                 pygame.display.update()
-                editing = False
+                editing = False                         # and close the editor
 
 
     screen = pygame.display.set_mode(size)			    # clearing screen
@@ -413,22 +385,20 @@ def show_image():
     path = 'Images/'                                    # ...in this subfolder of the current folder
     
     for image in os.listdir(path):                      # populating the list...
-        if image.startswith('0') and image.endswith('.png'):  # ...only files with name [nnn].png (n=number)
+        if image.startswith('0') and image.endswith('.png'):  # ...only files with name 0*.png
             images.append(image)
-
-    print(images)
 
     img_w_def = 150                                     # default image width, changing this might lead to a cascade effect...
 
     screen.fill(back_color)                             # surface background color
 
 
-    def writeLabels():
+    def writeLabels():                                  # labels under the health bars
         write("Left",       HB_X +  40, scr_height/2+65, WHITE, 24)
         write("Background", HB_X + 130, scr_height/2+65, WHITE, 24)
         write("Right",      HB_X + 280, scr_height/2+65, WHITE, 24)
 
-    writeLabels() 
+    writeLabels()                                       # writing the above labels
 
     # Drawing selector Rectangle (x, y, width, height, border thickness, corner radius)
     pygame.draw.rect(screen, GREEN, pygame.Rect((scr_width/2)-(img_w_def/2)-15, (scr_height/2)-(img_w_def/2)-25, 
@@ -453,17 +423,14 @@ def show_image():
                     if event.key == pygame.K_ESCAPE:
                         running = False
 
-        #print(blinked, images[3])
         if blinked == True:
-            write("Chosen", 20, 20, WHITE, 60)
-            print("Chosen: " + images[3])
-            state = 0
-            if images[3][0:3] == '020':
-                print("EDITING")
-                text_editor()
+            write("Chosen", 20, 20, WHITE, 60)          # indicates the image was chosen
+            state = 0                                   # stops scrolling the images
+            if images[3][0:3] == '020':                 # if the keyboard (or whatever) picture was chosen
+                text_editor()                           # starts the text editor
             blinked = False
         else:
-            write("Chosen", 20, 20, back_color, 60)
+            write("Chosen", 20, 20, back_color, 60)     # writes over the chosen text
 
 
         end = timer()
@@ -485,8 +452,8 @@ def show_image():
                 pygame.draw.rect(screen, back_color, (IMAGE_POSITION[0] + 20,
                     IMAGE_POSITION[1]+112, scr_width, 24))
 
-                write(images[i][4:-4],IMAGE_POSITION[0] + 20, 
-                    IMAGE_POSITION[1]+112,WHITE,24)
+                write(images[i][4:-4],IMAGE_POSITION[0] + 20,                   # writing the rest of the file name...
+                    IMAGE_POSITION[1]+112,WHITE,24)                             # ...i.e. image description
 
                 screen.blit(image, IMAGE_POSITION)                              # show the image
 
@@ -501,7 +468,6 @@ def show_image():
 
                 screen.blit(large_image, IMAGE_POSITION)                        # show the image
         
-        #print(left, background, right)
 
         drawHealthMeterLeft       (int(left * MAXHEALTH))
         drawHealthMeterBackground (int(background * MAXHEALTH))
@@ -514,31 +480,13 @@ def show_image():
         clock.tick(120)
 
 
-
-def mainmenu_background():
-    global surface
-    """
-    Background color of the main menu, on this function user can plot
-    images, play sounds, etc.
-    """
-    background_image = pygame.image.load("Images/eye.png")
-    # Load image
-   # background_image = pygame_menu.BaseImage(
-   #     image_path=pygame_menu.baseimage.IMAGE_EXAMPLE_WALLPAPER
-   # )
-
-    surface.blit(background_image, (0, 0)) #example, just place the image anywhere you want
-    pygame.display.flip()
-    #background_image.draw(surface)
-
-
 def init_menu():
-    global keyboard, alphabet, surface
+    global keyboard, alphabet, surface, background_image
 
     keyboard = Controller()
-    
+
     surface = create_example_window('Mind Reader', size)
- 
+
 
     menu = pygame_menu.Menu(
         height=size[1],
@@ -547,46 +495,22 @@ def init_menu():
         title='Mind Reader',
         width=size[0]
     )
-
     
-    chars = list(string.ascii_uppercase)
-    chars.append(' ')
-    #print(chars)
+    chars = list(string.ascii_uppercase)                    # populating an alphabet list
+    chars.append(' ')                                       # adding space char
 
     def createList(r1, r2):
         return list(range(r1, r2+1))
 
-    numbers = createList(65,90)
-    numbers.append(32)
-    #print(numbers)
+    numbers = createList(65,90)                             # ASCII-codes for A..Z...
+    numbers.append(32)                                      # ...and space char
 
-    alphabet = list(zip(chars,numbers))
-    #print(alphabet)
+    alphabet = list(zip(chars,numbers))                     # creating a list of chars and ASCII-codes
 
-#    user_name = menu.add.text_input('Name: ', default='John Doe', maxchar=10)
-#    menu.add.selector('Difficulty: ', alphabet, onchange=set_difficulty)
     menu.add.button('Play', start_the_game)
-#    menu.add.button('Init', initiate_tf)
     menu.add.button('Quit', pygame_menu.events.EXIT)
 
-    while True:
-        #if menu.is_enabled():
-        menu.mainloop(surface, mainmenu_background)
-
-        pygame.display.flip()
-
-    #menu.mainloop(surface)
-
-
-def set_difficulty(selected: Tuple, value: Any) -> None:
-    global blinked, char
-
-    """
-    Set the difficulty of the game.
-    """
-#    print(f'Set difficulty to {selected[0]} ({value})')
-    char = value
-    state = 0
+    menu.mainloop(surface)
 
 
 def start_the_game() -> None:
