@@ -243,19 +243,30 @@ This can be the most rewarding - or most frustrating - phase in the whole proces
  - The objective of the app is really to learn how to use your brain and EEG-data to initiate actions. As this is not a game, you are not awarded with points, although it would be a nice addition to the app. Feel free to implement it!
  - As shown in the video - you did watch it, didn't you? - you are presented with an image carousel which can roll left or right. 
  	- Not necessarily all images are shown at the screen at the same time. If you want to add more images, ensure they have same aspect ratio as the example images, and name them `0nn Image Description` where `nn` is a running number between `00` and `99`, and `Image Description` is the text you want to be visible under the image.
-  
- - Similarly as when you collected the training data, you are now expected to try moving your left or right hand to start rolling the carousel.
- - Blink once when you want to choose an image. This also stops the carousel.
- - When you select the laptop image, you have the 
 
 <img align=right src="./Images/MindReader030.png" width="400" style="padding-left:10px">
+  
+ - Similarly as when you collected the training data, you are now expected to try moving your left or right hand to start rolling the carousel. 
+ 	- The three "health" bars below the images are showing the classification result for each of the three events (background, left, right). The logic is such that if the ML-model classified the EEG-data e.g.: Left=70%, Background=20%, and Right=10% &rarr;&rarr; 7, 2, and 1 green bars would be shown in each of the fields.
+	- The health bars are also a biofeedback mechanism in the sense that they can help you to understand the connection between what you are doing (i.e. trying to move a hand), and the corresponding result from the ML-model.
+ - Blink once when you want to choose an image. This also stops the carousel.
 
+
+
+ - When you select the laptop image, you are presented with a text editing field at the bottom of the screen. Similarly as when navigating between the images, you can now navigate left or right through the alphabet, and select a letter by blinking.
+ 	- As an 'Easter Egg' or very simple text prediction example, why not try writing `EDGE` and see what happens :smiley:
+- Double blink (= 2 blinks within 0.7 seconds) when you want to stop writing and go back to the carousel. You can also cheat by pressing `ESC`
+
+ <img align=right src="./Images/MindReader035.png" width="400" style="padding-left:10px">
 
   
 <br/>
 
 ---------------
 # FINAL COMMENTS
-That's it! Hopefully you were successful in training and recognising eye blinks with your EEG-device. Hopefully it also inspires you to try to improve the performance, e.g. by collecting more samples, by collecting more event types or by tweaking the different parameters and settings in Edge Impulse. And finally, when you have understood the possibilities and limitations with a consumer-based EEG-device, why not challenge yourself with something more advanced than the Pong-game!
+That's it! You have now seen how it is possible to use EEG-data to control an app in a more advanced way compared to Tutorial 1. It is undoubtedly more challenging to gather the data and get good accuracy, but when you succeed it is so much more rewarding. The standard way to improve a ML-model is to gather more data, and then even some more. If that does not help enough, next steps might be to tweak the ML-model, or even change the approach drastically. 
+
+The EEG-data used in this and the previous tutorial is  put into frequency bands by the API Mind-Monitor is using, but you might instead want to try with the raw data measured in millivolts (mV), and use Edge Impulse's spectral analysis learning block for furthre signal processing. The Python-program used in these tutorials are however not collecting raw data, but [this simple Python program](https://github.com/Enigma644/MindMonitorPython/blob/main/OSC%20Receiver%20Simple.py) can be used as a starting point.
+As earlier mentioned, by using an additional electrode, you might be able to get data closer to the sensorimotor cortex.
 
 <div style="text-align: right"> <em>All images are either the author's own or from Wikimedia Commons</em> </div>
