@@ -3,7 +3,7 @@
 # Objective
 The objective of this  tutorial is to show how you, by using a Muse EEG-device, can communicate with the outer world through a computer app. To be precise, this is without moving your limbs or touching the computer at all, instead you "just" need to concentrate! 
 
-While this is a stand-alone tutorial, it is still recommended you check [Part 1](https://docs.edgeimpulse.com/experts/eeg-data-control-games) for background information. If you try to replicate the steps - please do! - Part 1 also goes into more details which are not all repeated here.    
+While this is a stand-alone tutorial, it is still recommended you check [Part 1](https://docs.edgeimpulse.com/experts/eeg-data-control-games) for background information. If you try to replicate the steps - please do! - it is recommended to start with Part 1 as the learning curve is shallower there.    
 
 # Introduction
 
@@ -11,10 +11,16 @@ While this is a stand-alone tutorial, it is still recommended you check [Part 1]
 
 This tutorial is increasing the difficulty level compared to Part 1, which only used eye blinks as triggers. Here limb movement _tries_ are, together with eye blinks, being used to navigate and select images from an image carousel, and even to select letters from the alphabet to communicate through writing. Eye blinks are fairly easy to detect, with or without Machine Learning, as they generate distinct and visible spikes in EEG-data. Motoric movements - or in this tutorial movement tries - do not cause as visible changes in EEG-data, instead they need to be deduced by complex signal analysis and/or Machine Learning.
 
-As mentioned in Part 1, there is a lot of research related to interfacing brain and machine. Patients suffering from ALS (a progressive nervous system disease) have through _invasive_ brain implants been able to communicate with the outer world. _Non-invasive_ methods have successfully been used for similar purposes as is done in this tutorial. E.g. [Andrea Kübler and Donatella Mattia](https://www.sciencedirect.com/topics/medicine-and-dentistry/sensorimotor-rhythm) describe how Sensorimotor Rhytm-based (SMR) devices were by test participants used to navigate a remote robot through a labyrinth or spell using a virtual keyboard. The main difference between aforementioned type of clinical EEG-research and this tutorial, is that the first ones are typically using professional EEG-devices with between 16 - 128+ electrodes, but a consumer-based EEG-device like Muse is only having 4 electrodes. More electrodes means both more data as well as data from different brain regions. Especially for SMR-events, electrodes close to the sensorimotor cortex (think top of your skull) are essential, as the signals they measure are closer to limb movements. This in comparison to Muse electrodes which are behind the ears and at the forehead, and are quite far away from the sensorimotor cortex. To improve the situation when using Muse-devices, it is possible to connect an extra electrode to the USB-port, for DIY-persons [this is a comprehensive write-up](https://hackaday.io/project/162169-muse-eeg-headset-making-extra-electrode) on how to build one, and [this conversation](https://openbci.com/forum/index.php?p=/discussion/2634/micro-usb-electrode-options-for-muse-extra-electrode-port) also provides some further info. 
+As mentioned in Part 1, there is a lot of research related to interfacing brain and machine. Patients suffering from ALS (a progressive nervous system disease) have through _invasive_ brain implants been able to communicate with the outer world. 
 
-In this tutorial however, no extra electrode is used, instead the goal is to try to collect more data and of higher quality.
-  
+_Non-invasive_ methods have successfully been used for similar purposes as is done in this tutorial. E.g. [Andrea Kübler and Donatella Mattia](https://www.sciencedirect.com/topics/medicine-and-dentistry/sensorimotor-rhythm) describe how Sensorimotor Rhytm-based (SMR) devices were by test participants used to navigate a remote robot through a labyrinth or to spell using a virtual keyboard.  
+
+The main difference between aforementioned types of clinical EEG-research and this tutorial, is that the first ones are typically using professional EEG-devices with between 16 - 128+ electrodes, while a consumer-based EEG-device like Muse is only having 4 electrodes. More electrodes means both more data as well as data from different brain regions. Especially for SMR-events, electrodes close to the sensorimotor cortex (think top of your skull) are essential, as the signals they measure are closer to the area generating limb movement signals. This in comparison to Muse electrodes which are behind the ears and at the forehead, and are quite far away from the sensorimotor cortex. To improve the situation when using Muse-devices, it is possible to connect an extra electrode to the USB-port, for DIY-persons [this is a comprehensive write-up](https://hackaday.io/project/162169-muse-eeg-headset-making-extra-electrode) on how to build one, and [this conversation](https://openbci.com/forum/index.php?p=/discussion/2634/micro-usb-electrode-options-for-muse-extra-electrode-port) also provides some further info. In this tutorial however, no extra electrode is used, instead the goal is to try to collect more data and of higher quality. 
+
+I got the idea of using Muse for trying to control apps or external devices from Tim de Boer. He has written a series of great blog posts at Medium.com related to EEG-headsets and neuroscience, [this](https://medium.com/building-a-bedroom-bci/collecting-brain-signal-data-using-the-muse-2-eeg-headset-a2d45ae00455) is one of them. 
+
+<br/>  
+
 ---------------
 # Prerequisites
 
@@ -38,9 +44,11 @@ The data flow for both Part 1 and Part 2 is:
 # Preparations
 **Python modules**
 
- - Install Python-OSC and Tkinter from a command prompt with 
-```pip install python-osc``` and `pip install tk`
- - For Part 2 you'll also need Tensorflow, install it with `pip install tensorflow`
+ - Install Python-OSC, PYGame, PYGame-menu, and Tensorflow from a command prompt with:
+ 	- `pip install python-osc` 
+	- `pip install pygame` 
+	- `pip install pygame-menu` 
+	- `pip install tensorflow`
  - The [code repository](https://github.com/baljo/Muse-EEG) (MIT-license) might later include other EEG- and ML-related programs as well.
 
 **Mind Monitor settings**
@@ -55,54 +63,31 @@ The data flow for both Part 1 and Part 2 is:
 <br/>   
 
 ---------------
-# Part 1 - play Pong by blinking, no ML involved
-<img align=right src="./Images/Blink_Pong.jpg" width="250" style="padding-left:10px">
-
-In this first part you will learn how to control a Pong game just by blinking your eyes.
-A short video of the Pong game is available [here](https://youtu.be/lKLFVqofdu8).
-
+# Step-by-step instructions
 ## How does it work?
 
-As mentioned earlier, this version is not using machine learning at all. Instead it is relying on built-in functionality in the Muse EEG-devices that can detect eye blinks and jaw clenches. These events produce distinct EEG-signals which can also be seen in the Mind Monitor graphs. The Pong game is then scanning for the events and reacting on them.
-
-## Installation
-
- - Download the Python [code](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20without%20ML.py)
- - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong without ML.py"`
-
- ## Game play instructions
- - See [Game play instructions, common for both Part 1 and Part 2](https://github.com/baljo/Muse-EEG/blob/main/Project1.md#game-play-instructions-common-for-both-part-1-and-part-2)  
- 
-<br/>
-<br/>  
-
----------------
-# Part 2 - play Pong by blinking, using ML
-
-## How does it work?
-
-In short, you will here need to collect EEG-data (blinks and non-blinks) from your Muse device, and train a ML model in Edge Impulse. The trained model will then be used in the Pong game which otherwise functions as in Part 1.
+In short, you will here need to collect EEG-data - when trying to move your hands - from your Muse device, and train a ML model in Edge Impulse. The trained model will then be used in the Mind Reader app.
 
 ## Process flow
 
-While this is not as complex as brain surgery (:smirk:), it is still a bit more involved than Part 1. The main steps are listed here and will later on be explained in detail.
-1. Collect EEG-data for the events you want to classify, one event being e.g. eye blinks and another background brain "noise"
+While this is not as complex as brain surgery (:smirk:), it does involve a few steps. The data gathering will also probably require more time than in Part 1, although you can or even should spread it out over a few days. The main steps are listed here and will later on be explained in detail.
+1. Collect EEG-data for the events you want to classify, in this case `left`, `right`, and `background` brain "noise"
 2. Create a project in Edge Impulse and upload the EEG-data to it
 3. Create, train, and test a ML-model in EI
 4. Download the trained Tensorflow ML-model to your computer
-5. Plug the model into your game and test it
+5. Plug the model into the Mind Reader app and test it
 6. Rinse and repeat from 1 as you'll probably need more data.
 
 ## Installation
 
  - Download the following Python programs into a folder you remember
 	- [Collect OSC-data.py](https://github.com/baljo/Muse-EEG/blob/main/Collect%20OSC-data.py) which you will use for collecting data
-	- [Blink Pong with ML](https://github.com/baljo/Muse-EEG/blob/main/Blink%20Pong%20with%20ML.py) which is the game itself
+	- [Mind Reader.py](https://github.com/baljo/Muse-EEG/blob/main/Mind%20Reader.py) which is the app itself
 
 
 ## Detailed instructions
 
-In this chapter you will get detailed instructions from start to end how to collect data, train a model, and test it in practice. While not necessarily every click and detail is listed, you should with normal computer proficiency be able to follow and replicate the steps.
+In this chapter you will get detailed instructions from start to end on how to collect data, train a model, and test it in practice. While not necessarily every click and detail is listed, you should with normal computer proficiency be able to follow and replicate the steps.
 
 **0. Connect Muse and start streaming**
 
@@ -117,19 +102,32 @@ In this chapter you will get detailed instructions from start to end how to coll
 
  In this step you will, using a Python-program, collect data from your Muse EEG-device.
 
- - Run `Collect OSC-data.py` from your favourite IDE or from the command prompt with `python "Collect OSC-data.py"`
-	- Default events being recorded are `1` and `Noise`, both for 2 seconds. If you want, you can later change them or add more events in the code, look for this:
+ - **Edit** `Collect OSC-data.py` with your favourite IDE or with _any_ text editor
+	- This Python-program is common for both Tutorial 1 and 2 and possible upcoming tutorials as well, hence you need to comment out code not relevant for this tutorial. Look for the below code snippet in the code and comment (= insert # in front) of the rows related to the Blink Pong game, and remove # in front of the rows related to the Mind Reader app. You can rename the events to whatever you want, but keep in mind that when running inferencing the events will be in alphabetical order, where e.g. `Background` will have index 0, `Left` index 1, and `Right` index 2.
+
 		```
+		# Put the events to record in this dictionary within "" and after : the seconds
+		# This is used for the Blink Pong game
 		rec_dict = {
-		"1" : 2,
-		"Noise" : 2
-		}
+			"1"     : 2,
+			"Noise" : 2
+		}  
+
+		# This is used for the Mind Reader app, uncomment below rows and comment all other rec_dict rows
+		# rec_dict = {
+		#     "Background" : 3,
+		#     "Left"       : 3,
+		#     "Right"      : 3
+		# }
 		```
+- **Important**: Drink some water, relax a bit, and find a quiet place as next steps will require concentration.
+- **Run** `Collect OSC-data.py` from your favourite IDE or from the command prompt with `python "Collect OSC-data.py"`
 - To start recording events, click on #1 in MindMonitor (see picture above).
-- You will in the terminal window see number `1` for 2 seconds. During this time you should blink once.
-- Next time you'll see `Noise` for 2 seconds. During this time you should **not** blink, just relax. 
-- The program will record each event in a separate CSV-file. So if you've blinked 100 times and created brain noise 100 times, you'll end up with 200 files of 2 seconds each. 
-- It is necessarily not easy to concentrate for a long time, so you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording and, if you have a longer break, turn it off to save battery. Additionally, next time you use your device it will inevitable be in a slightly different place on your head, and as a result you will probably get a more robust ML-model when recording data.  
+- You will in the terminal window see number `Background` for 3 seconds. During this time you should just relax, try to avoid blinking or moving your limbs.
+- Next time you'll see `Left` for 3 seconds. During this time you should try or imagine you are moving your left hand. I've found it working better if I actually don't move the hand, or even tension any muscles. It might help to put an object a few centimeters (= an inch or two) in front of your hand, simulating it is just out of reach, and you are unsuccessfully able to reach it.
+- Repeat above with the `Right` event.
+- The program will record each event in a separate CSV-file.
+- It is not easy to concentrate for a long time, especially for the recording done in this tutorial. Hence you are recommended to take a break every now and then. Based on experience, it is also good to remove the EEG-device when not recording and, if you have a longer break, turn it off to save battery. Additionally, next time you use your device it will inevitable be in a slightly different place on your head, and as a result you will probably get a more robust ML-model when recording data.  
 <br/>
 
 **2. Create a project and upload EEG-data to Edge Impulse**
@@ -145,9 +143,9 @@ In this chapter you will get detailed instructions from start to end how to coll
 In this section you will first create a ML-model, then train it, and finally test it. This can be most rewarding in case you get excellent performance the first time, but if not, then you need to find out how to improve the model. Hint: ML eats data for breakfast, lunch, and dinner :smiley:
 
 **Create a model**
-- Click `Create an impulse` and fill in the `Time series data` as shown in the picture. While the length of the samples are in fact 2000 ms (= 2 seconds), I've found that using 20 ms (as in 20 lines for each sample) works at least as good.
-- Add the processing block `Raw data` and let all axes be checkmarked. You can later try to find which axes do not impact much or at all for your model and uncheck them, but then you also need to modify the line `expected_samples = 20` in `Blink Pong with ML.py` accordingly. This is explained more detailed in the code itself.
-- Add the learning block `Classification (Keras)`, in this tutorial you will have only 2 output features: `1` and `Noise`, but if you want to create an event for double blinks, feel free to record events with e.g. `2` as well, like in the picture.  
+- Click `Create an impulse` and fill in the `Time series data` as shown in the picture. While the length of the samples are in fact 3000 ms (= 3 seconds), I've found that using 30 ms (as in 30 lines for each sample) works at least as good.
+- Add the processing block `Raw data` and let all axes be checkmarked. You can later try to find which axes do not impact much or at all for your model and uncheck them, but then you also need to modify the line `expected_samples = 30` in `Mind Reader.py` accordingly. This is explained more detailed in the code itself.
+- Add the learning block `Classification (Keras)`, in this tutorial you will have 3 output features: `Background`, `Left` and `Right`. 
 
 <img align=center src="./Images/EI_impulse_01.png" width="900">  
 <br/>
