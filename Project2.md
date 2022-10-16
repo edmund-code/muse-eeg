@@ -95,6 +95,7 @@ In this chapter you will get detailed instructions from start to end on how to c
   <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
 
  - Wait until the horseshoe in MindMonitor has disappeared and the graph lines for all sensors have calmed down like in the picture. You might need to wait a few minutes to acquire good signals, but it's possible to speed up the process a bit by moisturing the sensors with e.g. a wet finger. 
+	- Especially in this tutorial it is very important to have excellent signals, so do not compromise on them!
  - Start streaming from Mind Monitor by clicking on the button showed in the picture  
 <br/>
 
@@ -123,7 +124,7 @@ In this chapter you will get detailed instructions from start to end on how to c
 - **Important**: Drink some water, relax a bit, and find a quiet place as next steps will require concentration.
 - **Run** `Collect OSC-data.py` from your favourite IDE or from the command prompt with `python "Collect OSC-data.py"`
 - To start recording events, click on #1 in MindMonitor (see picture above).
-- You will in the terminal window see number `Background` for 3 seconds. During this time you should just relax, try to avoid blinking or moving your limbs.
+- You will in the terminal window see `Background` for 3 seconds. During this time you should just relax, try to avoid blinking or moving your limbs.
 - Next time you'll see `Left` for 3 seconds. During this time you should try or imagine you are moving your left hand. I've found it working better if I actually don't move the hand, or even tension any muscles. It might help to put an object a few centimeters (= an inch or two) in front of your hand, simulating it is just out of reach, and you are unsuccessfully able to reach it.
 - Repeat above with the `Right` event.
 - The program will record each event in a separate CSV-file.
@@ -266,7 +267,7 @@ This can be the most rewarding - or most frustrating - phase in the whole proces
 # FINAL COMMENTS
 That's it! You have now seen how it is possible to use EEG-data to control an app in a more advanced way compared to Tutorial 1. It is undoubtedly more challenging to gather the data and get good accuracy, but when you succeed it is so much more rewarding. The standard way to improve a ML-model is to gather more data, and then even some more. If that does not help enough, next steps might be to tweak the ML-model, or even change the approach drastically. 
 
-The EEG-data used in this and the previous tutorial is  put into frequency bands by the API Mind-Monitor is using, but you might instead want to try with the raw data measured in millivolts (mV), and use Edge Impulse's spectral analysis learning block for furthre signal processing. The Python-program used in these tutorials are however not collecting raw data, but [this simple Python program](https://github.com/Enigma644/MindMonitorPython/blob/main/OSC%20Receiver%20Simple.py) can be used as a starting point.
-As earlier mentioned, by using an additional electrode, you might be able to get data closer to the sensorimotor cortex.
+The EEG-data used in this and the previous tutorial is  put into frequency bands by the API Mind-Monitor is using, but you might instead want to try with raw data measured in millivolts (mV), and use Edge Impulse's spectral analysis learning block for further signal processing. The Python-program used in these tutorials is however not collecting raw data, but [this simple Python program](https://github.com/Enigma644/MindMonitorPython/blob/main/OSC%20Receiver%20Simple.py) can be used as a starting point.
+As earlier mentioned, by using an additional electrode, you might be able to get data closer to the sensorimotor cortex, and as a result increase the performance of the ML-model.
 
 <div style="text-align: right"> <em>All images are either the author's own or from Wikimedia Commons</em> </div>
