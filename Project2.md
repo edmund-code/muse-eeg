@@ -145,16 +145,16 @@ In this section you will first create a ML-model, then train it, and finally tes
 **Create a model**
 - Click `Create an impulse` and fill in the `Time series data` as shown in the picture. While the length of the samples are in fact 3000 ms (= 3 seconds), I've found that using 30 ms (as in 30 lines for each sample) works at least as good.
 - Add the processing block `Raw data` and let all axes be checkmarked. You can later try to find which axes do not impact much or at all for your model and uncheck them, but then you also need to modify the line `expected_samples = 30` in `Mind Reader.py` accordingly. This is explained more detailed in the code itself.
-- Add the learning block `Classification (Keras)`, in this tutorial you will have 3 output features: `Background`, `Left` and `Right`. 
+- Add the learning block `Classification (Keras)`, in this tutorial you will have 3 output features: `Background`, `Left` and `Right`. In the screenshot below also `Blink` is used, but you are recommended to add that one later if you need it. The Mind Reader app actually uses the blink detection feature included in the Muse-device as it removes a complexity layer.  
 
-<img align=center src="./Images/EI_impulse_01.png" width="900">  
+<img align=center src="./Images/MindReader010.png" width="900">  
 <br/>
 <br/>
 
 - Click `Save impulse` and `Raw data` on the left hand menu
 	- You will see a graph of one of the samples as well as the raw features.
 
-<img align=right src="./Images/EI_feature_explorer_02.png" width="150" style="padding-left:10px">
+<img align=right src="./Images/MindReader015.png" width="700" style="padding-left:10px">
 
 
 - In this case you don't need to change anything, so click `Save parameters` which will take you to the second tab.
@@ -169,7 +169,7 @@ In this section you will first create a ML-model, then train it, and finally tes
 
 Here you will train the neural network and analyse its performance.
 
-<img align=right src="./Images/EI_train_performance_03.png" width="300" style="padding-left:10px">
+<img align=right src="./Images/MindReader020..png" width="300" style="padding-left:10px">
 
 - Click `NN Classifier` from the left hand menu
 
