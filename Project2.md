@@ -169,14 +169,14 @@ In this section you will first create a ML-model, then train it, and finally tes
 
 Here you will train the neural network and analyse its performance.
 
-<img align=right src="./Images/MindReader020..png" width="300" style="padding-left:10px">
+<img align=right src="./Images/MindReader020.png" width="400" style="padding-left:10px">
 
 - Click `NN Classifier` from the left hand menu
 
 - Change the `Number of training cycles` to 200. This is another parameter to tweak, the higher this number is, the longer time the training will take, but also the better the network will perform, at least until it can't improve anymore.
 - Click on `Start training`
 	- Within a few minutes, depending on the number of labels and data quantity you have, the training will finish.
-- The graph shows the training performance and accuracy. While 100 % looks like a perfect score, it isn't necessary so. The reason is that the network might perform poorly in real situations when confronted with sample data not seen before.  
+- The graph shows the training performance and accuracy. In the screenshot it is 79 % which for this type of data is quite good. More important though is the accuracy for unseen data and when the model is in real use. Unfortunately these tend to be worse than the training performance. But for a consumer based EEG-device having only 4 electrodes, an accuracy over 60 % in real use can be considered ok.   
 <br/>
 <br/>
 
@@ -184,7 +184,7 @@ Here you will train the neural network and analyse its performance.
 
 In this step you will see how well the model performs with data it has not seen before. For this purpose Edge Impulse put away approx. 20 % of the training data when you uploaded it.
 
-<img align=right src="./Images/EI_model_testing_04.png" width="300" style="padding-left:10px">  
+<img align=right src="./Images/MindReader025.png" width="400" style="padding-left:10px">  
 
 
 - Click on `Model testing` in the menu
