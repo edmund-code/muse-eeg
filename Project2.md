@@ -233,20 +233,25 @@ This can be the most rewarding - or most frustrating - phase in the whole proces
 ---------------
 # App usage instructions
 
+ <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
+
  - Watch [this 2 min. video](https://youtu.be/OwcoYQL4VEU) to get a quick grasp of the app
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
- <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
 
- <img align=right src="./Images/MindReader030.png" width="250" style="padding-left:10px">
+ 
+ - The objective of the app is really to learn how to use your brain and EEG-data to initiate actions. As this is not a game, you are not awarded with points, although it would be a nice addition to the app. Feel free to implement it!
+ - As shown in the video - you did watch it, didn't you? - you are presented with an image carousel which can roll left or right. 
+ 	- Not necessarily all images are shown at the screen at the same time. If you want to add more images, ensure they have same aspect ratio as the example images, and name them `0nn Image Description` where `nn` is a running number between `00` and `99`, and `Image Description` is the text you want to be visible under the image.
+  
+ - Similarly as when you collected the training data, you are now expected to try moving your left or right hand to start rolling the carousel.
+ - Blink once when you want to choose an image. This also stops the carousel.
+ - When you select the laptop image, you have the 
 
- - The objective of the game is to prevent the ball hitting the floor by moving the paddle.
- - You control the paddle by blinking
-	 - Blink once to move the paddle in one direction
-	 - Next blink will stop the paddle
-	 - Next blink will move the paddle in the other direction
- - The score increases when you manage to hit the ball and decreases when you fail.
- - An intermittent message is shown whenever you blink or clench your jaw. Note that jaw clenches are  only available in Part 1, and they are not linked to any action in the game, that is left up to you to implement!  
+<img align=right src="./Images/MindReader030.png" width="400" style="padding-left:10px">
+
+
+  
 <br/>
 
 ---------------
