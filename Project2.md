@@ -169,7 +169,7 @@ In this section you will first create a ML-model, then train it, and finally tes
 
 Here you will train the neural network and analyse its performance.
 
-<img align=right src="./Images/MindReader020.png" width="400" style="padding-left:10px">
+<img align=right src="./Images/MindReader020.png" width="300" style="padding-left:10px">
 
 - Click `NN Classifier` from the left hand menu
 
@@ -179,12 +179,14 @@ Here you will train the neural network and analyse its performance.
 - The graph shows the training performance and accuracy. In the screenshot it is 79 % which for this type of data is quite good. More important though is the accuracy for unseen data and when the model is in real use. Unfortunately these tend to be worse than the training performance. But for a consumer based EEG-device having only 4 electrodes, an accuracy over 60 % in real use can be considered ok.   
 <br/>
 <br/>
+<br/>
+
 
 **Test the model in Edge Impulse**
 
-In this step you will see how well the model performs with data it has not seen before. For this purpose Edge Impulse put away approx. 20 % of the training data when you uploaded it.
+In this step you will see how well the model performs with data it has not seen before, and in ideal situations also how the model performs in real use. For this purpose Edge Impulse put away approximately 20 % of the training data when you uploaded it.
 
-<img align=right src="./Images/MindReader025.png" width="400" style="padding-left:10px">  
+<img align=right src="./Images/MindReader025.png" width="300" style="padding-left:10px">  
 
 
 - Click on `Model testing` in the menu
@@ -205,37 +207,38 @@ Here you will download the trained model to your computer.
 	- The file will get the name `ei-[ your project name ]-nn-classifier-tensorflow-lite-float32-model.lite`. Although you can rename it if you really want to, why not save your brain cells to more important stuff :smirk:  
 <br/>
 
-**5. Plug the model into your game and test it**
+**5. Plug the model into your app and test it**
 
 Here you will deploy your model and test it out in the wild real world!
 
 **Deploy your model**
 
 - Copy or move the file from the previous step to the folder where you put your Python programs.
-- Open `Blink Pong with ML.py` with your favourite IDE or a text file editor like Notepad
+- Open `Mind Reader.py` with your favourite IDE or a text file editor like Notepad
 	- Scroll to the first function `initiate_tf` and locate the line with `lite_file = "ei-.......lite"`
 	- Replace the file name after ` = ` with your own file name, remember the double quotes `" "` and `.lite` at the end
 
 **Test!**
 
-This can be the most rewarding - or most frustrating - phase in the whole process as you'll find out how well you can control the game with your blinks.
- - Run the game from your favourite IDE or from the command prompt with `python "Blink Pong with ML.py"`  
- - To play, see [Game play instructions, common for both Part 1 and Part 2](https://github.com/baljo/Muse-EEG/blob/main/Project1.md#game-play-instructions-common-for-both-part-1-and-part-2)  
+This can be the most rewarding - or most frustrating - phase in the whole process as you'll find out how well you can control the app with your "thoughts".
+ - Run the app from your favourite IDE or from the command prompt with `python "Mind Reader.py"`  
+ - App usage instructions are found in next chapter  
  - Please note the following:
- 	- The model explained in this tutorial is based on 2 second long samples. This also means that the Pong game will collect EEG-data for 2 seconds before trying to classify it. When playing the Pong game, the ball might have travelled too far before your blinks have moved the paddle to the desired place.
-		- The function `pong` towards the end of the program includes a variable `ball_speed = 5` where you can change the ball speed.
-		- By unchecking some of the axes in the `Create an impulse` step, you will also reduce the data needing processing and the time it takes. As earlier mentioned, and as also explained in the code itself, you then need to change the variable `expected_samples` from 20 to something else. If you e.g. reduce the axes from 20 to 10, you would put 10 in this variable.
-	- In the [Github repo](https://github.com/baljo/Muse-EEG/tree/main/Models) you'll find a `.lite`-file trained by the author. You can try the game using this, without the need to record own EEG-data, but don't be surprised if it doesn't give good results, brains tend to be different...
+ 	- The model explained in this tutorial is based on 3 second long samples. This also means that the Mind Reader app will collect EEG-data for 3 seconds before trying to classify it and take actions.
+	- In the [Github repo](https://github.com/baljo/Muse-EEG/tree/main/Models) you'll find `.lite`-files trained by the author. You can try the app using one of them, without the need to record own EEG-data, but you should be very surprised if they give good results as brains tend to be different...
 
 <br/>
 <br/>  
 
 ---------------
-# Game play instructions, common for both Part 1 and Part 2
+# App usage instructions
 
+ - Watch [this 2 min. video](https://youtu.be/OwcoYQL4VEU) to get a quick grasp of the app
  - Connect the Muse EEG-device to your phone
  - Start streaming from Mind Monitor by clicking on the button showed in the picture
  <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
+
+ <img align=right src="./Images/MindReader030.png" width="250" style="padding-left:10px">
 
  - The objective of the game is to prevent the ball hitting the floor by moving the paddle.
  - You control the paddle by blinking
