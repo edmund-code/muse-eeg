@@ -5,6 +5,8 @@ The objective of this  tutorial is to show how you, by using a Muse EEG-device, 
 
 While this is a stand-alone tutorial, it is still recommended you check [Part 1](https://docs.edgeimpulse.com/experts/eeg-data-control-games) for background information. If you try to replicate the steps - please do! - it is recommended to start with Part 1 as the learning curve is shallower there.  
 
+<br/>
+
  ![](./Images/MindReader035.png)
 
 
@@ -12,7 +14,8 @@ While this is a stand-alone tutorial, it is still recommended you check [Part 1]
 
 # Introduction
 
-<img align=right src="https://upload.wikimedia.org/wikipedia/commons/1/18/Human_Brain_-1.jpg?20160517061629" width="300" style="padding-left:10px">
+
+![](./Images/Brain01_creative_commons.jpg)
 
 This tutorial is increasing the difficulty level compared to Part 1, which only used eye blinks as triggers. Here limb movement _tries_ are, together with eye blinks, being used to navigate and select images from an image carousel, and even to select letters from the alphabet to communicate through writing. Eye blinks are fairly easy to detect, with or without Machine Learning, as they generate distinct and visible spikes in EEG-data. Motoric movements - or in this tutorial movement tries - do not cause as visible changes in EEG-data, instead they need to be deduced by complex signal analysis and/or Machine Learning.
 
