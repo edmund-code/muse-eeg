@@ -304,4 +304,4 @@ That's it! You have now seen how it is possible to use EEG-data to control an ap
 
 
 
-<div style="text-align: right"> <em>All images are either the author's own or from Wikimedia Commons</em> </div>
+<div style="text-align: right"> <em>All images are either the author's own or labeled Creative Commons by their author</em> </div>
