@@ -96,8 +96,9 @@ In this chapter you will get detailed instructions from start to end on how to c
 
 **0. Connect Muse and start streaming**
 
- - Connect the Muse EEG-device to your phone
-  <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
+ - Connect the Muse EEG-device to your phone  
+
+ ![](./Images/MindMonitor_stream_cropped.jpg)
 
  - Wait until the horseshoe in MindMonitor has disappeared and the graph lines for all sensors have calmed down like in the picture. You might need to wait a few minutes to acquire good signals, but it's possible to speed up the process a bit by moisturing the sensors with e.g. a wet finger. 
 	- Especially in this tutorial it is very important to have excellent signals, so do not compromise on them!
@@ -153,14 +154,14 @@ In this section you will first create a ML-model, then train it, and finally tes
 - Add the processing block `Raw data` and let all axes be checkmarked. You can later try to find which axes do not impact much or at all for your model and uncheck them, but then you also need to modify the line `expected_samples = 30` in `Mind Reader.py` accordingly. This is explained more detailed in the code itself.
 - Add the learning block `Classification (Keras)`, in this tutorial you will have 3 output features: `Background`, `Left` and `Right`. In the screenshot below also `Blink` is used, but you are recommended to add that one later if you need it. The Mind Reader app actually uses the blink detection feature included in the Muse-device as it removes a complexity layer.  
 
-<img align=center src="./Images/MindReader010.png" width="900">  
+<br/>
+![](./Images/MindReader010.png)  
 <br/>
 <br/>
 
 - Click `Save impulse` and `Raw data` on the left hand menu
 	- You will see a graph of one of the samples as well as the raw features.
 
-<img align=right src="./Images/MindReader015.png" width="700" style="padding-left:10px">
 
 
 - In this case you don't need to change anything, so click `Save parameters` which will take you to the second tab.
@@ -168,21 +169,29 @@ In this section you will first create a ML-model, then train it, and finally tes
 - Click `Generate features`
 	- This processes the samples
 	- After a while you will see a graph in the Feature explorer. This gives you a view of how well your data can be clustered into different groups. In an ideal situation all similar samples would be clustered into same group with a clear distinction between groups. If that's not the case, no worries at this point, the neural network algorithm will in many cases still be able to do a very good job!  
-	<br/>
+<br/>  	
+
+![](./Images/MindReader015.png)
+
+
+<br/>
 <br/>  
 
 **Train the neural network**
 
 Here you will train the neural network and analyse its performance.
 
-<img align=right src="./Images/MindReader020.png" width="300" style="padding-left:10px">
 
 - Click `NN Classifier` from the left hand menu
 
 - Change the `Number of training cycles` to 200. This is another parameter to tweak, the higher this number is, the longer time the training will take, but also the better the network will perform, at least until it can't improve anymore.
 - Click on `Start training`
 	- Within a few minutes, depending on the number of labels and data quantity you have, the training will finish.
-- The graph shows the training performance and accuracy. In the screenshot it is 79 % which for this type of data is quite good. More important though is the accuracy for unseen data and when the model is in real use. Unfortunately these tend to be worse than the training performance. But for a consumer based EEG-device having only 4 electrodes, an accuracy over 60 % in real use can be considered ok.   
+- The graph shows the training performance and accuracy. In the screenshot it is 79 % which for this type of data is quite good. More important though is the accuracy for unseen data and when the model is in real use. Unfortunately these tend to be worse than the training performance. But for a consumer based EEG-device having only 4 electrodes, an accuracy over 60 % in real use can be considered ok.  
+<br/>
+
+![](./Images/MindReader020.png)
+
 <br/>
 <br/>
 <br/>
@@ -192,13 +201,15 @@ Here you will train the neural network and analyse its performance.
 
 In this step you will see how well the model performs with data it has not seen before, and in ideal situations also how the model performs in real use. For this purpose Edge Impulse put away approximately 20 % of the training data when you uploaded it.
 
-<img align=right src="./Images/MindReader025.png" width="300" style="padding-left:10px">  
-
-
 - Click on `Model testing` in the menu
 - Click on `Classify all`
 	- This will run the test samples through the trained model
-- After just a short while, depending on the amount of test samples and model complexity, you will get a performance report. Unless you have lots of data or a perfect model, the performance is seldom 100 %. Depending on your use case and what performance you require, you might need to go back a few steps by collecting more and different data, or by tweaking the parameters, to reach your minimum expectations.    
+- After just a short while, depending on the amount of test samples and model complexity, you will get a performance report. Unless you have lots of data or a perfect model, the performance is seldom 100 %. Depending on your use case and what performance you require, you might need to go back a few steps by collecting more and different data, or by tweaking the parameters, to reach your minimum expectations.  
+<br/>
+
+![](./Images/MindReader025.png)  
+
+
 <br/>
 <br/>  
 <br/>
@@ -239,40 +250,56 @@ This can be the most rewarding - or most frustrating - phase in the whole proces
 ---------------
 # App usage instructions
 
- <img align=right src="./Images/MindMonitor_stream_cropped.jpg" width="250" style="padding-left:10px">
-
  - Watch [this 2 min. video](https://youtu.be/OwcoYQL4VEU) to get a quick grasp of the app
  - Connect the Muse EEG-device to your phone
- - Start streaming from Mind Monitor by clicking on the button showed in the picture
+ - Start streaming from Mind Monitor by clicking on the button showed in the picture  
 
+<br/>  
+
+![](./Images/MindMonitor_stream_cropped.jpg)
  
  - The objective of the app is really to learn how to use your brain and EEG-data to initiate actions. As this is not a game, you are not awarded with points, although it would be a nice addition to the app. Feel free to implement it!
  - As shown in the video - you did watch it, didn't you? - you are presented with an image carousel which can roll left or right. 
- 	- Not necessarily all images are shown at the screen at the same time. If you want to add more images, ensure they have same aspect ratio as the example images, and name them `0nn Image Description` where `nn` is a running number between `00` and `99`, and `Image Description` is the text you want to be visible under the image.
+ 	- Not necessarily all images are shown at the screen at the same time. If you want to add more images, ensure they have same aspect ratio as the example images, and name them `0nn Image Description` where `nn` is a running number between `00` and `99`, and `Image Description` is the text you want to be visible under the image.  
 
-<img align=right src="./Images/MindReader030.png" width="400" style="padding-left:10px">
+<br/>  
+
+![Mind Reader app](./Images/MindReader030.png)
   
  - Similarly as when you collected the training data, you are now expected to try moving your left or right hand to start rolling the carousel. 
- 	- The three "health" bars below the images are showing the classification result for each of the three events (background, left, right). The logic is such that if the ML-model classified the EEG-data e.g.: Left=70%, Background=20%, and Right=10% &rarr;&rarr; 7, 2, and 1 green bars would be shown in each of the fields.
-	- The health bars are also a biofeedback mechanism in the sense that they can help you to understand the connection between what you are doing (i.e. trying to move a hand), and the corresponding result from the ML-model.
+ 	- The three "health" bars below the images are showing the classification result for each of the three events (Left, Background, Right). The logic is such that if the ML-model classified the EEG-data e.g.: Left=70%, Background=20%, and Right=10% &rarr;&rarr; 7, 2, and 1 green bars would be shown in each of the fields.
+	- The health bars are also a biofeedback mechanism in the sense that they can help you to understand the connection between what you are doing (i.e. trying to move a hand), and the corresponding result from the ML-model. This is described in more detail in next chapter. 
  - Blink once when you want to choose an image. This also stops the carousel.
 
 
 
  - When you select the laptop image, you are presented with a text editing field at the bottom of the screen. Similarly as when navigating between the images, you can now navigate left or right through the alphabet, and select a letter by blinking.
  	- As an 'Easter Egg' or very simple text prediction example, why not try writing `EDGE` and see what happens :smiley:
-- Double blink (= 2 blinks within 0.7 seconds) when you want to stop writing and go back to the carousel. You can also cheat by pressing `ESC`
-
- <img align=right src="./Images/MindReader035.png" width="400" style="padding-left:10px">
-
-  
+- Double blink (= 2 blinks within 0.7 seconds) when you want to stop writing and go back to the carousel. You can also cheat by pressing `ESC`  
 <br/>
 
----------------
-# FINAL COMMENTS
-That's it! You have now seen how it is possible to use EEG-data to control an app in a more advanced way compared to Tutorial 1. It is undoubtedly more challenging to gather the data and get good accuracy, but when you succeed it is so much more rewarding. The standard way to improve a ML-model is to gather more data, and then even some more. If that does not help enough, next steps might be to tweak the ML-model, or even change the approach drastically. 
+![](./Images/MindReader035.png)
 
-The EEG-data used in this and the previous tutorial is  put into frequency bands by the API Mind-Monitor is using, but you might instead want to try with raw data measured in millivolts (mV), and use Edge Impulse's spectral analysis learning block for further signal processing. The Python-program used in these tutorials is however not collecting raw data, but [this simple Python program](https://github.com/Enigma644/MindMonitorPython/blob/main/OSC%20Receiver%20Simple.py) can be used as a starting point.
+
+  
+<br/>  
+
+---------------
+# RECOMMENDATIONS FOR FURTHER IMPROVEMENTS
+The standard way to improve a ML-model is to gather more data, and then even some more. If that does not help enough, next steps might be to tweak the ML-model, or even change the approach drastically. 
+
+The EEG-data used in this and the previous tutorial is  put into frequency bands by the API Mind-Monitor is using, but you might instead want to try with raw data measured in millivolts (mV), and use Edge Impulse's spectral analysis learning block for further signal processing. The Python-program used in these tutorials is however not collecting raw data, but [this simple Python program](https://github.com/Enigma644/MindMonitorPython/blob/main/OSC%20Receiver%20Simple.py) can be used as a starting point. If you don't want to use the Mind-Monitor app at all, you can instead use [Muse-LSL](https://github.com/alexandrebarachant/muse-lsl)
+
 As earlier mentioned, by using an additional electrode, you might be able to get data closer to the sensorimotor cortex, and as a result increase the performance of the ML-model.
+
+Another idea - that I'm myself interested in trying - is to use the "health" bars as a biofeedback mechanism to record more data, and supposedly more correct data. In practice the Mind Reader app would itself be used for recording data, but recording is done only when the confidence treshold (e.g. 60 %) is reached. So, if e.g. the event was classified to be `Left` with a confidence level of 65 %, the EEG-data recorded for the classification would be stored and imported into Edge Impulse to retrain the ML-model. By repeating this a few times, the resulting ML-model is expected to provide higher accuracy.
+  
+<br/> 
+
+---------------
+# CONCLUSION
+That's it! You have now seen how it is possible to use EEG-data to control an app in a more advanced way compared to Tutorial 1. It is undoubtedly more challenging to gather the data and get good accuracy, but when you succeed it is so much more rewarding. 
+
+
 
 <div style="text-align: right"> <em>All images are either the author's own or from Wikimedia Commons</em> </div>
