@@ -1,8 +1,13 @@
 ################################################################# 
 #                      M I N D   R E A D E R                    #
 #################################################################
+#       You are presented with an image carousel, and are       #
+#       expected to select an image by trying to move           #
+#       your left or right hand.                                #
 #                                                               #
-#        Mind, this is not a real mind reader, yet... :-)       #
+#       Mind, this is not a real mind reader, yet... :-)        #
+#       Coded by Thomas Vikström, 2022                          #
+#                                                               #
 #################################################################
 
 # *******************  IMPORTING MODULES ********************
