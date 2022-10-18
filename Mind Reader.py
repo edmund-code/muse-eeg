@@ -278,20 +278,20 @@ def show_image():
 
     def drawHealthMeterLeft(currentHealth):
         clear_area()
-        for i in range(currentHealth): # draw red health bars
+        for i in range(currentHealth): # draw green health bars
             pygame.draw.rect(screen, GREEN,   (HB_X + (10 * MAXHEALTH) - (i * 10), scr_height / 2 + 50, 20, HB_HEIGHT))
         for i in range(MAXHEALTH): # draw the white outlines
             pygame.draw.rect(screen, WHITE, (HB_X + (10 * MAXHEALTH) - (i * 10), scr_height / 2 + 50, 20, HB_HEIGHT), 1)
 
     def drawHealthMeterBackground(currentHealth):
         cH = currentHealth
-        for i in range(cH): # draw red health bars
+        for i in range(cH): # draw green health bars
             pygame.draw.rect(screen, GREEN, ((scr_width/2) - (5*cH) + (i*10)-10, scr_height / 2 + 50, 20, HB_HEIGHT))
         for i in range(MAXHEALTH): # draw the white outlines
             pygame.draw.rect(screen, WHITE, (HB_X+120 + (10 * MAXHEALTH) - i * 10, scr_height / 2 + 50, 20, HB_HEIGHT), 1)
 
     def drawHealthMeterRight(currentHealth):
-        for i in range(currentHealth): # draw red health bars
+        for i in range(currentHealth): # draw green health bars
             pygame.draw.rect(screen, GREEN, (HB_X+160 + (10 * MAXHEALTH) + i * 10, scr_height / 2 + 50, 20, HB_HEIGHT))
         for i in range(MAXHEALTH): # draw the white outlines
             pygame.draw.rect(screen, WHITE, (HB_X+160 + (10 * MAXHEALTH) + i * 10, scr_height / 2 + 50, 20, HB_HEIGHT), 1)
