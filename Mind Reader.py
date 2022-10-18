@@ -1,10 +1,14 @@
 ################################################################# 
 #                      M I N D   R E A D E R                    #
 #################################################################
-
-# UNDER CONSTRUCTION !!!!!!!!!!!!!!!!!!!!!
-# Mind, this is not a real mind reader :-)
-
+#       You are presented with an image carousel, and are       #
+#       expected to select an image by trying to move           #
+#       your left or right hand.                                #
+#                                                               #
+#       Mind, this is not a real mind reader, yet... :-)        #
+#       Coded by Thomas Vikström, 2022                          #
+#                                                               #
+#################################################################
 
 # *******************  IMPORTING MODULES ********************
 
@@ -36,8 +40,8 @@ all_samples = []
 
 sample_nr = 0
 expected_samples = 30                                           # there are 5 frequencies (alpa...gamma) and 4 sensors, if all 4 sensors are used
-                                                                # this should be 5 x 4 = 20, the frequency is 10 Hz. 2 seconds of data with all
-                                                                # 4 sensors = 2 * 5 * 4 * 10 = 400. 
+                                                                # this should be 5 x 4 = 20, the frequency is 10 Hz. 3 seconds of data with all
+                                                                # 4 sensors = 3 * 5 * 4 * 10 = 600. 
 
 confidence_threshold = 0.5                                      # default in Edge Impulse is 0.6
 left = right = background = 0

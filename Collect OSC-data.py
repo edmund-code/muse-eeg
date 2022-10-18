@@ -42,12 +42,20 @@ recording = False
 record_many = True
                                        
 # Put the events to record in this dictionary within "" and after : the seconds
+# This is used for the Blink Pong game
 rec_dict = {
     "1"     : 2,
     "Noise" : 2
 }  
 
-# Another example
+# This is used for the Mind Reader app, uncomment below rows and comment all other rec_dict rows
+# rec_dict = {
+#     "Background" : 3,
+#     "Left"       : 3,
+#     "Right"      : 3
+# }
+
+# Yet another example
 # rec_dict = {
 #     "Left"    : 2,
 #     "Right"   : 2,
