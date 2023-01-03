@@ -1,41 +1,28 @@
 """
 pygame-menu
 pip install pygame-menu -U
-
-EXAMPLE - SIMPLE
-Super simple example of pygame-menu usage, featuring a selector and a button.
 """
 
+import pygame
 import pygame_menu
 from pygame_menu.examples import create_example_window
 import string
 
 from typing import Tuple, Any
 
-surface = create_example_window('Example - Simple', (800, 600))
+from dino_game import *
 
-
-def set_difficulty(selected: Tuple, value: Any) -> None:
-    """
-    Set the difficulty of the game.
-    """
-    print(f'Set difficulty to {selected[0]} ({value})')
-
+surface = create_example_window('Brain-Computer-Interface Game using EEG', (600, 200))
 
 def start_the_game() -> None:
-    """
-    Function that starts a game. This is raised by the menu button,
-    here menu can be disabled, etc.
-    """
-    global user_name
-    print(f'{user_name.get_value()}, Do the job here!')
+    start_game()
 
 
 menu = pygame_menu.Menu(
-    height=600,
+    height=200,
     theme=pygame_menu.themes.THEME_BLUE,
-    title='Welcome',
-    width=800
+    title='Dino Run - EEG',
+    width=600
 )
 
 
@@ -54,7 +41,6 @@ print(numbers)
 alphabet = list(zip(chars,numbers))
 print(alphabet)
 
-user_name = menu.add.text_input('Name: ', default='Edmund Tsou', maxchar=10)
 menu.add.button('Play', start_the_game)
 menu.add.button('Quit', pygame_menu.events.EXIT)
 
