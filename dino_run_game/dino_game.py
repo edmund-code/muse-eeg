@@ -2,9 +2,11 @@ import os
 import sys
 import pygame
 import random
+import threading
 from pygame import *
 
-from muse_events import *
+#from muse_events import *
+from neurofeedback import *
 
 pygame.init()
 
@@ -458,7 +460,11 @@ def gameplay():
     exit()
 
 def start_game():
-    start_listen()
+    # starting the Muse communication in separate thread
+    thread = threading.Thread(target=start_listen)
+    thread.daemon = True
+    thread.start()
+
     gameplay()
 
 if __name__ == "__main__":
