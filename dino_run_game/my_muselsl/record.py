@@ -151,7 +151,7 @@ def _save(
         timestamps = lr.predict(X)
 
     res = np.c_[timestamps, res]
-    data = pd.DataFrame(data=res, columns=["timestamps"] + ch_names)
+    data = pd.DataFrame(data=res, columns=["timestamp"] + ch_names)
 
     directory = os.path.dirname(filename)
     if not os.path.exists(directory):

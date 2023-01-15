@@ -15,7 +15,7 @@ def start_record():
         raise RuntimeError('Can\'t find EEG stream.')
 
     try:
-        record(6)
+        record(5)
             
     except KeyboardInterrupt:
         print('Closing!')
