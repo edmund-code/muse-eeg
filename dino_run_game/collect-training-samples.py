@@ -3,7 +3,7 @@ from pylsl import StreamInlet, resolve_byprop  # Module to receive EEG data
 from statistics import mean, stdev
 
 from timeit import default_timer as timer
-from my_muselsl import record
+from my_muselsl import record_multi
 
 
 def start_record():
@@ -15,7 +15,7 @@ def start_record():
         raise RuntimeError('Can\'t find EEG stream.')
 
     try:
-        record(5)
+        record_multi(8, 5)
             
     except KeyboardInterrupt:
         print('Closing!')

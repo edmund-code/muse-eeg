@@ -13,10 +13,9 @@ from .constants import LSL_SCAN_TIMEOUT, LSL_EEG_CHUNK, LSL_PPG_CHUNK, LSL_ACC_C
 
 # Records a fixed duration of EEG data from an LSL stream into a CSV file
 
-
-def record(
+def record_multi(
     duration: int,
-    filename=None,
+    samples: int,
     dejitter=False,
     data_source="EEG",
     continuous: bool = True,
@@ -41,92 +40,69 @@ def record(
         print("Can't find %s stream." % (data_source))
         return
 
-    print("Started acquiring data.")
-    inlet = StreamInlet(streams[0], max_chunklen=chunk_length)
-    # eeg_time_correction = inlet.time_correction()
-
-    inlet_marker = False
-    '''
-    print("Looking for a Markers stream...")
-    marker_streams = resolve_byprop('name', 'Markers', timeout=LSL_SCAN_TIMEOUT)
-
-    if marker_streams:
-        inlet_marker = StreamInlet(marker_streams[0])
-    else:
-        inlet_marker = False
-        print("Can't find Markers stream.")
-    '''
-
-    info = inlet.info()
-    description = info.desc()
-
-    Nchan = info.channel_count()
-
-    ch = description.child('channels').first_child()
-    ch_names = [ch.child_value('label')]
-    for i in range(1, Nchan):
-        ch = ch.next_sibling()
-        ch_names.append(ch.child_value('label'))
-
     label = input("Enter label name and press Enter to start recording.")
-    if not filename:
-        filename = os.path.join(dataDir, "%s_%s_%s.csv" % (data_source, label, strftime('%Y-%m-%d-%H.%M.%S', localtime())))
 
-    res = []
-    timestamps = []
-    markers = []
-    t_init = time()
-    time_correction = inlet.time_correction()
-    last_written_timestamp = None
-    print('Start recording at time t=%.3f' % t_init)
-    print('Time correction: ', time_correction)
-    while (time() - t_init) < duration:
-        try:
-            data, timestamp = inlet.pull_chunk(
-                timeout=1.0, max_samples=chunk_length)
+    for s in range(samples):
+        filename = os.path.join(dataDir, "%s_%s_%02d_%s.csv" % (data_source, label, s+1, strftime('%Y-%m-%d-%H.%M.%S', localtime())))
 
-            if timestamp:
-                res.append(data)
-                timestamps.extend(timestamp)
-                tr = time()
-            if inlet_marker:
-                marker, timestamp = inlet_marker.pull_sample(timeout=0.0)
+        input("Press Enter to started acquiring sample %d." % (s+1))
+
+        inlet = StreamInlet(streams[0], max_chunklen=chunk_length)
+
+        inlet_marker = False
+
+        info = inlet.info()
+        description = info.desc()
+
+        Nchan = info.channel_count()
+
+        ch = description.child('channels').first_child()
+        ch_names = [ch.child_value('label')]
+        for i in range(1, Nchan):
+            ch = ch.next_sibling()
+            ch_names.append(ch.child_value('label'))
+    
+        res = []
+        timestamps = []
+        markers = []
+        t_init = time()
+        time_correction = inlet.time_correction()
+        last_written_timestamp = None
+#        print('Start recording at time t=%.3f' % t_init)
+#        print('Time correction: ', time_correction)
+
+        while (time() - t_init) < duration:
+            try:
+                data, timestamp = inlet.pull_chunk(timeout=1.0, max_samples=chunk_length)
+
                 if timestamp:
-                    markers.append([marker, timestamp])
+                    res.append(data)
+                    timestamps.extend(timestamp)
+                    tr = time()
+                if inlet_marker:
+                    marker, timestamp = inlet_marker.pull_sample(timeout=0.0)
+                    if timestamp:
+                        markers.append([marker, timestamp])
 
-            # Save every 1s
-            if continuous and (last_written_timestamp is None or last_written_timestamp + 1 < timestamps[-1]):
-                _save(
-                    filename,
-                    res,
-                    timestamps,
-                    time_correction,
-                    dejitter,
-                    inlet_marker,
-                    markers,
-                    ch_names,
-                    last_written_timestamp=last_written_timestamp,
-                )
-                last_written_timestamp = timestamps[-1]
+            except KeyboardInterrupt:
+                break
 
-        except KeyboardInterrupt:
-            break
+        time_correction = inlet.time_correction()
+#        print("Time correction: ", time_correction)
 
-    time_correction = inlet.time_correction()
-    print("Time correction: ", time_correction)
+        _save(
+            filename,
+            res,
+            timestamps,
+            time_correction,
+            dejitter,
+            inlet_marker,
+            markers,
+            ch_names,
+        )
 
-    _save(
-        filename,
-        res,
-        timestamps,
-        time_correction,
-        dejitter,
-        inlet_marker,
-        markers,
-        ch_names,
-    )
 
-    print("Done - wrote file: {}".format(filename))
+        print("Done - wrote file: {}".format(filename))
 
 
 def _save(
@@ -142,6 +118,7 @@ def _save(
 ):
     res = np.concatenate(res, axis=0)
     timestamps = np.array(timestamps) + time_correction
+    timestamps = np.round((timestamps - timestamps[0]) * 1000, decimals=0)
 
     if dejitter:
         y = timestamps
@@ -174,10 +151,7 @@ def _save(
         # print("Saving whole file")
         data.to_csv(filename, float_format='%.3f', index=False)
     else:
-        # print("Appending file")
-        # truncate already written timestamps
-        data = data[data['timestamp'] > last_written_timestamp]
-        data.to_csv(filename, float_format='%.3f', index=False, mode='a', header=False)
+        print("Saving Error!")
 
 
 
