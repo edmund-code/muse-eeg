@@ -1,0 +1,503 @@
+Sentence,1 Keyword,2 Keywords,3 Keywords,Emotion
+"Why am I feeling so tired today?",Tired,Feeling Tired,So Tired Today,Frustration
+"Is there any improvement in my blood work?",Improvement,Blood Work,Improvement Blood Work,Anxiety
+"Can someone help me sit up, please?",Help,Sit Up,Help Me Sit,Neutral
+"I'm having trouble breathing, nurse!",Breathing,Trouble Breathing,Having Trouble Breathing,Anxiety
+"Will my grandchildren be able to visit?",Grandchildren,Grandchildren Visit,Will Grandchildren Visit,Anxiety
+"I miss tasting my spouse's cooking.",Tasting,Spouse Cooking,Miss Spouse Cooking,Frustration
+"Can you please speak louder, I can't hear well.",Louder,Speak Louder,Please Speak Louder,Frustration
+"Please turn on the television for me.",Television,Turn Television,Turn On Television,Neutral
+"I don't want to be a burden to my family.",Burden,Be Burden,Don't Be Burden,Frustration
+"Are the results from my latest scan available?",Results,Latest Scan,Results Latest Scan,Anxiety
+"May I have some pain relief if possible?",Pain,Pain Relief,Some Pain Relief,Anxiety
+"Can I get assistance to the restroom?",Assistance,Get Assistance,Assistance Restroom,Neutral
+"I'm worried about the surgery tomorrow.",Surgery,Worried Surgery,Worried About Surgery,Anxiety
+"It's hard to sleep with all this noise.",Sleep,Hard Sleep,Hard To Sleep,Frustration
+"How often will my vitals be checked?",Vitals,Vitals Checked,Often Vitals Checked,Anxiety
+"I would appreciate more frequent updates.",Updates,More Updates,Appreciate More Updates,Frustration
+"When can I expect to walk again?",Walk,Expect Walk,When Expect Walk,Anxiety
+"Please make sure my family is informed.",Informed,Family Informed,Make Sure Informed,Neutral
+"I need to know what my options are.",Options,Know Options,Need Know Options,Anxiety
+"Can you bring me my reading glasses?",Glasses,Reading Glasses,Bring Reading Glasses,Neutral
+"I hope I can go home soon.",Home,Go Home,Hope Go Home,Relief
+"Tell me, will there be more tests?",Tests,More Tests,There Be Tests,Anxiety
+"Please be gentle with the needle.",Gentle,Be Gentle,Gentle With Needle,Frustration
+"I'm not comfortable; can I have another pillow?",Comfortable,Not Comfortable,Not Comfortable Pillow,Frustration
+"Why do I have to fast tonight?",Fast,Have Fast,Have To Fast,Frustration
+"I'm feeling a bit cold, could I have an extra blanket?",Cold,Bit Cold,Feeling Bit Cold,Frustration
+"Could you explain the side effects of this medication?",Effects,Side Effects,Explain Side Effects,Anxiety
+"Are there any risks with this procedure?",Risks,Any Risks,Risks Procedure,Anxiety
+"I'd like to hear some good news.",Good,Good News,Hear Good News,Relief
+"Is my heart condition stable today?",Heart,Heart Condition,Condition Stable Today,Anxiety
+"Please make my bed; it's quite uncomfortable.",Bed,Make Bed,Bed Uncomfortable,Frustration
+"How will this treatment affect my daily life?",Treatment,Affect Daily,Daily Life,Anxiety
+"May I have a word with my doctor?",Word,Word Doctor,Have Word Doctor,Neutral
+"I'm struggling with the food here, is there something else?",Food,Struggling Food,Struggling With Food,Frustration
+"Can we manage my pain without so many drugs?",Pain,Manage Pain,Manage Pain Drugs,Frustration
+"Please check if my insurance covers this.",Insurance,Check Insurance,Insurance Covers This,Anxiety
+"Why do I keep getting these headaches?",Headaches,Getting Headaches,Keep Getting Headaches,Anxiety
+"I need more information about my condition.",Information,More Information,Need More Information,Anxiety
+"Can someone update me on what happened during the night?",Update,Someone Update,Update What Happened,Anxiety
+"I'm concerned about my discharge plan.",Discharge,Concerned Discharge,Concerned Discharge Plan,Anxiety
+"Will I need help when I leave the hospital?",Help,Need Help,Need Help Hospital,Anxiety
+"Please remind me when to take my pills.",Remind,Remind Take,Remind Take Pills,Neutral
+"I'm not feeling heard; can you listen to me?",Heard,Feeling Heard,Not Feeling Heard,Frustration
+"Can you check my IV? It feels strange.",IV,Check IV,Check My IV,Frustration
+"Tell me honestly, am I getting better?",Honestly,Am Better,Tell Am Better,Anxiety
+"I'm grateful for the care I'm receiving.",Grateful,Grateful Care,Grateful For Care,Gratitude
+"I'd like some privacy when my family visits.",Privacy,Some Privacy,Like Some Privacy,Relief
+"Has there been any change in my medication?",Change,Change Medication,Any Change Medication,Anxiety
+"I wish I could see my dog.",Wish,Wish See,Wish See Dog,Frustration
+"Is it normal to feel this weak?",Weak,Feel Weak,Normal Feel Weak,Frustration
+"Is it time for my medication or did I miss it?",Medication,Time Medication,Time For Medication,Anxiety
+"I would love some fresh air, is that possible?",Air,Fresh Air,Love Some Fresh,Relief
+"Could we adjust the room temperature a bit?",Temperature,Room Temperature,Adjust Room Temperature,Neutral
+"Are my test results confidential here?",Confidential,Test Results,Results Confidential Here,Anxiety
+"I'm curious about the nutrition in my meals.",Nutrition,Curious Nutrition,Nutrition In Meals,Neutral
+"When will the occupational therapist visit?",Therapist,Occupational Therapist,When Therapist Visit,Anxiety
+"Can I request a different flavor of medication?",Flavor,Different Flavor,Flavor Medication Neutral,Neutral
+"Is the Wi-Fi free for patients to use?",Wi-Fi,Free Wi-Fi,Wi-Fi For Patients,Neutral
+"The room next door is quite loud, can anything be done?",Loud,Room Loud,Loud Next Door,Frustration
+"I forgot my book, can I borrow one from the library?",Book,Borrow Book,Forgot My Book,Neutral
+"Can you explain what this consent form is for?",Consent,Consent Form,Explain Consent Form,Anxiety
+"I need to schedule a follow-up appointment.",Schedule,Schedule Follow-up,Need Schedule Appointment,Neutral
+"Could you help me reach my family on the phone?",Help,Reach Family,Help Reach Family,Neutral
+"I heard about a support group, can I join?",Group,Support Group,Join Support Group,Relief
+"When can I start eating foods with fiber?",Fiber,Foods Fiber,Eating Foods Fiber,Neutral
+"Can we dim the lights? They're quite bright for me.",Lights,Dim Lights,Lights Quite Bright,Relief
+"Who can I talk to about my medical bills?",Bills,Medical Bills,Talk Medical Bills,Anxiety
+"Can you show me how to adjust this bed?",Adjust,Adjust Bed,Show Adjust Bed,Neutral
+"Will I have to take this medication indefinitely?",Medication,Take Medication,Medication Indefinitely,Anxiety
+"I'm allergic to latex, is this room latex-free?",Latex,Allergic Latex,Room Latex-Free,Anxiety
+"Could I have some more pillows for my back?",Pillows,More Pillows,Some More Pillows,Neutral
+"Is there a quiet room where I can meditate?",Quiet,Quiet Room,Room Meditate,Relief
+"How often will I need these injections?",Injections,Need Injections,How Often Injections,Anxiety
+"Are there vegetarian options for meals?",Vegetarian,Vegetarian Options,Options For Meals,Neutral
+"The flowers you brought really brightened my day!",Flowers,Brought Flowers,Flowers Brightened Day,Gratitude
+"Can I wear my own pajamas here?",Pajamas,Wear Pajamas,Own Pajamas Here,Neutral
+"When is the next health workshop happening?",Workshop,Health Workshop,Next Health Workshop,Neutral
+"Can you check why I'm feeling this numbness?",Numbness,Feeling Numbness,Check Feeling Numbness,Anxiety
+"I'm ready for the challenge of physical rehab.",Rehab,Physical Rehab,Challenge Physical Rehab,Relief
+"May I have a schedule of the daily activities?",Schedule,Daily Activities,Schedule Daily Activities,Neutral
+"Who do I give feedback to about the nursing staff?",Feedback,Give Feedback,Feedback Nursing Staff,Neutral
+"Is it possible to get a room with a view?",View,Room View,Get Room View,Neutral
+"Can you please lower the bedrails?",Bedrails,Lower Bedrails,Please Lower Bedrails,Neutral
+"I'd like to compliment the chef, dinner was delightful.",Compliment,Compliment Chef,Dinner Delightful,Gratitude
+"Could you update me on the local COVID-19 precautions?",COVID-19,Local COVID-19,Update COVID-19 Precautions,Anxiety
+"Are therapy dogs allowed in this hospital?",Dogs,Therapy Dogs,Dogs Allowed Hospital,Relief
+"I'm feeling a bit claustrophobic, can we open a window?",Claustrophobic,Bit Claustrophobic,Feeling Bit Claustrophobic,Frustration
+"How do I access the hospital's patient portal?",Portal,Patient Portal,Access Patient Portal,Neutral
+"Can you tell me where the chapel is?",Chapel,Where Chapel,Tell Me Chapel,Neutral
+"I'd like to request a prayer from the chaplain.",Prayer,Request Prayer,Like Request Prayer,Relief
+"When will my stitches be removed?",Stitches,Stitches Removed,When Stitches Removed,Anxiety
+"Can my diet include more fruits?",Diet,Include Fruits,Diet Include Fruits,Neutral
+"I'm experiencing some side effects; who should I inform?",Effects,Side Effects,Experiencing Side Effects,Anxiety
+"Can I have the lights turned off at night?",Lights,Lights Off,Lights Turned Off,Relief
+"Where can I find the schedule for visiting hours?",Schedule,Visiting Hours,Find Visiting Hours,Neutral
+"Can I have a notepad to write down my questions?",Notepad,Have Notepad,Notepad Write Questions,Neutral
+"Is there a way to personalize my meal plan?",Meal,Personalize Meal,Personalize Meal Plan,Neutral
+"Can you help me understand my care plan better?",Understand,Care Plan,Understand Care Plan,Anxiety
+"Will there be any music therapy sessions available?",Music,Music Therapy,Music Therapy Sessions,Relief
+"When will the doctor come by to discuss my test results?",Doctor,Test Results,Discuss Test Results,Anxiety
+"I'm not feeling any better, despite the medication.",Better,Feeling Better,Not Feeling Better,Frustration
+"My chest feels a bit tight, should I be worried?",Chest,Chest Tight,Chest Feels Tight,Anxiety
+"The pain is less today, thanks for asking.",Pain,Less Pain,Pain Less Today,Relief
+"I'm feeling pretty hungry, what's for lunch?",Hungry,Feeling Hungry,Pretty Hungry Lunch,Neutral
+"Can we go for a walk outside today?",Walk,Go Walk,Walk Outside Today,Relief
+"The new medication seems to be working.",Medication,New Medication,Medication Working,Relief
+"Why am I still on a liquid diet?",Diet,Liquid Diet,Still Liquid Diet,Frustration
+"Can someone update me on my discharge plan?",Discharge,Discharge Plan,Update Discharge Plan,Anxiety
+"I'm grateful for the care I've received here.",Grateful,Grateful Care,Care Received Grateful,Gratitude
+"Can my family stay longer during visiting hours?",Family,Visiting Hours,Family Stay Longer,Neutral
+"How soon can I start physical therapy?",Therapy,Physical Therapy,Start Physical Therapy,Anxiety
+"Are there any side effects to this new pill?",Effects,Side Effects,New Pill Effects,Anxiety
+"I haven't slept well, can we try a different approach?",Slept,Slept Well,Not Slept Well,Frustration
+"The nurses have been fantastic, thank you.",Nurses,Fantastic Nurses,Nurses Been Fantastic,Gratitude
+"Will I need help at home after I leave?",Help,Need Help,Help At Home,Anxiety
+"I don't understand why I need this test.",Test,Need Test,Don't Understand Test,Frustration
+"Has the doctor called with my biopsy results?",Biopsy,Doctor Called,Called Biopsy Results,Anxiety
+"I'm feeling a bit cold, can I have an extra blanket?",Cold,Bit Cold,Feeling Bit Cold,Neutral
+"Has anyone seen my glasses?",Glasses,Seen Glasses,Anyone Seen Glasses,Frustration
+"Can I have more water, please?",Water,More Water,Have More Water,Neutral
+"Is there a chance I'll go home this week?",Home,Go Home,Chance Go Home,Anxiety
+"Thank you for fixing the TV; it helps pass the time.",TV,Fixing TV,Thank Fixing TV,Gratitude
+"When's the next round of pain medication due?",Pain,Pain Medication,Next Pain Medication,Anxiety
+"Are the test results something to worry about?",Results,Test Results,Worry Test Results,Anxiety
+"I'm itching where the cast is, can you check it?",Itching,Itching Cast,Itching Where Cast,Neutral
+"How long will the surgery take?",Surgery,Surgery Take,Long Surgery Take,Anxiety
+"Can you tell me more about my diet restrictions?",Diet,Diet Restrictions,More Diet Restrictions,Neutral
+"I'm ready to get out of bed now.",Ready,Get Out,Bed Now Relief,Relief
+"When will I be able to eat solid food again?",Solid,Food Again,Eat Solid Food,Anxiety
+"Thanks for bringing my books, I appreciate it.",Books,Bringing Books,Thanks Bringing Books,Gratitude
+"Can I shower by myself or do I need assistance?",Shower,Shower Myself,Shower By Myself,Neutral
+"Is the specialist going to see me today?",Specialist,See Specialist,Specialist See Today,Anxiety
+"Why do I need to take these tests again?",Tests,Take Tests,Need Take Tests,Frustration
+"Can I discuss my concerns with the doctor?",Concerns,Discuss Concerns,Discuss Concerns Doctor,Anxiety
+"I'm feeling dizzy, is that normal after the medication?",Dizzy,Feeling Dizzy,Dizzy After Medication,Anxiety
+"My room is too noisy, can I move to another one?",Noisy,Room Noisy,Noisy Can Move,Frustration
+"Please tell the chef the soup was excellent.",Chef,Soup Excellent,Tell Chef Soup,Gratitude
+"What exercises can I do to get stronger?",Exercises,Do Exercises,Exercises Get Stronger,Neutral
+"Is it okay if my friend visits after hours?",Friend,Visits After,Friend Visits After,Neutral
+"I don't like how this medication makes me feel.",Medication,Don't Like,Medication Feel Frustration,Frustration
+"Can we talk about alternative treatments?",Treatments,Alternative Treatments,Talk Alternative Treatments,Neutral
+"The physical therapist was very encouraging today.",Therapist,Physical Therapist,Therapist Encouraging,Gratitude
+"I'm not sure how to use this inhaler properly.",Inhaler,Use Inhaler,How Use Inhaler,Frustration
+"Can my family get an update on my condition?",Family,Family Update,Family Get Update,Neutral
+"When can we start discussing my rehabilitation plan?",Rehabilitation,Discussing Rehabilitation,Start Discussing Rehabilitation,Anxiety
+"I'd like a second opinion on this diagnosis.",Opinion,Second Opinion,Opinion On Diagnosis,Anxiety
+"The pain has decreased, should I still take the meds?",Pain,Decreased Pain,Pain Has Decreased,Relief
+"Could we lower the volume on the monitor, it's too loud?",Volume,Lower Volume,Volume Monitor Loud,Frustration
+"Let's plan for my recovery at home.",Plan,Plan Recovery,Plan Recovery Home,Neutral
+"Could you please update me on the progression of my treatment for arthritis?",Progression,Arthritis Progression,Treatment Arthritis Progression,Neutral
+"May I know how my diabetes management is going?",Diabetes,Diabetes Management,My Diabetes Management,Neutral
+"Would you be able to tell me more about my recovery status from pneumonia?",Recovery,Pneumonia Recovery,Recovery Status Pneumonia,Neutral
+"I was wondering if there have been any changes in my hypertension readings?",Hypertension,Hypertension Readings,Changes Hypertension Readings,Neutral
+"Can you explain the current state of my thyroid levels?",Thyroid,Thyroid Levels,State Thyroid Levels,Neutral
+"Is there any new information regarding my cholesterol management?",Cholesterol,Cholesterol Management,Information Cholesterol Management,Neutral
+"Could we discuss any recent developments in my treatment for asthma?",Developments,Asthma Developments,Treatment Asthma Developments,Neutral
+"May I ask for an update on my osteoporosis condition?",Osteoporosis,Osteoporosis Condition,Update Osteoporosis Condition,Neutral
+"Has there been any improvement in my acid reflux symptoms?",Improvement,Acid Reflux,Improvement Acid Reflux,Relief
+"What's the latest on my management plan for anemia?",Anemia,Management Anemia,Latest Management Anemia,Neutral
+"Could you provide me with the current status of my migraine treatment?",Status,Migraine Status,Current Migraine Status,Neutral
+"Would it be possible to get an assessment of my eczema today?",Assessment,Eczema Assessment,Assessment Eczema Today,Neutral
+"I'm curious about the results of my latest allergy tests.",Allergy,Allergy Tests,Latest Allergy Tests,Neutral
+"How is my blood pressure doing compared to last time?",Pressure,Blood Pressure,Blood Pressure Doing,Neutral
+"Could you inform me about the effectiveness of my current heart disease medication?",Effectiveness,Heart Disease,Heart Disease Medication,Neutral
+"Is my ulcerative colitis being managed as expected?",Colitis,Ulcerative Colitis,Managed Ulcerative Colitis,Neutral
+"May I get some clarity on my current cancer markers?",Clarity,Cancer Markers,Clarity Cancer Markers,Neutral
+"What can you tell me about my recent COPD assessment?",COPD,COPD Assessment,Recent COPD Assessment,Neutral
+"Are there any updates on the treatment for my kidney stones?",Updates,Kidney Stones,Updates Treatment Kidney,Neutral
+"I'd like to know more about my liver function test results, please.",Liver,Liver Function,Liver Function Test,Neutral
+"Could I have the latest information on my glaucoma condition?",Glaucoma,Glaucoma Condition,Latest Glaucoma Condition,Neutral
+"Would you mind sharing the progress of my sleep apnea treatment?",Progress,Sleep Apnea,Sleep Apnea Treatment,Neutral
+"Has there been a reduction in my prostate enlargement?",Reduction,Prostate Enlargement,Reduction Prostate Enlargement,Relief
+"Can we go over the status of my varicose veins?",Status,Varicose Veins,Status Varicose Veins,Neutral
+"Is there any progress in healing my broken bones?",Healing,Broken Bones,Progress Healing Bones,Relief
+"Could you please tell me how my Parkinson's disease is doing?",Parkinson's,Parkinson's Disease,My Parkinson's Disease,Neutral
+"How effective has the treatment been for my depression?",Effective,Depression Treatment,Treatment Depression Effective,Neutral
+"What are the latest findings on my breast cancer?",Findings,Breast Cancer,Latest Breast Cancer,Neutral
+"May I understand where we stand with my HIV management?",HIV,HIV Management,Stand HIV Management,Neutral
+"Could you give me an overview of my psoriasis treatment efficacy?",Efficacy,Psoriasis Efficacy,Treatment Psoriasis Efficacy,Neutral
+"Is the medication making a difference for my multiple sclerosis?",Medication,Multiple Sclerosis,Medication Multiple Sclerosis,Neutral
+"How are my lab results looking for Lyme disease?",Lab,Lyme Disease,Lab Results Lyme,Neutral
+"Could we review the current approach to my GERD symptoms?",Approach,GERD Symptoms,Current Approach GERD,Neutral
+"I'm eager to hear about the improvements in my Crohn's disease.",Improvements,Crohn's Disease,Improvements Crohn's Disease,Relief
+"Can you update me on the interventions for my osteoarthritis?",Interventions,Osteoarthritis Interventions,Update Interventions Osteoarthritis,Neutral
+"What's the current prognosis for my pancreatic cancer?",Prognosis,Pancreatic Cancer,Current Prognosis Pancreatic,Neutral
+"How is my recovery from the stroke progressing?",Recovery,Stroke Recovery,Recovery Stroke Progressing,Neutral
+"Can you brief me on the status of my epilepsy management?",Brief,Epilepsy Management,Status Epilepsy Management,Neutral
+"Are my angina symptoms under better control now?",Angina,Angina Symptoms,Angina Symptoms Control,Relief
+"I'd appreciate an update on my chronic fatigue syndrome.",Fatigue,Chronic Fatigue,Update Chronic Fatigue,Neutral
+"Have the treatments for my fibromyalgia been effective?",Treatments,Fibromyalgia Treatments,Treatments Fibromyalgia Effective,Neutral
+"Can we discuss my current bone density scan results?",Bone,Bone Density,Bone Density Scan,Neutral
+"Is there any noticeable change in my cataract condition?",Change,Cataract Condition,Change Cataract Condition,Neutral
+"What does my recent MRI indicate about my brain tumor?",MRI,Brain Tumor,Recent MRI Brain,Neutral
+"Have there been any advancements in treating my melanoma?",Advancements,Melanoma Advancements,Advancements Treating Melanoma,Neutral
+"May I inquire about my recent hemoglobin A1C levels?",Hemoglobin,Hemoglobin A1C,Recent Hemoglobin A1C,Neutral
+"Could you let me know how my cystic fibrosis is faring?",Cystic,Cystic Fibrosis,Cystic Fibrosis Faring,Neutral
+"Would you update me on my current renal function status?",Renal,Renal Function,Renal Function Status,Neutral
+"Is my gout responding well to the new treatment plan?",Gout,Gout Responding,Gout Responding Treatment,Relief
+"Can you tell me the current state of my peptic ulcer?",Peptic,Peptic Ulcer,State Peptic Ulcer,Neutral
+"Thank you for your assistance today, I really appreciate it.",Appreciation,Your Assistance,Assistance Today Appreciate,Gratitude
+"Could you please explain the procedure once more?",Explain,Explain Procedure,Please Explain Procedure,Neutral
+"Would you mind checking my medication schedule?",Medication,Checking Medication,Medication Schedule Check,Neutral
+"I'm grateful for your patience with all my questions.",Patience,Your Patience,Grateful Your Patience,Gratitude
+"May I request an extra blanket when you have a moment?",Blanket,Extra Blanket,Request Extra Blanket,Neutral
+"Is it possible to have a family member visit today?",Visit,Family Visit,Family Member Visit,Neutral
+"I understand you're busy, but could I have some water?",Water,Some Water,Could Have Water,Neutral
+"Would it be possible to get my test results today?",Results,Test Results,Get Test Results,Neutral
+"Can you please help me understand my treatment plan?",Treatment,Treatment Plan,Understand Treatment Plan,Neutral
+"I'm feeling much better today, thanks to your care.",Feeling,Better Today,Feeling Much Better,Relief
+"Could you please lower the lights? They're a bit bright.",Lights,Lower Lights,Lights Bit Bright,Neutral
+"May I have some privacy while I make this phone call?",Privacy,Some Privacy,Privacy Phone Call,Neutral
+"I'd appreciate a little more information on my medication.",Information,More Information,Information Medication,Neutral
+"Thank you for being so accommodating with my dietary needs.",Accommodating,So Accommodating,Accommodating Dietary Needs,Gratitude
+"Could I trouble you for a moment of your time?",Time,Your Time,Trouble Your Time,Neutral
+"May I inquire about the schedule for my therapy sessions?",Schedule,Therapy Schedule,Inquire Therapy Schedule,Neutral
+"Would you please inform me before changing any medications?",Inform,Inform Changing,Inform Changing Medications,Neutral
+"I'm a bit anxious about the surgery; can you tell me more about it?",Anxious,Anxious Surgery,Bit Anxious Surgery,Anxiety
+"Could you kindly adjust the bed? I'm not quite comfortable.",Adjust,Adjust Bed,Kindly Adjust Bed,Neutral
+"May I know when the doctor will be making rounds today?",Rounds,Doctor Rounds,Making Rounds Today,Neutral
+"I trust your judgment; what do you recommend?",Trust,Trust Judgment,Trust Your Judgment,Neutral
+"Thank you for all your efforts; it doesn't go unnoticed.",Efforts,Your Efforts,Efforts Go Unnoticed,Gratitude
+"Could we discuss the potential side effects of this treatment?",Side Effects,Potential Side,Discuss Side Effects,Neutral
+"Would it be too much trouble to request a different meal?",Meal,Different Meal,Request Different Meal,Neutral
+"I'd be grateful if you could explain my discharge instructions.",Discharge,Discharge Instructions,Explain Discharge Instructions,Neutral
+"Can you please ensure that my family gets updated about my condition?",Update,Ensure Update,Ensure Family Updated,Neutral
+"I appreciate how promptly you respond to my calls for assistance.",Promptly,Respond Promptly,Promptly Respond Calls,Gratitude
+"Would you mind if I ask for a second opinion?",Opinion,Second Opinion,Ask Second Opinion,Neutral
+"Thank you for making my stay as comfortable as possible.",Stay,My Stay,Making Stay Comfortable,Gratitude
+"Could you please help me get in touch with the dietitian?",Dietitian,Touch Dietitian,Get Touch Dietitian,Neutral
+"I'm relieved to hear the positive news about my progress.",Relieved,Positive News,Hear Positive News,Relief
+"May I compliment the staff on their exceptional care?",Compliment,Compliment Staff,Compliment Exceptional Care,Gratitude
+"Could you assist me in getting to the restroom?",Assist,Assist Restroom,Getting Restroom Assist,Neutral
+"I'm looking forward to your guidance on my recovery process.",Guidance,Your Guidance,Guidance Recovery Process,Neutral
+"Would you be so kind as to check on my medication refill?",Refill,Medication Refill,Check Medication Refill,Neutral
+"Can you please let me know when the next round of tests will be?",Tests,Next Tests,Next Round Tests,Neutral
+"I'm thankful for your understanding and flexibility.",Thankful,Understanding Flexibility,Thankful Understanding Flexibility,Gratitude
+"Would it inconvenience you to provide another pillow?",Pillow,Another Pillow,Provide Another Pillow,Neutral
+"Could I ask for your advice on managing pain after I leave?",Pain,Managing Pain,Advice Managing Pain,Neutral
+"Thank you for your diligence in monitoring my vitals.",Diligence,Monitoring Vitals,Diligence Monitoring Vitals,Gratitude
+"Is there a chance we could go over my diet restrictions?",Diet,Diet Restrictions,Go Over Diet,Neutral
+"May I express my gratitude for the warmth and kindness shown to me?",Gratitude,Express Gratitude,Express My Gratitude,Gratitude
+"Could you kindly explain the purpose of this new medication?",Purpose,Purpose Medication,Explain Purpose Medication,Neutral
+"Would you please update me on when I can start physical therapy?",Update,Update Physical,Update Physical Therapy,Neutral
+"I appreciate your promptness in addressing my concerns.",Promptness,Your Promptness,Appreciate Your Promptness,Gratitude
+"Could I have a little guidance on the exercises I should do?",Guidance,Little Guidance,Guidance Exercises Do,Neutral
+"Thank you for the care you've provided during my recovery.",Care,Care Provided,Care Provided Recovery,Gratitude
+"Would it be possible to speak with the doctor about my recent tests?",Speak,Speak Doctor,Speak Doctor Tests,Neutral
+"I'm grateful for the thorough explanations you've given me.",Thorough,Thorough Explanations,Grateful Thorough Explanations,Gratitude
+"Can you stop asking me how I feel every five minutes?",Asking,Stop Asking,Asking How Feel,Frustration
+"Why didn't you bring the things I actually asked for?",Bring,Didn't Bring,Bring Things Asked,Frustration
+"Do I really need all these visitors crowding the room?",Visitors,Need Visitors,These Visitors Crowding,Frustration
+"Why are you always late when you come to visit?",Late,Always Late,Come Visit Late,Frustration
+"Can't you see I'm trying to get some rest here?",Rest,Get Rest,Trying Get Rest,Frustration
+"Why do you keep bringing up stressful topics right now?",Stressful,Bringing Up,Bringing Stressful Topics,Frustration
+"Do you have to make so much noise when you're here?",Noise,Make Noise,Much Noise Making,Frustration
+"Why are you arguing with the nurses about my care?",Arguing,Arguing Nurses,Nurses About Care,Frustration
+"Can you just listen instead of giving me advice all the time?",Listen,Just Listen,Listen Instead Giving,Frustration
+"Why don't you understand that I need some space?",Space,Need Space,Understand Need Space,Frustration
+"Do you always have to comment on my hospital meals?",Comment,Comment Meals,Hospital Meals Comment,Frustration
+"Can you not see I'm on the phone? Stop interrupting!",Interrupting,On Phone,Stop Interrupting Phone,Frustration
+"Why must you question every decision the doctors make?",Question,Question Decision,Question Doctors Make,Frustration
+"Can't you handle the kids for once without calling me?",Kids,Handle Kids,Kids Without Calling,Frustration
+"Do I have to remind you to charge my phone every day?",Charge,Remind Charge,Remind Charge Phone,Frustration
+"Why do you keep forgetting to update everyone else?",Forgetting,Keep Forgetting,Forgetting Update Everyone,Frustration
+"Can't someone else take care of the errands for a change?",Errands,Take Errands,Someone Else Errands,Frustration
+"Why is it so hard for you to stick to the visiting schedule?",Schedule,Visiting Schedule,Stick Visiting Schedule,Frustration
+"Can you stop changing the TV channel while I'm watching?",Channel,Changing Channel,Stop Changing Channel,Frustration
+"Do you have to be so loud when you talk on your phone?",Loud,Loud Talk,Talk Phone Loud,Frustration
+"Can't you see I'm not in the mood for jokes right now?",Jokes,Mood Jokes,Not Mood Jokes,Frustration
+"Why do you keep telling me I look tired? I know that.",Tired,Look Tired,Telling Look Tired,Frustration
+"Can you not bring so many people with you next time?",People,Bring People,Bring Many People,Frustration
+"Do you have to eat that smelly food right next to me?",Smelly,Eat Smelly,Smelly Food Next,Frustration
+"Why can't you remember to bring my glasses every time?",Glasses,Bring Glasses,Remember Bring Glasses,Frustration
+"Can't you keep the kids quiet for just a few minutes?",Quiet,Keep Quiet,Kids Quiet Minutes,Frustration
+"Do you always have to ask me about the bills now?",Bills,Ask Bills,Always Ask Bills,Frustration
+"Why do you keep moving my stuff around without asking?",Moving,Moving Stuff,Keep Moving Stuff,Frustration
+"Can't you see I'm trying to read without interruptions?",Interruptions,Read Interruptions,Trying Read Without,Frustration
+"Why aren't you taking care of the pets like you promised?",Pets,Taking Care,Care Pets Promised,Frustration
+"Can you not use your outdoor voice inside the hospital?",Voice,Outdoor Voice,Use Outdoor Voice,Frustration
+"Do you have to complain about the parking every single time?",Parking,Complain Parking,Parking Every Time,Frustration
+"Why don't you pay attention to the doctor's instructions?",Instructions,Pay Attention,Attention Doctor's Instructions,Frustration
+"Can't you figure out how to use the coffee machine here?",Coffee,Use Coffee,Coffee Machine Use,Frustration
+"Do you have to question my food choices in front of everyone?",Choices,Question Choices,Question Food Choices,Frustration
+"Why can't you just be positive instead of worrying aloud?",Positive,Be Positive,Positive Instead Worrying,Frustration
+"Can't you take a hint that I want to be left alone sometimes?",Hint,Take Hint,Hint Want Alone,Frustration
+"Why do you always have to bring up work-related issues?",Work,Work Issues,Bring Work Issues,Frustration
+"Can't you coordinate with each other instead of asking me?",Coordinate,Coordinate Each,Each Other Instead,Frustration
+"Do you have to use your phone's speaker in the room?",Speaker,Use Speaker,Phone Speaker Room,Frustration
+"Why don't you check with the nurses before you do anything?",Check,Check Nurses,Check Nurses Before,Frustration
+"Can't you keep track of my appointments without my help?",Appointments,Keep Track,Track Appointments Help,Frustration
+"Why do you keep opening the window when I feel cold?",Window,Opening Window,Keep Opening Window,Frustration
+"Can you not hover over me every second that you're here?",Hover,Not Hover,Hover Over Second,Frustration
+"Do you have to bring the entire family every visit?",Family,Bring Family,Entire Family Visit,Frustration
+"Why can't you just sit and not fidget with everything?",Fidget,Sit Fidget,Not Fidget Everything,Frustration
+"Can't you understand I might not want to talk all the time?",Talk,Want Talk,Not Want Talk,Frustration
+"Why do you keep asking about my will and finances now?",Finances,Asking Finances,Asking Will Finances,Frustration
+"Can you not make plans for me without asking first?",Plans,Make Plans,Plans Without Asking,Frustration
+"Do you have to narrate every detail of your day to me?",Narrate,Narrate Detail,Narrate Every Detail,Frustration
+"Why is it taking so long to get my medication?",Medication,Get Medication,Taking Long Medication,Frustration
+"What’s the hold-up with my test results?",Results,Test Results,Hold-up Test Results,Frustration
+"Can't you hurry up with the discharge papers?",Discharge,Hurry Discharge,Discharge Papers Hurry,Frustration
+"Do I look like I know how to fill out these forms?",Forms,Fill Forms,Know Fill Forms,Frustration
+"Why haven’t I been updated about my surgery time yet?",Updated,Surgery Time,Updated Surgery Time,Frustration
+"Is it normal for you to ignore my pain complaints?",Ignore,Pain Complaints,Ignore Pain Complaints,Frustration
+"Can someone competent explain what’s going on?",Competent,Someone Competent,Explain Going On,Frustration
+"Why do I have to keep repeating my allergies to every nurse?",Allergies,Repeating Allergies,Keep Repeating Nurse,Frustration
+"Is there a reason the food here is always cold?",Food,Food Cold,Always Cold Food,Frustration
+"Do you even know when the doctor will come by?",Doctor,When Doctor,Know Doctor Come,Frustration
+"Why am I being moved around without any explanation?",Moved,Moved Around,Being Moved Explanation,Frustration
+"Is it too much to ask for some peace and quiet?",Quiet,Peace Quiet,Ask Peace Quiet,Frustration
+"Are you going to take my concerns seriously at any point?",Concerns,Take Seriously,Seriously Take Concerns,Frustration
+"Can't you find someone else to bother with that?",Bother,Find Bother,Someone Else Bother,Frustration
+"Why does it feel like no one here is listening to me?",Listening,No One,Feel Listening Me,Frustration
+"Do I need to call a manager to get some actual help?",Manager,Call Manager,Get Actual Help,Frustration
+"Are these the best facilities you can provide?",Facilities,Best Facilities,Provide Best Facilities,Frustration
+"How long do I have to wait for a simple answer?",Wait,Simple Answer,Wait Simple Answer,Frustration
+"Can you stop ignoring my request for assistance?",Ignoring,Stop Ignoring,Ignoring Request Assistance,Frustration
+"Why are the visiting hours so inconvenient for working people?",Inconvenient,Visiting Hours,Hours Inconvenient People,Frustration
+"Can I have an extra blanket, it's quite cold tonight?",Blanket,Extra Blanket,Cold Tonight Blanket,Relief
+"How soon can I start physical therapy?",Therapy,Physical Therapy,Start Physical Therapy,Neutral
+"What's the visiting policy for this ward?",Visiting,Visiting Policy,Ward Visiting Policy,Neutral
+"Can I get some water, please?",Water,Some Water,Get Some Water,Relief
+"Will someone notify me when the doctor arrives?",Notify,Doctor Arrives,Notify When Doctor,Anxiety
+"Is the pain I'm feeling normal after this type of surgery?",Pain,Pain Normal,Feeling Pain Normal,Anxiety
+"Can I discuss my medication options?",Medication,Discuss Medication,Discuss Medication Options,Frustration
+"Are there any side effects to this new treatment?",Effects,Side Effects,New Treatment Effects,Anxiety
+"When will I be able to eat solid food again?",Solid,Solid Food,Eat Solid Food,Neutral
+"Can you help me to the bathroom?",Help,Bathroom Help,Help To Bathroom,Frustration
+"Do I have to stay in bed all day?",Stay,Bed Stay,Stay Bed All,Neutral
+"Can my family bring me home-cooked meals?",Meals,Home-cooked Meals,Family Bring Meals,Relief
+"Is there a quieter time to rest during the day?",Quieter,Quieter Time,Time To Rest,Relief
+"Can I get the contact details for patient services?",Contact,Patient Services,Contact Patient Services,Frustration
+"When is my next check-up scheduled?",Check-up,Next Check-up,Scheduled Check-up,Neutral
+"Could I have some more information on my condition?",Information,More Information,Information On Condition,Frustration
+"Are there any relaxation areas in the hospital?",Relaxation,Relaxation Areas,Areas In Hospital,Relief
+"Can I be informed about my surgery's success rate?",Informed,Success Rate,Surgery's Success Rate,Anxiety
+"How long will I be on these medications?",Long,Be On,Long On Medications,Neutral
+"Can you tell me how my family can visit?",Family,Family Visit,Tell Family Visit,Neutral
+"Is there a cafeteria where my visitors can eat?",Cafeteria,Visitors Eat,Where Visitors Eat,Relief
+"What are the nurse's visiting hours?",Nurse,Nurse's Hours,Visiting Hours Nurse,Neutral
+"Can I walk around with the IV stand?",Walk,IV Stand,Walk IV Stand,Neutral
+"Are there any complications I should be aware of?",Complications,Aware Complications,Be Aware Complications,Anxiety
+"How often will my vital signs be checked?",Often,Vital Signs,Often Checked Signs,Neutral
+"Will I need rehabilitation after my discharge?",Rehabilitation,Need Rehabilitation,Rehabilitation After Discharge,Anxiety
+"Can you explain the risks of this procedure to me?",Risks,Explain Risks,Risks Procedure Explain,Anxiety
+"Is it okay to have visitors in the evening?",Visitors,Evening Visitors,Have Visitors Evening,Neutral
+"How can I access the hospital's Wi-Fi?",Access,Wi-Fi Access,Hospital's Wi-Fi Access,Relief
+"Can I schedule a follow-up appointment now?",Schedule,Follow-up Appointment,Schedule Follow-up Appointment,Frustration
+"Where can I charge my phone in here?",Charge,Charge Phone,Where Charge Phone,Neutral
+"Can I receive religious services while I'm here?",Religious,Religious Services,Receive Religious Services,Relief
+"Are there any volunteer services I can participate in?",Volunteer,Volunteer Services,Participate Volunteer Services,Relief
+"How do I request a second opinion?",Second,Second Opinion,Request Second Opinion,Frustration
+"Can you check if I'm due for any vaccinations?",Vaccinations,Due Vaccinations,Check Due Vaccinations,Neutral
+"Is there a library or reading area available?",Library,Reading Area,Library Reading Area,Relief
+"Can I adjust the temperature in my room?",Temperature,Adjust Temperature,Temperature In Room,Frustration
+"Will insurance cover all of my treatments?",Insurance,Insurance Cover,Cover My Treatments,Anxiety
+"How do I manage pain if it becomes severe?",Pain,Manage Pain,Pain Becomes Severe,Anxiety
+"Can you provide a list of recommended foods?",List,Recommended Foods,List Recommended Foods,Relief
+"What is the procedure for discharge?",Procedure,Discharge Procedure,Procedure For Discharge,Neutral
+"Can I bring my own medications from home?",Medications,Own Medications,Bring Medications Home,Frustration
+"Is there a way to expedite my tests?",Expedite,Expedite Tests,Way Expedite Tests,Frustration
+"Can my doctor be reached at any time?",Doctor,Reached Anytime,Doctor Reached Anytime,Anxiety
+"How are patient complaints handled here?",Complaints,Patient Complaints,Handled Patient Complaints,Frustration
+"Can I have a copy of my medical records?",Copy,Medical Records,Copy Medical Records,Neutral
+"Are there any support groups for my condition?",Support,Support Groups,Groups For Condition,Relief
+"When can I start exercising again?",Exercising,Start Exercising,Exercising Again Start,Relief
+"Can you show me how to use this medical equipment?",Show,Use Equipment,Show Use Equipment,Frustration
+"Are pets allowed to visit?",Pets,Pets Allowed,Allowed To Visit,Relief
+"Why am I feeling dizzy after the medication?",Dizzy,Feeling Dizzy,Dizzy After Medication,Anxiety
+"What time is my next dose due?",Dose,Next Dose,Time Next Dose,Neutral
+"Can we adjust the bed to sit up?",Adjust,Bed Adjust,Adjust Bed Sit,Frustration
+"Is there a chance of relapse after treatment?",Relapse,Chance Relapse,Relapse After Treatment,Anxiety
+"Do I need to fast before the blood test?",Fast,Fast Blood,Blood Test Fast,Neutral
+"Can someone bring me the meal menu?",Menu,Meal Menu,Bring Meal Menu,Relief
+"How do I use this inhaler correctly?",Inhaler,Use Inhaler,How Use Inhaler,Neutral
+"Are my test results available yet?",Results,Test Results,Results Available Yet,Anxiety
+"Can I talk to a dietitian about my meals?",Dietitian,Talk Dietitian,Talk Dietitian Meals,Neutral
+"Will there be a follow-up after I leave?",Follow-up,Follow-up Leave,Will Follow-up Leave,Neutral
+"Is the Wi-Fi free to use here?",Wi-Fi,Free Wi-Fi,Wi-Fi Free Use,Relief
+"What should I avoid eating with this condition?",Avoid,Avoid Eating,Eating With Condition,Neutral
+"When can my stitches be removed?",Stitches,Stitches Removed,When Stitches Removed,Neutral
+"Can I have some painkillers for my headache?",Painkillers,Some Painkillers,Painkillers For Headache,Relief
+"Has my prescription been sent to the pharmacy?",Prescription,Prescription Sent,Sent To Pharmacy,Neutral
+"Could you lower the volume of the TV?",Volume,Lower Volume,Volume Of TV,Frustration
+"May I have a glass of juice?",Juice,Glass Juice,Have Glass Juice,Relief
+"Should I avoid physical activity for now?",Activity,Avoid Activity,Avoid Physical Activity,Neutral
+"Can my child stay with me overnight?",Child,Child Stay,Stay Overnight Child,Anxiety
+"Is it safe to shower with this wound?",Shower,Shower Safe,Safe Shower Wound,Anxiety
+"Who can I speak to about my bill?",Bill,Speak Bill,Speak About Bill,Frustration
+"Can the curtains be closed for privacy?",Curtains,Close Curtains,Curtains Closed Privacy,Frustration
+"Do you have any magazines to read?",Magazines,Any Magazines,Magazines To Read,Relief
+"Is there someone who can translate for my family?",Translate,Can Translate,Translate For Family,Neutral
+"When do I take this new medication?",Medication,Take Medication,When Take Medication,Neutral
+"Can I have the lights dimmed?",Lights,Lights Dimmed,Have Lights Dimmed,Relief
+"Is the surgery considered high-risk?",Surgery,Surgery Risk,Considered High-Risk,Anxiety
+"How long does the procedure take?",Procedure,Procedure Take,How Long Take,Neutral
+"Can I request a different meal?",Meal,Request Meal,Different Meal Request,Frustration
+"Are there any support groups I can join?",Support,Support Groups,Join Support Groups,Relief
+"Will I need assistance at home?",Assistance,Need Assistance,Assistance At Home,Anxiety
+"Can I schedule a counseling session?",Counseling,Schedule Counseling,Counseling Session Schedule,Relief
+"What are the risks of this operation?",Risks,Risks Operation,Risks Of Operation,Anxiety
+"Can I get an extra pillow for my back?",Pillow,Extra Pillow,Get Extra Pillow,Relief
+"How often should this bandage be changed?",Bandage,Bandage Changed,Changed Bandage Often,Neutral
+"Is this medication taken with food?",Medication,Medication Food,Taken With Food,Neutral
+"When can I resume driving after the surgery?",Driving,Resume Driving,Driving After Surgery,Neutral
+"Can my relatives get a discount on parking?",Parking,Parking Discount,Discount On Parking,Frustration
+"Will my dietary restrictions be accommodated?",Dietary,Dietary Restrictions,Accommodate Dietary Restrictions,Anxiety
+"Can you update me on my test schedule?",Update,Test Schedule,Update Test Schedule,Anxiety
+"Do you need my insurance information again?",Insurance,Insurance Information,Need Insurance Information,Frustration
+"Can I have a blanket, it feels chilly?",Blanket,Have Blanket,Feels Chilly Blanket,Relief
+"Where can I find the gift shop?",Gift,Find Gift,Find Gift Shop,Neutral
+"Is there a pharmacy inside the hospital?",Pharmacy,Inside Pharmacy,Pharmacy Inside Hospital,Relief
+"Can I be moved to a quieter room?",Quieter,Move Quieter,Quieter Room Move,Frustration
+"When is the visiting time for ICU patients?",Visiting,ICU Visiting,Visiting Time ICU,Neutral
+"Can you check why I'm itching so much?",Itching,Why Itching,Check Why Itching,Frustration
+"Is meditation part of the recovery program?",Meditation,Meditation Recovery,Part Recovery Program,Relief
+"How do I get to the radiology department?",Radiology,Get Radiology,Radiology Department Get,Neutral
+"Can you please check my medication schedule?",Medication,Check Schedule,Medication Schedule Check,Anxiety
+"Is it normal to feel this pain after surgery?",Pain,Normal Pain,Pain After Surgery,Anxiety
+"Could I get some water, please?",Water,Get Water,Some Water Please,Relief
+"I'm feeling a bit better today, thank you.",Better,Feeling Better,Bit Better Today,Gratitude
+"When will the doctor come for the rounds?",Doctor,Doctor Rounds,When Doctor Rounds,Neutral
+"Can my family visit me during the evenings?",Family,Family Visit,Visit Evenings Family,Neutral
+"I'm having trouble sleeping, can you help?",Sleep,Trouble Sleeping,Having Trouble Sleeping,Frustration
+"The pain seems to be getting worse, what should I do?",Pain,Getting Worse,Pain Getting Worse,Anxiety
+"Thank you for your help today, I really appreciate it.",Help,Thank Help,Help Today Appreciate,Gratitude
+"Are there any side effects to this new medication?",Effects,Side Effects,Any Side Effects,Anxiety
+"How often will I need to come back for check-ups?",Check-ups,Back Check-ups,Come Back Check-ups,Neutral
+"Can I have more blankets, it's quite cold in here?",Blankets,More Blankets,Cold Need Blankets,Frustration
+"I'm not sure how to use this call button, can you show me?",Button,Call Button,Use Call Button,Neutral
+"Is the cafeteria open at night if I get hungry?",Cafeteria,Cafeteria Open,Cafeteria Open Night,Neutral
+"Can you please explain the test results to me again?",Results,Test Results,Explain Test Results,Frustration
+"I'm allergic to latex, can you make a note of that?",Latex,Allergic Latex,Note Allergic Latex,Anxiety
+"When can I start physical therapy sessions?",Therapy,Physical Therapy,Start Physical Therapy,Neutral
+"Will I need someone to take care of me at home?",Care,Need Care,Take Care Home,Anxiety
+"How much longer do I need to be on bed rest?",Rest,Bed Rest,Longer Bed Rest,Frustration
+"I feel nauseous; is that a reaction to the medication?",Nauseous,Feel Nauseous,Reaction Medication,Anxiety
+"Can I see my X-ray images?",X-ray,See X-ray,See X-ray Images,Neutral
+"Is it okay if I walk around the ward a little?",Walk,Walk Ward,Walk Around Ward,Relief
+"The nurse mentioned a specialist; when will they visit?",Specialist,Nurse Specialist,When Specialist Visit,Neutral
+"I'm ready for my discharge, what are the next steps?",Discharge,Ready Discharge,Discharge Next Steps,Relief
+"Can you tell me more about my treatment plan?",Treatment,Treatment Plan,About Treatment Plan,Neutral
+"I've been feeling very anxious about the surgery.",Anxious,Feeling Anxious,Anxious About Surgery,Anxiety
+"Will my insurance cover all these procedures?",Insurance,Insurance Cover,Will Cover Procedures,Anxiety
+"Thank you for being so patient with me.",Patient,Thank Patient,Being Patient Me,Gratitude
+"What are the visiting hours for this ward?",Hours,Visiting Hours,Ward Visiting Hours,Neutral
+"Can you help me get to the bathroom, please?",Bathroom,Help Bathroom,Get To Bathroom,Frustration
+"Could you help adjust my pillows? They're quite uncomfortable.",Adjust,Pillows Adjust,Help Adjust Pillows,Frustration
+"I'm having a hard time reaching my water, can you pass it to me?",Water,Reaching Water,Hard Time Water,Neutral
+"I need assistance getting to the bathroom, please.",Assistance,Need Assistance,Assistance Getting Bathroom,Neutral
+"It's difficult to eat; can someone feed me?",Eat,Difficult Eat,Someone Feed Me,Frustration
+"The pain is getting worse; can I have some medication?",Pain,Worse Pain,Getting Worse Medication,Anxiety
+"I feel very weak; can you help me sit up?",Weak,Feel Weak,Very Weak Sit,Neutral
+"I'm not sure how to operate this bed, could you show me?",Operate,Operate Bed,How Operate Bed,Frustration
+"Can someone stay with me for a while? I don't like being alone.",Alone,Stay Alone,Someone Stay Alone,Frustration
+"I dropped my glasses, can you please pick them up?",Glasses,Dropped Glasses,Pick Up Glasses,Neutral
+"I'm feeling cold, could I have another blanket?",Cold,Feeling Cold,Have Another Blanket,Neutral
+"Please help me with the TV remote, I can't seem to reach it.",Remote,TV Remote,Help TV Remote,Frustration
+"I need to change my position; I've been lying like this for hours.",Position,Change Position,Need Change Position,Frustration
+"I'm having trouble sleeping; can we discuss pain management options?",Sleeping,Trouble Sleeping,Discuss Pain Management,Anxiety
+"The noise in the hallway is very disturbing, can anything be done?",Noise,Noise Hallway,Disturbing Noise Hallway,Frustration
+"I feel dizzy when I stand; can we look into that?",Dizzy,Feel Dizzy,Dizzy When Stand,Anxiety
+"My mouth is dry, could I have some water?",Dry,Mouth Dry,Have Some Water,Neutral
+"I'm anxious about my test results, can you check on them?",Anxious,Anxious Test,Anxious Test Results,Anxiety
+"I would like to talk to the chaplain, if that's possible.",Chaplain,Talk Chaplain,Like Talk Chaplain,Neutral
+"Can someone call my family to update them on my status?",Call,Call Family,Someone Call Family,Neutral
+"The light is too bright; can it be dimmed?",Light,Bright Light,Light Too Bright,Frustration
+"I need to cough, but it hurts; can you help me?",Cough,Need Cough,Need To Cough,Anxiety
+"I'm struggling to breathe; I think I need a doctor.",Breathe,Struggling Breathe,Struggling To Breathe,Anxiety
+"My feet are swollen, can a nurse check on them?",Feet,Feet Swollen,Nurse Check Feet,Anxiety
+"I'm not feeling well after my meal, is this normal?",Meal,Feeling Meal,Not Feeling Meal,Anxiety
+"I can't hear the TV; can the volume be turned up?",Hear,Hear TV,Can't Hear TV,Frustration
+"I'm feeling a bit lost; can you explain what will happen next?",Lost,Feeling Lost,Feeling Bit Lost,Anxiety
+"I've been waiting a long time for assistance; is someone coming?",Waiting,Waiting Assistance,Long Time Assistance,Frustration
+"My bed needs to be made; it's in disarray.",Bed,Bed Made,Bed Needs Made,Frustration
+"I'm having an allergic reaction; can you alert the medical team?",Allergic,Allergic Reaction,Having Allergic Reaction,Anxiety
+"I would appreciate some company; can you sit with me?",Company,Appreciate Company,Some Company Sit,Relief
+"I need to have my medication now; is it ready?",Medication,Need Medication,Have Medication Now,Anxiety
+"I'm in pain and it's unbearable; please do something.",Pain,In Pain,Pain Unbearable,Anxiety
+"My IV is itching; can someone check it?",IV,IV Itching,IV Itching Check,Frustration
+"I feel nauseous; could it be the medication?",Nauseous,Feel Nauseous,Could Medication,Anxiety
+"I want to know more about my prognosis; who can I speak to?",Prognosis,Know Prognosis,More About Prognosis,Anxiety
+"The room is too cold; can the temperature be adjusted?",Cold,Room Cold,Temperature Be Adjusted,Frustration
+"I'm having difficulty breathing; I need assistance immediately.",Breathing,Difficulty Breathing,Having Difficulty Breathing,Anxiety
+"Can you please help me turn on my side?",Turn,Help Turn,Help Turn Side,Neutral
+"I'm worried about falling; can the bed rails be raised?",Falling,Worried Falling,Bed Rails Raised,Anxiety
+"My skin is very dry; can I have some lotion?",Skin,Skin Dry,Very Dry Lotion,Neutral
+"I don't understand my treatment plan; can it be explained again?",Understand,Treatment Plan,Understand Treatment Plan,Frustration
+"I'm ready to go to sleep; can the lights be turned off?",Sleep,Go Sleep,Lights Turned Off,Relief
+"I need to write something down; where can I find a pen?",Write,Need Write,Find A Pen,Frustration
+"I'm scared about my upcoming surgery; can you reassure me?",Scared,Scared Surgery,Scared Upcoming Surgery,Anxiety
+"I'd like to request a prayer; is there a spiritual service available?",Prayer,Request Prayer,Spiritual Service Available,Relief
+"I think my wound is infected; can a doctor examine it?",Wound,Wound Infected,Think Wound Infected,Anxiety
+"I'd like to be cleaned up; when is the next nurse available?",Cleaned,Cleaned Up,Next Nurse Available,Neutral
+"I'm feeling isolated; can I have a visitor?",Isolated,Feeling Isolated,Have A Visitor,Neutral
+"My appetite is gone; should I be concerned?",Appetite,Appetite Gone,Gone Should Concerned,Frustration
+"I'm too hot; can we adjust the air conditioning?",Hot,Too Hot,Adjust Air Conditioning,Frustration
+"I've been trying to get some rest, but the constant beeping from the machine next to my bed is making it quite difficult, can anything be done about this?",Beeping,Constant Beeping,Machine Next Bed,Frustration
+"Every time I try to get up and move around, I feel a sharp pain in my chest that takes my breath away; I'm really concerned and would appreciate some immediate attention.",Pain,Sharp Pain,Sharp Pain Chest,Anxiety
+"I've been pressing the call button for what seems like an eternity, hoping someone would come and assist me with my needs, but it seems to go unnoticed; can you please ensure I get some help?",Button,Call Button,Pressing Call Button,Frustration
+"The food that I received today was not what I expected, and it did not meet my dietary restrictions which are crucial for my health; can we discuss this with the dietary team to avoid any future issues?",Food,Dietary Restrictions,Meet Dietary Restrictions,Frustration
+"I would like to express my sincere gratitude for the compassionate care I have received during these hard times; it has made a significant difference in my stay here and I cannot thank you enough.",Gratitude,Compassionate Care,Sincere Gratitude Received,Gratitude
