@@ -12,7 +12,7 @@ from sentence_transformers import CrossEncoder
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 model = "meta-llama/Llama-2-7b-chat-hf" #"meta-llama/Llama-2-13b-chat-hf"
-tokenStr = "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"
+tokenStr = "higgingface-token"
 
 tokenizer = AutoTokenizer.from_pretrained(model, token = tokenStr)
 # model = AutoModelForCausalLM.from_pretrained(model, token = tokenStr)
