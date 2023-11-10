@@ -24,4 +24,5 @@ https://pyautogui.readthedocs.io/en/latest/
 
 ## 4. The game itself
 For Chrome users, simply type [chrome://dino/](chrome://dino/) in the URL
+
 For non-Chrome users, there are several alternatives, for example, https://offline-dino-game.firebaseapp.com/
