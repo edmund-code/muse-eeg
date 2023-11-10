@@ -12,7 +12,11 @@ For this to work we only need 4 comonents
 
 
 ## 1. Code to capture EEG signal from the device
-
+### Installation
+First, you need to install [`pylsl`](https://github.com/labstreaminglayer/pylsl):
+```bash
+pip install pylsl
+```
 
 ## 2. Model to classify the EEG signal captured in the previous step
 
@@ -26,9 +30,7 @@ https://pyautogui.readthedocs.io/en/latest/
 To simulate a key press event in Python that interacts with other programs, we can use the `pyautogui` library. This library allows for the automation of the mouse and keyboard and can send keystrokes to external applications.
 
 ### Installation
-
 First, you need to install `pyautogui`:
-
 ```bash
 pip install pyautogui
 ```
