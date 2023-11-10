@@ -11,16 +11,17 @@ For this to work we only need 4 comonents
 
 
 
-## Code to capture EEG signal from the device
+## 1. Code to capture EEG signal from the device
 
 
-## Model to classify the EEG signal captured in the previous step
+## 2. Model to classify the EEG signal captured in the previous step
 
 
-## Code that allows Python to control keyboard/mouse
+## 3. Code that allows Python to control keyboard/mouse
 https://pyautogui.readthedocs.io/en/latest/
+'''pip install pyautogui'''
 
 
-## The game itself
-For Chrome users, simply type chrome://dino/ in the URL
+## 4. The game itself
+For Chrome users, simply type [chrome://dino/](chrome://dino/) in the URL
 For non-Chrome users, there are several alternatives, for example, https://offline-dino-game.firebaseapp.com/
