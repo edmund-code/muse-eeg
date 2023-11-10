@@ -8,6 +8,10 @@ This repository consists of programs related to controlling everything from a ve
 ## Play Chrome Dino game with a Muse EEG-device
 <img width="384" alt="image" src="https://github.com/edmund-code/muse-eeg/assets/52833150/167b9dd5-3279-4506-b1ba-271839e922c4">
 
+## Play Edge Surf game with a Muse EEG-device
+<img width="1219" alt="image" src="https://github.com/edmund-code/muse-eeg/assets/52833150/f152bce8-dcc6-4d83-8152-53bf4156d438">
+
+
 ## Play Pong with a Muse EEG-device
 
 - Check Project1.MD
