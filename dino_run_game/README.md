@@ -17,15 +17,11 @@ For this to work we only need 4 comonents
 ## 2. Model to classify the EEG signal captured in the previous step
 
 
-## 3. Code that allows Python to control keyboard/mouse
+---
+## 3. Simulating Key Press in Python
 https://pyautogui.readthedocs.io/en/latest/
 ```pip install pyautogui```
 
-Certainly! Here's the previous response formatted in Markdown:
-
----
-
-## Simulating Key Press in Python
 
 To simulate a key press event in Python that interacts with other programs, we can use the `pyautogui` library. This library allows for the automation of the mouse and keyboard and can send keystrokes to external applications.
 
@@ -56,11 +52,6 @@ time.sleep(5)
 # Simulating a key press, for example, the 'a' key
 simulate_key_press('a')
 ```
-
-### How it Works
-
-- The script waits for 5 seconds, allowing you to switch to the window where you want the key press to be sent.
-- After the delay, it simulates pressing the 'a' key. You can change `'a'` to any key of your choice.
 
 ### Caution
 
