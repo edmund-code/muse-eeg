@@ -19,7 +19,7 @@ For this to work we only need 4 comonents
 
 ## 3. Code that allows Python to control keyboard/mouse
 https://pyautogui.readthedocs.io/en/latest/
-'''pip install pyautogui'''
+```pip install pyautogui```
 
 
 ## 4. The game itself
